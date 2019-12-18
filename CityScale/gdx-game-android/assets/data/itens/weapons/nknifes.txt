@@ -1,0 +1,89 @@
+nknifes.png
+size: 840, 70
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+advanced_knife_left
+  rotate: false
+  xy: 0, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+advanced_knife_left_attack
+  rotate: false
+  xy: 70, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+advanced_knife_right
+  rotate: false
+  xy: 140, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+advanced_knife_right_attack
+  rotate: false
+  xy: 210, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+advanced_knife_side_left
+  rotate: false
+  xy: 280, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+advanced_knife_side_right
+  rotate: false
+  xy: 350, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+basic_knife_attack_left
+  rotate: false
+  xy: 420, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+basic_knife_attack_right
+  rotate: false
+  xy: 490, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+basic_knife_left
+  rotate: false
+  xy: 560, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+basic_knife_right
+  rotate: false
+  xy: 630, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+basic_knife_side_left
+  rotate: false
+  xy: 700, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+basic_knife_side_right
+  rotate: false
+  xy: 770, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1

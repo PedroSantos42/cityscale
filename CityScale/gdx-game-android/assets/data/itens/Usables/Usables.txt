@@ -1,0 +1,47 @@
+Usables.png
+size: 234, 39
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+cafe
+  rotate: false
+  xy: 0, 0
+  size: 39, 39
+  orig: 39, 39
+  offset: 0, 0
+  index: -1
+Cola
+  rotate: false
+  xy: 39, 0
+  size: 39, 39
+  orig: 39, 39
+  offset: 0, 0
+  index: -1
+Soda
+  rotate: false
+  xy: 78, 0
+  size: 39, 39
+  orig: 39, 39
+  offset: 0, 0
+  index: -1
+SodaMPBoost
+  rotate: false
+  xy: 117, 0
+  size: 39, 39
+  orig: 39, 39
+  offset: 0, 0
+  index: -1
+SucoHP
+  rotate: false
+  xy: 156, 0
+  size: 39, 39
+  orig: 39, 39
+  offset: 0, 0
+  index: -1
+SucoHPBoost
+  rotate: false
+  xy: 195, 0
+  size: 39, 39
+  orig: 39, 39
+  offset: 0, 0
+  index: -1
