@@ -23,6 +23,7 @@ public class Skill
 	public int countFrameEffect;
 	public boolean overEffect;
 	public boolean isAreaSkill;
+	public boolean following;
 	public TextureAtlas atlas_tripleattack;
 	public TextureAtlas atlas_icecrystal;
 	public Sprite spr_master;
@@ -31,7 +32,7 @@ public class Skill
 		atlas_tripleattack = new TextureAtlas(Gdx.files.internal("data/skills/tripleattack.txt"));
 	}
 	
-	public Sprite CarregaEfeito(String nomeSkill, int countFrame) {
+	public Sprite CarregaEfeitoVisual(String nomeSkill, int countFrame) {
 		
 		if(nomeSkill.equals("tripleattack")) {
 			spr_master = atlas_tripleattack.createSprite("tripleattack" + countFrame);
@@ -64,6 +65,7 @@ public class Skill
 			novaSkill.countFrameEffect = 1;
 			novaSkill.overEffect = false;
 			novaSkill.isAreaSkill = false;
+			novaSkill.following = false;
 		}
 		
 		if(nomeSkill == "icecrystal") {
@@ -82,6 +84,45 @@ public class Skill
 			novaSkill.countFrameEffect = 1;
 			novaSkill.overEffect = false;
 			novaSkill.isAreaSkill = true;
+			novaSkill.following = false;
+		}
+		
+		if(nomeSkill == "fireball") {
+			novaSkill.nameSkill = "fireball";
+			novaSkill.caster = usr;
+			novaSkill.posX = 0;
+			novaSkill.posY = 0;
+			novaSkill.height = 40;
+			novaSkill.width = 30;
+			novaSkill.timer = 60;
+			novaSkill.damage = 50;
+			novaSkill.castTime = 0;
+			novaSkill.delay = 180;
+			novaSkill.areaSpreadX = 0;
+			novaSkill.areaSpreadY = 0;
+			novaSkill.countFrameEffect = 1;
+			novaSkill.overEffect = false;
+			novaSkill.isAreaSkill = false;
+			novaSkill.following = true;
+		}
+		
+		if(nomeSkill == "heal") {
+			novaSkill.nameSkill = "heal";
+			novaSkill.caster = usr;
+			novaSkill.posX = 0;
+			novaSkill.posY = 0;
+			novaSkill.height = 40;
+			novaSkill.width = 30;
+			novaSkill.timer = 60;
+			novaSkill.damage = 10;
+			novaSkill.castTime = 0;
+			novaSkill.delay = 180;
+			novaSkill.areaSpreadX = 0;
+			novaSkill.areaSpreadY = 0;
+			novaSkill.countFrameEffect = 1;
+			novaSkill.overEffect = false;
+			novaSkill.isAreaSkill = true;
+			novaSkill.following = false;
 		}
 		
 		return novaSkill;
@@ -89,10 +130,20 @@ public class Skill
 	
 	public static boolean CheckMP(String nomeSkill, int MP) {
 		if(nomeSkill.equals("tripleattack") && MP < 10) { return false; }		
-		
-		
+		if(nomeSkill.equals("fireball") && MP < 23) { return false; }		
 		if(nomeSkill.equals("icecrystal") && MP < 25) { return false; }		
+		if(nomeSkill.equals("heal") && MP < 15) { return false; }		
+		
 		return true;
+	}
+	
+	public boolean VerificaSkillArea(String nomeSkill){
+		if(nomeSkill.equals("tripleattack")) { return false; }		
+		if(nomeSkill.equals("fireball")) { return true; }		
+		if(nomeSkill.equals("icecrystal")) { return true; }		
+		if(nomeSkill.equals("heal")) { return true; }		
+		
+		return false;
 	}
 }
 

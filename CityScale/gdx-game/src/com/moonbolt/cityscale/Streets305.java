@@ -60,7 +60,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 	private boolean mainState = true;
 	private boolean menuState = false;
 	private boolean questState = false;
-	private boolean areaState = false;
+	private boolean areaSkillState = false;
 	private boolean deadState = false;
 	private boolean chatState = false;
 	private boolean partyState =  false;
@@ -655,7 +655,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		}
 		
 		
-		//Balão Quest
+		//Balï¿½o Quest
 		baloonQuestNum++;
 		if(baloonQuestNum >= 120) { baloonQuestNum = 0; }
 		
