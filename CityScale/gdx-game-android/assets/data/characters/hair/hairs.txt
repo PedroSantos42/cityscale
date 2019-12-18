@@ -1,0 +1,2021 @@
+hairs.png
+size: 2020, 235
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+hair1
+  rotate: false
+  xy: 840, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1_f
+  rotate: false
+  xy: 1400, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1attack
+  rotate: false
+  xy: 1440, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1attack_f
+  rotate: false
+  xy: 1840, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1attack_f_left
+  rotate: false
+  xy: 1960, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1attack_f_right
+  rotate: false
+  xy: 200, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1attack_left
+  rotate: false
+  xy: 240, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1attack_right
+  rotate: false
+  xy: 320, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1battle
+  rotate: false
+  xy: 440, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1battle2
+  rotate: false
+  xy: 360, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1battle2_f
+  rotate: false
+  xy: 400, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1battle2_f_left
+  rotate: false
+  xy: 1760, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1battle2_f_right
+  rotate: false
+  xy: 280, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1battle2_left
+  rotate: false
+  xy: 160, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1battle2_right
+  rotate: false
+  xy: 1880, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1battle_f
+  rotate: false
+  xy: 1920, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1battle_f_left
+  rotate: false
+  xy: 0, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1battle_f_right
+  rotate: false
+  xy: 120, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1battle_left
+  rotate: false
+  xy: 40, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1battle_right
+  rotate: false
+  xy: 80, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1damage
+  rotate: false
+  xy: 1320, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair1left
+  rotate: false
+  xy: 300, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair1left_f
+  rotate: false
+  xy: 1550, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair1right
+  rotate: false
+  xy: 750, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair1right_f
+  rotate: false
+  xy: 800, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair1up
+  rotate: false
+  xy: 900, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair1up_f
+  rotate: false
+  xy: 950, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair2
+  rotate: false
+  xy: 1120, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2_f
+  rotate: false
+  xy: 1040, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2attack
+  rotate: false
+  xy: 1000, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2attack_f
+  rotate: false
+  xy: 880, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2attack_f_left
+  rotate: false
+  xy: 960, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2attack_f_right
+  rotate: false
+  xy: 920, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2attack_left
+  rotate: false
+  xy: 840, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2attack_right
+  rotate: false
+  xy: 1440, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2battle
+  rotate: false
+  xy: 1400, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2battle2
+  rotate: false
+  xy: 1240, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2battle2_f
+  rotate: false
+  xy: 1200, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2battle2_f_left
+  rotate: false
+  xy: 1840, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2battle2_f_right
+  rotate: false
+  xy: 40, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2battle2_left
+  rotate: false
+  xy: 200, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2battle2_right
+  rotate: false
+  xy: 80, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2battle_f
+  rotate: false
+  xy: 1960, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2battle_f_left
+  rotate: false
+  xy: 1920, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2battle_f_right
+  rotate: false
+  xy: 280, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2battle_left
+  rotate: false
+  xy: 360, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2battle_right
+  rotate: false
+  xy: 560, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2left
+  rotate: false
+  xy: 1900, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair2left_f
+  rotate: false
+  xy: 1950, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair2right
+  rotate: false
+  xy: 1850, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair2right_f
+  rotate: false
+  xy: 1700, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair2up
+  rotate: false
+  xy: 1080, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair2up_f
+  rotate: false
+  xy: 600, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3
+  rotate: false
+  xy: 520, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3_f
+  rotate: false
+  xy: 320, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3attack
+  rotate: false
+  xy: 400, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3attack_f
+  rotate: false
+  xy: 480, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3attack_f_left
+  rotate: false
+  xy: 440, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3attack_f_right
+  rotate: false
+  xy: 720, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3attack_left
+  rotate: false
+  xy: 680, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3attack_right
+  rotate: false
+  xy: 760, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3battle
+  rotate: false
+  xy: 640, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3battle2
+  rotate: false
+  xy: 1880, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3battle2_f
+  rotate: false
+  xy: 1800, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3battle2_f_left
+  rotate: false
+  xy: 0, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3battle2_f_right
+  rotate: false
+  xy: 160, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3battle2_left
+  rotate: false
+  xy: 800, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3battle2_right
+  rotate: false
+  xy: 240, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3battle_f
+  rotate: false
+  xy: 120, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3battle_f_left
+  rotate: false
+  xy: 1280, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3battle_f_right
+  rotate: false
+  xy: 1360, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3battle_left
+  rotate: false
+  xy: 1320, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3battle_right
+  rotate: false
+  xy: 1480, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3left
+  rotate: false
+  xy: 1570, 160
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair3left_f
+  rotate: false
+  xy: 0, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair3right
+  rotate: false
+  xy: 1870, 160
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair3right_f
+  rotate: false
+  xy: 700, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair3up
+  rotate: false
+  xy: 1160, 160
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair3up_f
+  rotate: false
+  xy: 80, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4
+  rotate: false
+  xy: 1600, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4_f
+  rotate: false
+  xy: 1640, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4attack
+  rotate: false
+  xy: 1720, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4attack_f
+  rotate: false
+  xy: 1840, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4attack_f_left
+  rotate: false
+  xy: 1760, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4attack_f_right
+  rotate: false
+  xy: 1800, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4attack_left
+  rotate: false
+  xy: 1680, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4attack_right
+  rotate: false
+  xy: 1560, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4battle
+  rotate: false
+  xy: 1280, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4battle2
+  rotate: false
+  xy: 1320, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4battle2_f
+  rotate: false
+  xy: 1400, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4battle2_f_left
+  rotate: false
+  xy: 1520, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4battle2_f_right
+  rotate: false
+  xy: 1440, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4battle2_left
+  rotate: false
+  xy: 1200, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4battle2_right
+  rotate: false
+  xy: 1480, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4battle_f
+  rotate: false
+  xy: 1880, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4battle_f_left
+  rotate: false
+  xy: 0, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4battle_f_right
+  rotate: false
+  xy: 240, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4battle_left
+  rotate: false
+  xy: 280, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4battle_right
+  rotate: false
+  xy: 360, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4left
+  rotate: false
+  xy: 200, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair4left_f
+  rotate: false
+  xy: 1500, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair4right
+  rotate: false
+  xy: 1250, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair4right_f
+  rotate: false
+  xy: 1200, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair4up
+  rotate: false
+  xy: 400, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair4up_f
+  rotate: false
+  xy: 480, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5
+  rotate: false
+  xy: 520, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5_f
+  rotate: false
+  xy: 440, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5attack
+  rotate: false
+  xy: 320, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5attack_f
+  rotate: false
+  xy: 200, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5attack_f_left
+  rotate: false
+  xy: 1920, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5attack_f_right
+  rotate: false
+  xy: 1960, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5attack_left
+  rotate: false
+  xy: 40, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5attack_right
+  rotate: false
+  xy: 160, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5battle
+  rotate: false
+  xy: 80, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5battle2
+  rotate: false
+  xy: 120, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5battle2_f
+  rotate: false
+  xy: 1360, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5battle2_f_left
+  rotate: false
+  xy: 1240, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5battle2_f_right
+  rotate: false
+  xy: 320, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5battle2_left
+  rotate: false
+  xy: 360, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5battle2_right
+  rotate: false
+  xy: 440, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5battle_f
+  rotate: false
+  xy: 560, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5battle_f_left
+  rotate: false
+  xy: 480, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5battle_f_right
+  rotate: false
+  xy: 520, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5battle_left
+  rotate: false
+  xy: 400, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5battle_right
+  rotate: false
+  xy: 280, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5left
+  rotate: false
+  xy: 650, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair5left_f
+  rotate: false
+  xy: 500, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair5right
+  rotate: false
+  xy: 400, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair5right_f
+  rotate: false
+  xy: 350, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair5up
+  rotate: false
+  xy: 0, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair5up_f
+  rotate: false
+  xy: 40, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6
+  rotate: false
+  xy: 120, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6_f
+  rotate: false
+  xy: 240, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6attack
+  rotate: false
+  xy: 160, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6attack_f
+  rotate: false
+  xy: 200, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6attack_f_left
+  rotate: false
+  xy: 600, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6attack_f_right
+  rotate: false
+  xy: 720, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6attack_left
+  rotate: false
+  xy: 960, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6attack_right
+  rotate: false
+  xy: 1000, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6battle
+  rotate: false
+  xy: 1080, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6battle2
+  rotate: false
+  xy: 1200, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6battle2_f
+  rotate: false
+  xy: 1120, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6battle2_f_left
+  rotate: false
+  xy: 1160, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6battle2_f_right
+  rotate: false
+  xy: 1040, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6battle2_left
+  rotate: false
+  xy: 920, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6battle2_right
+  rotate: false
+  xy: 640, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6battle_f
+  rotate: false
+  xy: 680, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6battle_f_left
+  rotate: false
+  xy: 760, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6battle_f_right
+  rotate: false
+  xy: 880, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6battle_left
+  rotate: false
+  xy: 800, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6battle_right
+  rotate: false
+  xy: 840, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6left
+  rotate: false
+  xy: 1050, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair6left_f
+  rotate: false
+  xy: 1100, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair6right
+  rotate: false
+  xy: 1000, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair6right_f
+  rotate: false
+  xy: 850, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair6up
+  rotate: false
+  xy: 560, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair6up_f
+  rotate: false
+  xy: 680, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7
+  rotate: false
+  xy: 240, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7_f
+  rotate: false
+  xy: 280, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7attack
+  rotate: false
+  xy: 360, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7attack_f
+  rotate: false
+  xy: 480, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7attack_f_left
+  rotate: false
+  xy: 400, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7attack_f_right
+  rotate: false
+  xy: 440, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7attack_left
+  rotate: false
+  xy: 320, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7attack_right
+  rotate: false
+  xy: 200, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7battle
+  rotate: false
+  xy: 1920, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7battle2_f
+  rotate: false
+  xy: 1960, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7battle2_f_left
+  rotate: false
+  xy: 40, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7battle2_f_right
+  rotate: false
+  xy: 160, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7battle2_left
+  rotate: false
+  xy: 80, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7battle2_right
+  rotate: false
+  xy: 120, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7battle_f
+  rotate: false
+  xy: 520, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7battle_f_left
+  rotate: false
+  xy: 640, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7battle_f_right
+  rotate: false
+  xy: 880, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7battle_left
+  rotate: false
+  xy: 920, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7battle_right
+  rotate: false
+  xy: 1000, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7left
+  rotate: false
+  xy: 1600, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair7left_f
+  rotate: false
+  xy: 1650, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair7right
+  rotate: false
+  xy: 1750, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair7right_f
+  rotate: false
+  xy: 1800, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair7up
+  rotate: false
+  xy: 1040, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair7up_f
+  rotate: false
+  xy: 1120, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8
+  rotate: false
+  xy: 1160, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8_f
+  rotate: false
+  xy: 1080, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8attack
+  rotate: false
+  xy: 960, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8attack_f
+  rotate: false
+  xy: 840, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8attack_f_left
+  rotate: false
+  xy: 560, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8attack_f_right
+  rotate: false
+  xy: 600, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8attack_left
+  rotate: false
+  xy: 680, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8attack_right
+  rotate: false
+  xy: 800, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8battle
+  rotate: false
+  xy: 720, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8battle2
+  rotate: false
+  xy: 760, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8battle2_f
+  rotate: false
+  xy: 0, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8battle2_f_left
+  rotate: false
+  xy: 1880, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8battle2_f_right
+  rotate: false
+  xy: 920, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8battle2_left
+  rotate: false
+  xy: 960, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8battle2_right
+  rotate: false
+  xy: 1040, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8battle_f
+  rotate: false
+  xy: 1160, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8battle_f_left
+  rotate: false
+  xy: 1080, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8battle_f_right
+  rotate: false
+  xy: 1120, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8battle_left
+  rotate: false
+  xy: 1000, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8battle_right
+  rotate: false
+  xy: 880, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8left
+  rotate: false
+  xy: 450, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair8left_f
+  rotate: false
+  xy: 100, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair8right
+  rotate: false
+  xy: 1720, 160
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair8right_f
+  rotate: false
+  xy: 1820, 160
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair8up
+  rotate: false
+  xy: 600, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair8up_f
+  rotate: false
+  xy: 1620, 160
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair9
+  rotate: false
+  xy: 640, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9_f
+  rotate: false
+  xy: 720, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9attack
+  rotate: false
+  xy: 840, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9attack_f
+  rotate: false
+  xy: 760, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9attack_f_left
+  rotate: false
+  xy: 800, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9attack_f_right
+  rotate: false
+  xy: 1200, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9attack_left
+  rotate: false
+  xy: 1320, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9attack_right
+  rotate: false
+  xy: 1560, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9battle
+  rotate: false
+  xy: 1600, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9battle2
+  rotate: false
+  xy: 1680, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9battle2_f
+  rotate: false
+  xy: 1720, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9battle2_f_left
+  rotate: false
+  xy: 1800, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9battle2_f_right
+  rotate: false
+  xy: 1840, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9battle2_left
+  rotate: false
+  xy: 1760, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9battle2_right
+  rotate: false
+  xy: 1640, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9battle_f
+  rotate: false
+  xy: 1520, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9battle_f_left
+  rotate: false
+  xy: 1240, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9battle_f_right
+  rotate: false
+  xy: 1280, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9battle_left
+  rotate: false
+  xy: 1360, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9battle_right
+  rotate: false
+  xy: 1480, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9left
+  rotate: false
+  xy: 1920, 160
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair9left_f
+  rotate: false
+  xy: 1970, 160
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair9right
+  rotate: false
+  xy: 50, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair9right_f
+  rotate: false
+  xy: 150, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair9up
+  rotate: false
+  xy: 1400, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair9up_f
+  rotate: false
+  xy: 1670, 160
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair10
+  rotate: false
+  xy: 880, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10_f
+  rotate: false
+  xy: 960, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10attack
+  rotate: false
+  xy: 1080, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10attack_f
+  rotate: false
+  xy: 1000, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10attack_f_left
+  rotate: false
+  xy: 1040, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10attack_f_right
+  rotate: false
+  xy: 920, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10attack_left
+  rotate: false
+  xy: 800, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10attack_right
+  rotate: false
+  xy: 520, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10battle
+  rotate: false
+  xy: 560, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10battle2
+  rotate: false
+  xy: 640, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10battle2_f
+  rotate: false
+  xy: 760, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10battle2_f_left
+  rotate: false
+  xy: 680, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10battle2_f_right
+  rotate: false
+  xy: 720, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10battle2_left
+  rotate: false
+  xy: 1120, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10battle2_right
+  rotate: false
+  xy: 1240, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10battle_f
+  rotate: false
+  xy: 1480, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10battle_f_left
+  rotate: false
+  xy: 1520, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10battle_f_right
+  rotate: false
+  xy: 1600, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10battle_left
+  rotate: false
+  xy: 1720, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10battle_right
+  rotate: false
+  xy: 1640, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10left
+  rotate: false
+  xy: 1520, 160
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair10left_f
+  rotate: false
+  xy: 1770, 160
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair10right
+  rotate: false
+  xy: 1450, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair10right_f
+  rotate: false
+  xy: 1400, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair10up
+  rotate: false
+  xy: 1680, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair10up_f
+  rotate: false
+  xy: 1350, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair11
+  rotate: false
+  xy: 1560, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11_f
+  rotate: false
+  xy: 1440, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11attack
+  rotate: false
+  xy: 1160, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11attack_f
+  rotate: false
+  xy: 1200, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11attack_f_left
+  rotate: false
+  xy: 1280, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11attack_f_right
+  rotate: false
+  xy: 1400, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11attack_left
+  rotate: false
+  xy: 1320, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11attack_right
+  rotate: false
+  xy: 1360, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11battle
+  rotate: false
+  xy: 600, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11battle2
+  rotate: false
+  xy: 480, 120
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11battle2_f
+  rotate: false
+  xy: 1560, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11battle2_f_left
+  rotate: false
+  xy: 1600, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11battle2_f_right
+  rotate: false
+  xy: 1680, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11battle2_left
+  rotate: false
+  xy: 1800, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11battle2_right
+  rotate: false
+  xy: 1720, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11battle_f
+  rotate: false
+  xy: 1760, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11battle_f_left
+  rotate: false
+  xy: 1640, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11battle_f_right
+  rotate: false
+  xy: 1520, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11battle_left
+  rotate: false
+  xy: 1240, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11battle_right
+  rotate: false
+  xy: 1280, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11left
+  rotate: false
+  xy: 1300, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair11left_f
+  rotate: false
+  xy: 1150, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair11right
+  rotate: false
+  xy: 600, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair11right_f
+  rotate: false
+  xy: 550, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+hair11up
+  rotate: false
+  xy: 1360, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+hair11up_f
+  rotate: false
+  xy: 1480, 80
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 1440, 40
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+headright
+  rotate: false
+  xy: 250, 200
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,502 @@
+hats.png
+size: 480, 302
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bananahat_front
+  rotate: false
+  xy: 440, 140
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+bananahat_left
+  rotate: false
+  xy: 360, 140
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+bananahat_right
+  rotate: false
+  xy: 400, 140
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+bananahat_up
+  rotate: false
+  xy: 400, 186
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+beachglass_front
+  rotate: false
+  xy: 360, 94
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+beachglass_left
+  rotate: false
+  xy: 280, 94
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+beachglass_right
+  rotate: false
+  xy: 40, 140
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+beachglass_up
+  rotate: false
+  xy: 440, 94
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+bearhat_front
+  rotate: false
+  xy: 80, 140
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+bearhat_left
+  rotate: false
+  xy: 160, 140
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+bearhat_right
+  rotate: false
+  xy: 280, 140
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+bearhat_up
+  rotate: false
+  xy: 200, 140
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+blizzardcap_front
+  rotate: false
+  xy: 240, 140
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+blizzardcap_left
+  rotate: false
+  xy: 120, 140
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+blizzardcap_right
+  rotate: false
+  xy: 40, 186
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+blizzardcap_up
+  rotate: false
+  xy: 0, 140
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+brasilhat_front
+  rotate: false
+  xy: 400, 94
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+brasilhat_left
+  rotate: false
+  xy: 320, 140
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+brasilhat_right
+  rotate: false
+  xy: 320, 94
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+brasilhat_up
+  rotate: false
+  xy: 120, 186
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+bunnyhat_front
+  rotate: false
+  xy: 160, 186
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+bunnyhat_left
+  rotate: false
+  xy: 200, 186
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+bunnyhat_right
+  rotate: false
+  xy: 240, 186
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+bunnyhat_up
+  rotate: false
+  xy: 280, 186
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+butterflyhat_front
+  rotate: false
+  xy: 320, 186
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+capred_front
+  rotate: false
+  xy: 360, 186
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+capred_left
+  rotate: false
+  xy: 350, 232
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+capred_right
+  rotate: false
+  xy: 200, 232
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+capred_up
+  rotate: false
+  xy: 80, 186
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+clayhat_front
+  rotate: false
+  xy: 0, 186
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+clayhat_left
+  rotate: false
+  xy: 100, 267
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+clayhat_right
+  rotate: false
+  xy: 100, 232
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+clayhat_up
+  rotate: false
+  xy: 40, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+clockhat_front
+  rotate: false
+  xy: 280, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+clockhat_left
+  rotate: false
+  xy: 250, 232
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+clockhat_right
+  rotate: false
+  xy: 300, 232
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+clockhat_up
+  rotate: false
+  xy: 320, 0
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+cookhat_front
+  rotate: false
+  xy: 400, 0
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+cookhat_left
+  rotate: false
+  xy: 40, 48
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+cookhat_right
+  rotate: false
+  xy: 440, 0
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+cookhat_up
+  rotate: false
+  xy: 0, 48
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+headset_front
+  rotate: false
+  xy: 360, 0
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+headset_left
+  rotate: false
+  xy: 240, 0
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+headset_right
+  rotate: false
+  xy: 0, 0
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+headset_up
+  rotate: false
+  xy: 80, 0
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+magichatfront
+  rotate: false
+  xy: 200, 0
+  size: 40, 48
+  orig: 40, 48
+  offset: 0, 0
+  index: -1
+magicianhat_front
+  rotate: false
+  xy: 120, 0
+  size: 40, 48
+  orig: 40, 48
+  offset: 0, 0
+  index: -1
+nonehat
+  rotate: false
+  xy: 160, 0
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+piratehat_front
+  rotate: false
+  xy: 80, 48
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+piratehat_left
+  rotate: false
+  xy: 400, 232
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+piratehat_right
+  rotate: false
+  xy: 50, 267
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+piratehat_up
+  rotate: false
+  xy: 200, 48
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+poyobat_left
+  rotate: false
+  xy: 0, 267
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+poyobat_right
+  rotate: false
+  xy: 150, 232
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+poyobathat_front
+  rotate: false
+  xy: 440, 48
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+poyobathat_up
+  rotate: false
+  xy: 0, 94
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+redondohat_front
+  rotate: false
+  xy: 80, 94
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+redondohat_left
+  rotate: false
+  xy: 200, 94
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+redondohat_right
+  rotate: false
+  xy: 120, 94
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+redondohat_up
+  rotate: false
+  xy: 160, 94
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+santahat_front
+  rotate: false
+  xy: 40, 94
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+santahat_left
+  rotate: false
+  xy: 0, 232
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+santahat_right
+  rotate: false
+  xy: 50, 232
+  size: 50, 35
+  orig: 50, 35
+  offset: 0, 0
+  index: -1
+santahat_up
+  rotate: false
+  xy: 400, 48
+  size: 40, 40
+  orig: 40, 40
+  offset: 0, 0
+  index: -1
+slimehat_front
+  rotate: false
+  xy: 120, 48
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+sunglasses_front
+  rotate: false
+  xy: 160, 48
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+sunglasses_left
+  rotate: false
+  xy: 240, 48
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+sunglasses_right
+  rotate: false
+  xy: 360, 48
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+tapahat_front
+  rotate: false
+  xy: 280, 48
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+tapahat_left
+  rotate: false
+  xy: 320, 48
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1
+tapahat_right
+  rotate: false
+  xy: 240, 94
+  size: 40, 46
+  orig: 40, 46
+  offset: 0, 0
+  index: -1

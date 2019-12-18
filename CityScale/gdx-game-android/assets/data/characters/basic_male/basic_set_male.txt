@@ -1,0 +1,327 @@
+basic_set_male.png
+size: 500, 893
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+basic_set_male_back1
+  rotate: false
+  xy: 400, 623
+  size: 100, 90
+  orig: 100, 90
+  offset: 0, 0
+  index: -1
+basic_set_male_back2
+  rotate: false
+  xy: 200, 623
+  size: 100, 90
+  orig: 100, 90
+  offset: 0, 0
+  index: -1
+basic_set_male_back3
+  rotate: false
+  xy: 100, 623
+  size: 100, 90
+  orig: 100, 90
+  offset: 0, 0
+  index: -1
+basic_set_male_front1
+  rotate: false
+  xy: 300, 445
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_front2
+  rotate: false
+  xy: 0, 623
+  size: 100, 90
+  orig: 100, 90
+  offset: 0, 0
+  index: -1
+basic_set_male_front3
+  rotate: false
+  xy: 300, 623
+  size: 100, 90
+  orig: 100, 90
+  offset: 0, 0
+  index: -1
+basic_set_male_gunner_left1
+  rotate: false
+  xy: 200, 445
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_gunner_left2
+  rotate: false
+  xy: 0, 445
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_gunner_left3
+  rotate: false
+  xy: 400, 356
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_gunner_right1
+  rotate: false
+  xy: 200, 356
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_gunner_right2
+  rotate: false
+  xy: 100, 356
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_gunner_right3
+  rotate: false
+  xy: 300, 356
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_left1
+  rotate: false
+  xy: 100, 713
+  size: 100, 90
+  orig: 100, 90
+  offset: 0, 0
+  index: -1
+basic_set_male_left2
+  rotate: false
+  xy: 0, 713
+  size: 100, 90
+  orig: 100, 90
+  offset: 0, 0
+  index: -1
+basic_set_male_left3
+  rotate: false
+  xy: 400, 713
+  size: 100, 90
+  orig: 100, 90
+  offset: 0, 0
+  index: -1
+basic_set_male_magicAttackSpell_left
+  rotate: false
+  xy: 100, 534
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_magicAttackSpell_right
+  rotate: false
+  xy: 200, 534
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_magician_left1
+  rotate: false
+  xy: 400, 534
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_magician_left2
+  rotate: false
+  xy: 0, 534
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_magician_left3
+  rotate: false
+  xy: 300, 534
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_magician_right1
+  rotate: false
+  xy: 400, 445
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_magician_right2
+  rotate: false
+  xy: 0, 0
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_magician_right3
+  rotate: false
+  xy: 100, 89
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_meleeAttack_left
+  rotate: false
+  xy: 0, 356
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_meleeAttack_right
+  rotate: false
+  xy: 300, 89
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_merchant_left1
+  rotate: false
+  xy: 200, 89
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_merchant_left2
+  rotate: false
+  xy: 0, 89
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_merchant_left3
+  rotate: false
+  xy: 400, 0
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_merchant_right1
+  rotate: false
+  xy: 100, 0
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_merchant_right2
+  rotate: false
+  xy: 300, 0
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_merchant_right3
+  rotate: false
+  xy: 200, 0
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_right1
+  rotate: false
+  xy: 200, 713
+  size: 100, 90
+  orig: 100, 90
+  offset: 0, 0
+  index: -1
+basic_set_male_right2
+  rotate: false
+  xy: 0, 803
+  size: 100, 90
+  orig: 100, 90
+  offset: 0, 0
+  index: -1
+basic_set_male_right3
+  rotate: false
+  xy: 300, 713
+  size: 100, 90
+  orig: 100, 90
+  offset: 0, 0
+  index: -1
+basic_set_male_swordman_left1
+  rotate: false
+  xy: 400, 89
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_swordman_left2
+  rotate: false
+  xy: 0, 178
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_swordman_left3
+  rotate: false
+  xy: 0, 267
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_swordman_right1
+  rotate: false
+  xy: 200, 267
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_swordman_right2
+  rotate: false
+  xy: 400, 267
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_swordman_right3
+  rotate: false
+  xy: 300, 267
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_thief_left1
+  rotate: false
+  xy: 100, 267
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_thief_left2
+  rotate: false
+  xy: 400, 178
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_thief_left3
+  rotate: false
+  xy: 100, 178
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_thief_right1
+  rotate: false
+  xy: 300, 178
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_thief_right2
+  rotate: false
+  xy: 200, 178
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_male_thief_right3
+  rotate: false
+  xy: 100, 445
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1

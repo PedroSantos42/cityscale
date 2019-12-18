@@ -1,0 +1,327 @@
+basic_female.png
+size: 200, 2047
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+basic_set_female_back1
+  rotate: false
+  xy: 0, 0
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_back2
+  rotate: false
+  xy: 100, 0
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_back3
+  rotate: false
+  xy: 0, 89
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_front1
+  rotate: false
+  xy: 100, 89
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_front2
+  rotate: false
+  xy: 0, 178
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_front3
+  rotate: false
+  xy: 100, 178
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_gunner_left1
+  rotate: false
+  xy: 0, 267
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_gunner_left2
+  rotate: false
+  xy: 100, 267
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_gunner_left3
+  rotate: false
+  xy: 0, 356
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_gunner_right1
+  rotate: false
+  xy: 100, 356
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_gunner_right2
+  rotate: false
+  xy: 0, 445
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_gunner_right3
+  rotate: false
+  xy: 100, 445
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_left1
+  rotate: false
+  xy: 0, 534
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_left2
+  rotate: false
+  xy: 100, 534
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_left3
+  rotate: false
+  xy: 0, 623
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_magicAttackSpell_left
+  rotate: false
+  xy: 100, 623
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_magicAttackSpell_right
+  rotate: false
+  xy: 0, 712
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_magician_left1
+  rotate: false
+  xy: 100, 712
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_magician_left2
+  rotate: false
+  xy: 0, 801
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_magician_left3
+  rotate: false
+  xy: 100, 801
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_magician_right1
+  rotate: false
+  xy: 0, 890
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_magician_right2
+  rotate: false
+  xy: 100, 890
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_magician_right3
+  rotate: false
+  xy: 0, 979
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_meleeAttack_left
+  rotate: false
+  xy: 100, 979
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_meleeAttack_right
+  rotate: false
+  xy: 0, 1068
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_merchant_left1
+  rotate: false
+  xy: 100, 1068
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_merchant_left2
+  rotate: false
+  xy: 0, 1157
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_merchant_left3
+  rotate: false
+  xy: 100, 1157
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_merchant_right1
+  rotate: false
+  xy: 0, 1246
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_merchant_right2
+  rotate: false
+  xy: 100, 1246
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_merchant_right3
+  rotate: false
+  xy: 0, 1335
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_right1
+  rotate: false
+  xy: 100, 1335
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_right2
+  rotate: false
+  xy: 0, 1424
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_right3
+  rotate: false
+  xy: 100, 1424
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_swordman_left1
+  rotate: false
+  xy: 0, 1513
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_swordman_left2
+  rotate: false
+  xy: 100, 1513
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_swordman_left3
+  rotate: false
+  xy: 0, 1602
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_swordman_right1
+  rotate: false
+  xy: 100, 1602
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_swordman_right2
+  rotate: false
+  xy: 0, 1691
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_swordman_right3
+  rotate: false
+  xy: 100, 1691
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_thief_left1
+  rotate: false
+  xy: 0, 1780
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_thief_left2
+  rotate: false
+  xy: 100, 1780
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_thief_left3
+  rotate: false
+  xy: 0, 1869
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_thief_right1
+  rotate: false
+  xy: 100, 1869
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_thief_right2
+  rotate: false
+  xy: 0, 1958
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
+basic_set_female_thief_right3
+  rotate: false
+  xy: 100, 1958
+  size: 100, 89
+  orig: 100, 89
+  offset: 0, 0
+  index: -1
