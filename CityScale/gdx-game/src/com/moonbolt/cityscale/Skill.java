@@ -37,7 +37,7 @@ public class Skill
 			spr_master = atlas_tripleattack.createSprite("tripleattack" + countFrame);
 		}
 		
-		if(nomeSkill.equals("tripleattack")) {
+		if(nomeSkill.equals("icecrystal")) {
 			spr_master = atlas_icecrystal.createSprite("icecrystal" + countFrame);
 		}
 		
@@ -89,6 +89,9 @@ public class Skill
 	
 	public static boolean CheckMP(String nomeSkill, int MP) {
 		if(nomeSkill.equals("tripleattack") && MP < 10) { return false; }		
+		
+		
+		if(nomeSkill.equals("icecrystal") && MP < 25) { return false; }		
 		return true;
 	}
 }
