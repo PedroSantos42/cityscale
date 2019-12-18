@@ -1,0 +1,82 @@
+CharacterCreator.png
+size: 1016, 696
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+charactercreator/acesso
+  rotate: false
+  xy: 462, 70
+  size: 462, 82
+  orig: 462, 82
+  offset: 0, 0
+  index: -1
+charactercreator/avisoID
+  rotate: false
+  xy: 0, 70
+  size: 462, 82
+  orig: 462, 82
+  offset: 0, 0
+  index: -1
+charactercreator/backupdados
+  rotate: false
+  xy: 0, 152
+  size: 462, 82
+  orig: 462, 82
+  offset: 0, 0
+  index: -1
+charactercreator/barralogin
+  rotate: false
+  xy: 462, 152
+  size: 200, 149
+  orig: 200, 149
+  offset: 0, 0
+  index: -1
+charactercreator/btnCriarNovo
+  rotate: false
+  xy: 637, 0
+  size: 90, 70
+  orig: 90, 70
+  offset: 0, 0
+  index: -1
+charactercreator/btnDeletar
+  rotate: false
+  xy: 817, 0
+  size: 90, 70
+  orig: 90, 70
+  offset: 0, 0
+  index: -1
+charactercreator/btnVoltar
+  rotate: false
+  xy: 727, 0
+  size: 90, 70
+  orig: 90, 70
+  offset: 0, 0
+  index: -1
+charactercreator/criandopersonagem
+  rotate: false
+  xy: 0, 308
+  size: 890, 388
+  orig: 890, 388
+  offset: 0, 0
+  index: -1
+charactercreator/infochar
+  rotate: false
+  xy: 662, 152
+  size: 354, 156
+  orig: 354, 156
+  offset: 0, 0
+  index: -1
+charactercreator/InfoDeletarPersonagem
+  rotate: false
+  xy: 0, 0
+  size: 295, 37
+  orig: 295, 37
+  offset: 0, 0
+  index: -1
+charactercreator/InfoSelecionePersonagem
+  rotate: false
+  xy: 295, 0
+  size: 342, 37
+  orig: 342, 37
+  offset: 0, 0
+  index: -1

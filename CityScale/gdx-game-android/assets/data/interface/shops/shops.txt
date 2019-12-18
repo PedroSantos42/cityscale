@@ -1,0 +1,19 @@
+shops.png
+size: 275, 541
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+orbshow
+  rotate: false
+  xy: 0, 0
+  size: 275, 268
+  orig: 275, 268
+  offset: 0, 0
+  index: -1
+refrishop
+  rotate: false
+  xy: 0, 268
+  size: 275, 273
+  orig: 275, 273
+  offset: 0, 0
+  index: -1
