@@ -1,0 +1,82 @@
+objects1.png
+size: 505, 435
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+anibarshop1
+  rotate: false
+  xy: 0, 315
+  size: 494, 40
+  orig: 494, 40
+  offset: 0, 0
+  index: -1
+anibarshop2
+  rotate: false
+  xy: 0, 355
+  size: 494, 40
+  orig: 494, 40
+  offset: 0, 0
+  index: -1
+anibarshop3
+  rotate: false
+  xy: 0, 395
+  size: 494, 40
+  orig: 494, 40
+  offset: 0, 0
+  index: -1
+luzclara
+  rotate: false
+  xy: 168, 23
+  size: 168, 210
+  orig: 168, 210
+  offset: 0, 0
+  index: -1
+luzescura
+  rotate: false
+  xy: 0, 23
+  size: 168, 210
+  orig: 168, 210
+  offset: 0, 0
+  index: -1
+metrobackword1
+  rotate: false
+  xy: 148, 0
+  size: 148, 23
+  orig: 148, 23
+  offset: 0, 0
+  index: -1
+metrobackword2
+  rotate: false
+  xy: 0, 0
+  size: 148, 23
+  orig: 148, 23
+  offset: 0, 0
+  index: -1
+metrobackword3
+  rotate: false
+  xy: 296, 0
+  size: 148, 23
+  orig: 148, 23
+  offset: 0, 0
+  index: -1
+metroTV1
+  rotate: false
+  xy: 0, 233
+  size: 169, 82
+  orig: 169, 82
+  offset: 0, 0
+  index: -1
+metroTV2
+  rotate: false
+  xy: 169, 233
+  size: 169, 82
+  orig: 169, 82
+  offset: 0, 0
+  index: -1
+metroTV3
+  rotate: false
+  xy: 336, 23
+  size: 169, 82
+  orig: 169, 82
+  offset: 0, 0
+  index: -1
