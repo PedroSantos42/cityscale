@@ -60,7 +60,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 	private boolean mainState = true;
 	private boolean menuState = false;
 	private boolean questState = false;
-	private boolean areaSkillState = false;
+	private boolean areaState = false;
 	private boolean deadState = false;
 	private boolean chatState = false;
 	private boolean partyState =  false;
@@ -655,7 +655,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		}
 		
 		
-		//Balï¿½o Quest
+		//Balão Quest
 		baloonQuestNum++;
 		if(baloonQuestNum >= 120) { baloonQuestNum = 0; }
 		
@@ -880,7 +880,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 				}
 				//Skill 1
 				if((coordsTouch.x >= cameraCoordsX + 55 && coordsTouch.x <= cameraCoordsX + 62) && (coordsTouch.y >= cameraCoordsY - 70 && coordsTouch.y <= cameraCoordsY - 53)){
-					gameControl.SetaSkill(1);
+					areaSkillState = gameControl.SetaSkill(1);
 					return false;
 				}
 			}

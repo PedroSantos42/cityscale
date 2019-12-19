@@ -29,7 +29,7 @@ public class GameControl {
 		// Monsters //
 		// Battle Settings //
 		// Itens Management //
-		// Buffs and Debuffs and Skills//
+		// Buffs and Debuffs //
 		// NPCS and Quests //
 		// Online Management//
 	
@@ -2293,12 +2293,6 @@ public class GameControl {
 			return 0;
 		}
 		
-		public boolean AreaSkill(int numskill){
-			if(Character_Data.Job_A.equals("Novice") && numskill == 1) {}
-			if(Character_Data.Job_A.equals("Mage")) {}
-			return false;
-		}
-		
 		public void SetaSkill(int numSkill) {
 			
 			if(delayTime > 0) { return; }
@@ -2313,16 +2307,7 @@ public class GameControl {
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
 					if(Skill.CheckMP("tripleattack",mpPlayer)) { VerificaSkillDano(skillUsed);}
 				}			
-			}	
-			
-			if(Character_Data.Job_A.equals("Mage")){
-				//Icecrystal
-				if(numSkill == 1) {
-					skillUsed = Skill.RetornaDadosSKill("tripleattack", Character_Data.Name_A);
-					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("tripleattack",mpPlayer)) { VerificaSkillDano(skillUsed);}
-				}			
-			}
+			}		
 		}
 		
 		public int delayinfo() {
@@ -2375,7 +2360,18 @@ public class GameControl {
 			}
 			
 			if(sk.isAreaSkill == true) {
-				
+				for(countA = 0; countA < lstMonsters.size(); countA++){ //Verifica Monstro Target dentro da área do range	
+					mobX = Float.parseFloat(lstMonsters.get(countA).PX) + (Float.parseFloat(lstMonsters.get(countA).WIDTH) / 2);
+					mobY = Float.parseFloat(lstMonsters.get(countA).PY) + (Float.parseFloat(lstMonsters.get(countA).HEIGHT) / 2);
+					
+					if(pX > sk.areaSpreadX) { Character_Data.Battle_A = "yes_Left";}
+					if(pX < sk.areaSpreadX) { Character_Data.Battle_A = "yes_Right";}
+					
+					if((mobX > pAttackZoneXMinus && mobX < pAttackZoneXPlus) && (mobY > pAttackZoneYMinus && mobY < pAttackZoneYPlus) ) {
+						
+						
+					}					
+				}
 			}
 			else {
 				for(countA = 0; countA < lstMonsters.size(); countA++){ 		  //Verifica Monstro Target dentro da lista			
@@ -2418,7 +2414,7 @@ public class GameControl {
 		}
 		
 		public Sprite ImageSkill(Skill sk) {			
-			spr_master = skillContainer.CarregaEfeitoVisual(sk.nameSkill, sk.countFrameEffect);			
+			spr_master = skillContainer.CarregaEfeito(sk.nameSkill, sk.countFrameEffect);			
 			return spr_master;
 		}
 		
@@ -2693,7 +2689,7 @@ public class GameControl {
 		}
 		
 		
-		// Buffs and Debuffs and Skill //
+		// Buffs and Debuffs //
 		public void VerificaBuffsDebuffs() {
 			
 			int timer = 0;		
