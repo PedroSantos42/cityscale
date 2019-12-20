@@ -2276,10 +2276,6 @@ public class GameControl {
 			Character_Data.StatusPoint_A = String.valueOf(pontosStatus);
 		}
 		
-		public int VerificaCooldown() {
-			return playerAttackCooldown;
-		}
-		
 		public int DanoArma() {
 			text = Character_Data.Weapon_A;
 			
@@ -2291,6 +2287,10 @@ public class GameControl {
 			if(text.equals("Basic_Knuckles")) { return 2; }
 			
 			return 0;
+		}
+		
+		public int VerificaCooldown() {
+			return playerAttackCooldown;
 		}
 		
 		public void SetaSkill(int numSkill) {
@@ -2317,6 +2317,66 @@ public class GameControl {
 		public void CalculaCooldown() {
 			if(delayTime > 0) { delayTime--; }
 			if(delayTime <= 0) { delayTime = 0; }
+		}
+		
+		public boolean VerificaRangedSkill(int numSkill) {
+			Skill skillUsed = new Skill();
+			
+			//Novice
+			if(numSkill == 1 && Character_Data.Job_A.equals("Novice")) { skillUsed.IsRangedSkill("tripleattack"); }
+			
+			//Swordman
+			if(numSkill == 1 && Character_Data.Job_A.equals("Swordman")) { skillUsed.IsRangedSkill("flysword"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Swordman")) { skillUsed.IsRangedSkill("healthboost"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Swordman")) { skillUsed.IsRangedSkill("havenblade"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Swordman")) { skillUsed.IsRangedSkill("ironshield"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Swordman")) { skillUsed.IsRangedSkill("protect"); }
+			
+			//Mage
+			if(numSkill == 1 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("fireball"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("icecrystal"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("thundercloud"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("rockbound"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("soulclash"); }
+			
+			//Thief
+			if(numSkill == 1 && Character_Data.Job_A.equals("Thief")) { skillUsed.IsRangedSkill("invisibility"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Thief")) { skillUsed.IsRangedSkill("poisonhit"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Thief")) { skillUsed.IsRangedSkill("dashkick"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Thief")) { skillUsed.IsRangedSkill("steal"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Thief")) { skillUsed.IsRangedSkill("doublehit"); }
+			
+			//Artist
+			if(numSkill == 1 && Character_Data.Job_A.equals("Artist")) { skillUsed.IsRangedSkill("drawcard"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Artist")) { skillUsed.IsRangedSkill("spellstep"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Artist")) { skillUsed.IsRangedSkill("creditdance"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Artist")) { skillUsed.IsRangedSkill("malabarism"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Artist")) { skillUsed.IsRangedSkill("amplitude"); }
+			
+			//gunner
+			if(numSkill == 1 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("bulletrain"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("lockshot"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("precision"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("mine"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("fastshot"); }
+			
+			//Beater
+			if(numSkill == 1 && Character_Data.Job_A.equals("Beater")) { skillUsed.IsRangedSkill("hammercrash"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Beater")) { skillUsed.IsRangedSkill("overpower"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Beater")) { skillUsed.IsRangedSkill("boundrage"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Beater")) { skillUsed.IsRangedSkill("berserk"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Beater")) { skillUsed.IsRangedSkill("impound"); }
+			
+			//Doctor
+			if(numSkill == 1 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("heal"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("atkboost"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("defboost"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("regen"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("holyprism"); }
+			
+			
+			
+			return false;
 		}
 		
 		public void VerificaSkillDano(Skill sk) {
@@ -2414,7 +2474,7 @@ public class GameControl {
 		}
 		
 		public Sprite ImageSkill(Skill sk) {			
-			spr_master = skillContainer.CarregaEfeito(sk.nameSkill, sk.countFrameEffect);			
+			spr_master = skillContainer.CarregaEfeitoFrame(sk.nameSkill, sk.countFrameEffect);			
 			return spr_master;
 		}
 		

@@ -880,10 +880,14 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 				}
 				//Skill 1
 				if((coordsTouch.x >= cameraCoordsX + 55 && coordsTouch.x <= cameraCoordsX + 62) && (coordsTouch.y >= cameraCoordsY - 70 && coordsTouch.y <= cameraCoordsY - 53)){
-					areaSkillState = gameControl.SetaSkill(1);
+					areaState = gameControl.VerificaRangedSkill(1);
 					return false;
 				}
 			}
+		}
+		
+		if(areaState) {
+			
 		}
 		
 		if(menuState) {

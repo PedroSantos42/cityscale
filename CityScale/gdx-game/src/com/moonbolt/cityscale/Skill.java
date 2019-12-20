@@ -31,7 +31,7 @@ public class Skill
 		atlas_tripleattack = new TextureAtlas(Gdx.files.internal("data/skills/tripleattack.txt"));
 	}
 	
-	public Sprite CarregaEfeito(String nomeSkill, int countFrame) {
+	public Sprite CarregaEfeitoFrame(String nomeSkill, int countFrame) {
 		
 		if(nomeSkill.equals("tripleattack")) {
 			spr_master = atlas_tripleattack.createSprite("tripleattack" + countFrame);
@@ -75,8 +75,62 @@ public class Skill
 			novaSkill.width = 30;
 			novaSkill.timer = 60;
 			novaSkill.damage = 50;
-			novaSkill.castTime = 0;
+			novaSkill.castTime = 100;
 			novaSkill.delay = 180;
+			novaSkill.areaSpreadX = 0;
+			novaSkill.areaSpreadY = 0;
+			novaSkill.countFrameEffect = 1;
+			novaSkill.overEffect = false;
+			novaSkill.isAreaSkill = true;
+		}
+		
+		if(nomeSkill == "heal") {
+			novaSkill.nameSkill = "heal";
+			novaSkill.caster = usr;
+			novaSkill.posX = 0;
+			novaSkill.posY = 0;
+			novaSkill.height = 40;
+			novaSkill.width = 30;
+			novaSkill.timer = 60;
+			novaSkill.damage = 10;
+			novaSkill.castTime = 0;
+			novaSkill.delay = 40;
+			novaSkill.areaSpreadX = 0;
+			novaSkill.areaSpreadY = 0;
+			novaSkill.countFrameEffect = 1;
+			novaSkill.overEffect = false;
+			novaSkill.isAreaSkill = true;
+		}
+		
+		if(nomeSkill == "thundercloud") {
+			novaSkill.nameSkill = "thundercloud";
+			novaSkill.caster = usr;
+			novaSkill.posX = 0;
+			novaSkill.posY = 0;
+			novaSkill.height = 40;
+			novaSkill.width = 30;
+			novaSkill.timer = 60;
+			novaSkill.damage = 40;
+			novaSkill.castTime = 120;
+			novaSkill.delay = 40;
+			novaSkill.areaSpreadX = 0;
+			novaSkill.areaSpreadY = 0;
+			novaSkill.countFrameEffect = 1;
+			novaSkill.overEffect = false;
+			novaSkill.isAreaSkill = true;
+		}
+		
+		if(nomeSkill == "thundercloud") {
+			novaSkill.nameSkill = "thundercloud";
+			novaSkill.caster = usr;
+			novaSkill.posX = 0;
+			novaSkill.posY = 0;
+			novaSkill.height = 40;
+			novaSkill.width = 30;
+			novaSkill.timer = 60;
+			novaSkill.damage = 40;
+			novaSkill.castTime = 120;
+			novaSkill.delay = 40;
 			novaSkill.areaSpreadX = 0;
 			novaSkill.areaSpreadY = 0;
 			novaSkill.countFrameEffect = 1;
@@ -90,6 +144,21 @@ public class Skill
 	public static boolean CheckMP(String nomeSkill, int MP) {
 		if(nomeSkill.equals("tripleattack") && MP < 10) { return false; }		
 		return true;
+	}
+	
+	public boolean IsRangedSkill(String nomeSkill) {
+		//Novice
+		if(nomeSkill.equals("tripleattack")) { return false; }
+		
+		//Mage
+		if(nomeSkill.equals("fireball")) { return true; }
+		if(nomeSkill.equals("icecrystal")) { return true; }
+		if(nomeSkill.equals("thundercloud")) { return true; }
+		
+		//Doctor
+		if(nomeSkill.equals("tripleattack")) { return true; }
+		
+		return false;
 	}
 }
 
