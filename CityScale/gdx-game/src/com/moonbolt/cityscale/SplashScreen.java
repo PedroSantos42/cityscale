@@ -54,8 +54,8 @@ public class SplashScreen implements Screen, ApplicationListener, InputProcessor
 		
 		if(countEffect < 250 && interpolation == false){
 			spr_Logo.setAlpha(fadeInCount);
-			fadeInCount -= 1;
-			countEffect += 1;
+			fadeInCount -= 1.5f;
+			countEffect += 1.5f;
 		}
 		if(countEffect >= 250 && interpolation == false){
 			interpolation = true;
@@ -64,8 +64,8 @@ public class SplashScreen implements Screen, ApplicationListener, InputProcessor
 		
 		if(countEffect < 250 && interpolation == true){
 			spr_Logo.setAlpha(fadeOutCount);
-			fadeOutCount += 1;
-		    countEffect += 1;
+			fadeOutCount += 1.5f;
+		    countEffect += 1.5f;
 		}
 		
 		if(countEffect >= 250 && interpolation == true){
