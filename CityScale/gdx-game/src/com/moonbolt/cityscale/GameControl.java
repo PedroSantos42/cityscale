@@ -2355,7 +2355,7 @@ public class GameControl {
 			
 			//gunner
 			if(numSkill == 1 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("bulletrain"); }
-			if(numSkill == 2 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("lockshot"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("healthboost"); }
 			if(numSkill == 3 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("precision"); }
 			if(numSkill == 4 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("mine"); }
 			if(numSkill == 5 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("fastshot"); }
@@ -2420,7 +2420,7 @@ public class GameControl {
 			}
 			
 			if(sk.isAreaSkill == true) {
-				for(countA = 0; countA < lstMonsters.size(); countA++){ //Verifica Monstro Target dentro da área do range	
+				for(countA = 0; countA < lstMonsters.size(); countA++){ //Verifica Monstro Target dentro da ï¿½rea do range	
 					mobX = Float.parseFloat(lstMonsters.get(countA).PX) + (Float.parseFloat(lstMonsters.get(countA).WIDTH) / 2);
 					mobY = Float.parseFloat(lstMonsters.get(countA).PY) + (Float.parseFloat(lstMonsters.get(countA).HEIGHT) / 2);
 					
