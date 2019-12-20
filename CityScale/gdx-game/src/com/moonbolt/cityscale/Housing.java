@@ -42,14 +42,14 @@ public class Housing implements Screen, ApplicationListener, InputProcessor, Tex
 	
 	//Camera
 	private OrthographicCamera camera;
-    private Viewport viewport;
-    private float movMapX = 0;
-    private float movMapY = 0;
-    private float cameraCoordsX = 0;
-    private float cameraCoordsY = 0;
+        private Viewport viewport;
+        private float movMapX = 0;
+        private float movMapY = 0;
+        private float cameraCoordsX = 0;
+        private float cameraCoordsY = 0;
     
-    //Controller
-    private final IntSet downKeys = new IntSet(20);
+        //Controller
+        private final IntSet downKeys = new IntSet(20);
 	
 	//data
 	private Player activePlayer;
@@ -114,7 +114,7 @@ public class Housing implements Screen, ApplicationListener, InputProcessor, Tex
 		//Camera and Inputs
 		cameraSettings = gameControl.CameraSettings("MetroStation");
 		camera = new OrthographicCamera();
-	    viewport = new StretchViewport(200,200,camera);
+	    	viewport = new StretchViewport(200,200,camera);
 		viewport.apply();
 		Gdx.input.setInputProcessor(this);
 		
@@ -162,7 +162,7 @@ public class Housing implements Screen, ApplicationListener, InputProcessor, Tex
 		//camera.position.set(camera.viewportWidth/2,camera.viewportHeight/2,0);
 		
 		camera.update();
-	    game.batch.setProjectionMatrix(camera.combined);
+	    	game.batch.setProjectionMatrix(camera.combined);
 		game.batch.begin();
 			
 		if(mainState) {
@@ -176,46 +176,32 @@ public class Housing implements Screen, ApplicationListener, InputProcessor, Tex
 			gameControl.AtualizaCameraY(cameraCoordsY);
 			
 			//Set Player
-			if(activePlayer.Sex_A.equals("M")) {
-				spr_top = gameControl.MovChar(activePlayer.Top_A, state,walk, "Top", playerX, playerY,0);
-				spr_bottom = gameControl.MovChar(activePlayer.Bottom_A, state,walk, "Bottom", playerX, playerY,0);
-				spr_shoes = gameControl.MovChar(activePlayer.Shoes_A, state,walk, "Shoes", playerX, playerY,0);
-				spr_hair = gameControl.ReturnHairs(activePlayer.Hair_A, state,walk, playerX, playerY);
-				
-				spr_shoes.draw(game.batch);
-				spr_bottom.draw(game.batch);
-				spr_top.draw(game.batch);
-				spr_hair.draw(game.batch);
-			}
+			spr_top = gameControl.MovChar(activePlayer.Top_A, state,walk, "Top", playerX, playerY,0);
+			spr_bottom = gameControl.MovChar(activePlayer.Bottom_A, state,walk, "Bottom", playerX, playerY,0);
+			spr_shoes = gameControl.MovChar(activePlayer.Shoes_A, state,walk, "Shoes", playerX, playerY,0);
+			spr_hair = gameControl.ReturnHairs(activePlayer.Hair_A, state,walk, playerX, playerY);
+
+			spr_shoes.draw(game.batch);
+			spr_bottom.draw(game.batch);
+			spr_top.draw(game.batch);
+			spr_hair.draw(game.batch);
 			
 			//Place Interface			
-			spr_Interface = gameControl.InterfaceMetroStation("PlayerTag", ""); spr_Interface.draw(game.batch);  //Player Tag
-			spr_Interface = gameControl.InterfaceMetroStation("Portrait", activePlayer.Hair_A); spr_Interface.draw(game.batch);  //Portrair
-			//spr_Interface = gameControl.InterfaceMetroStation("Hotcrossbar", ""); spr_Interface.draw(game.batch);  //Hotbar
 			spr_Interface = gameControl.InterfaceMetroStation("Backanalog", ""); spr_Interface.draw(game.batch);  //Analog
 			if(walk.equals("Stop")) { spr_Interface = gameControl.InterfaceMetroStation("Analog","Stop"); spr_Interface.draw(game.batch);  }
 			if(walk.equals("Walk") && state.equals("Right")) { spr_Interface = gameControl.InterfaceMetroStation("Analog","Right"); spr_Interface.draw(game.batch);  }
 			if(walk.equals("Walk") && state.equals("Left")) { spr_Interface = gameControl.InterfaceMetroStation("Analog","Left"); spr_Interface.draw(game.batch);  }
 			if(walk.equals("Walk") && state.equals("Front")) { spr_Interface = gameControl.InterfaceMetroStation("Analog","Front"); spr_Interface.draw(game.batch);  }
 			if(walk.equals("Walk") && state.equals("Back")) { spr_Interface = gameControl.InterfaceMetroStation("Analog","Back"); spr_Interface.draw(game.batch);  }
-			font_master.getData().setScale(0.10f,0.13f);
-			font_master.draw(game.batch,String.valueOf("X:" + Math.round(playerX)),cameraCoordsX - 98,cameraCoordsY + 66);
-			font_master.draw(game.batch,String.valueOf("Y:" + Math.round(playerY)),cameraCoordsX - 88,cameraCoordsY + 66);	
-			
-			font_master.draw(game.batch,String.valueOf(activePlayer.Name_A),cameraCoordsX - 88,cameraCoordsY + 100);
-			font_master.draw(game.batch,String.valueOf(activePlayer.HP_A),cameraCoordsX - 81,cameraCoordsY + 93);	
-			font_master.draw(game.batch,String.valueOf(activePlayer.MP_A),cameraCoordsX - 80.5f,cameraCoordsY + 85.5f);	
-			font_master.draw(game.batch,String.valueOf(activePlayer.Level_A),cameraCoordsX - 64,cameraCoordsY + 93);
-			font_master.draw(game.batch,String.valueOf(activePlayer.Exp_A),cameraCoordsX - 66,cameraCoordsY + 85.5f);
-			font_master.draw(game.batch,String.valueOf(activePlayer.Stamina_A),cameraCoordsX - 60,cameraCoordsY + 75);
+			font_master.getData().setScale(0.10f,0.13f);		
 		}
 		
-		spr_teste.setPosition(cameraCoordsX -17,cameraCoordsY + 22);
-		spr_teste2.setPosition(cameraCoordsX -17,cameraCoordsY);
-		spr_teste3.setPosition(cameraCoordsX -17,cameraCoordsY - 16);
-		spr_teste.draw(game.batch);
-		spr_teste2.draw(game.batch);
-		spr_teste3.draw(game.batch);
+		//spr_teste.setPosition(cameraCoordsX -17,cameraCoordsY + 22);
+		//spr_teste2.setPosition(cameraCoordsX -17,cameraCoordsY);
+		//spr_teste3.setPosition(cameraCoordsX -17,cameraCoordsY - 16);
+		//spr_teste.draw(game.batch);
+		//spr_teste2.draw(game.batch);
+		//spr_teste3.draw(game.batch);
 		game.batch.end();
 	}
 	
