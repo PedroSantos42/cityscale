@@ -59,6 +59,86 @@ public class Skill
 		if(nomeSkill.equals("flysword")) {
 			spr_master = atlas_icecrystal.createSprite("flysword" + countFrame);
 		}
+		if(nomeSkill.equals("healthboost")) {
+			spr_master = atlas_icecrystal.createSprite("healthboost" + countFrame);
+		}
+		if(nomeSkill.equals("havenblade")) {
+			spr_master = atlas_icecrystal.createSprite("havenblade" + countFrame);
+		}
+		if(nomeSkill.equals("ironshield")) {
+			spr_master = atlas_icecrystal.createSprite("ironshield" + countFrame);
+			
+		}if(nomeSkill.equals("protect")) {
+			spr_master = atlas_icecrystal.createSprite("protect" + countFrame);
+		}
+		
+		//Priest
+		if(nomeSkill.equals("heal")) {
+			spr_master = atlas_icecrystal.createSprite("heal" + countFrame);
+		}
+		if(nomeSkill.equals("atkboost")) {
+			spr_master = atlas_icecrystal.createSprite("atkboost" + countFrame);
+		}
+		if(nomeSkill.equals("defboost")) {
+			spr_master = atlas_icecrystal.createSprite("defboost" + countFrame);
+		}
+		if(nomeSkill.equals("regen")) {
+			spr_master = atlas_icecrystal.createSprite("regen" + countFrame);		
+		}
+		if(nomeSkill.equals("holyprism")) {
+			spr_master = atlas_icecrystal.createSprite("holyprism" + countFrame);
+		}
+		
+		//Gunner
+		if(nomeSkill.equals("bulletrain")) {
+			spr_master = atlas_icecrystal.createSprite("bulletrain" + countFrame);
+		}
+		if(nomeSkill.equals("lockshot")) {
+			spr_master = atlas_icecrystal.createSprite("lockshot" + countFrame);
+		}
+		if(nomeSkill.equals("precision")) {
+			spr_master = atlas_icecrystal.createSprite("precision" + countFrame);
+		}
+		if(nomeSkill.equals("mine")) {
+			spr_master = atlas_icecrystal.createSprite("mine" + countFrame);		
+		}
+		if(nomeSkill.equals("fastshot")) {
+			spr_master = atlas_icecrystal.createSprite("fastshot" + countFrame);
+		}
+		
+		//Beater
+		if(nomeSkill.equals("hammercrash")) {
+			spr_master = atlas_icecrystal.createSprite("hammercrash" + countFrame);
+		}
+		if(nomeSkill.equals("ragebound")) {
+			spr_master = atlas_icecrystal.createSprite("ragebound" + countFrame);
+		}
+		if(nomeSkill.equals("overpower")) {
+			spr_master = atlas_icecrystal.createSprite("overpower" + countFrame);
+		}
+		if(nomeSkill.equals("berserk")) {
+			spr_master = atlas_icecrystal.createSprite("berserk" + countFrame);		
+		}
+		if(nomeSkill.equals("impound")) {
+			spr_master = atlas_icecrystal.createSprite("impound" + countFrame);
+		}
+		
+		//Clown
+		if(nomeSkill.equals("drawcard")) {
+			spr_master = atlas_icecrystal.createSprite("drawcard" + countFrame);
+		}
+		if(nomeSkill.equals("spellstep")) {
+			spr_master = atlas_icecrystal.createSprite("spellstep" + countFrame);
+		}
+		if(nomeSkill.equals("creditdance")) {
+			spr_master = atlas_icecrystal.createSprite("creditdance" + countFrame);
+		}
+		if(nomeSkill.equals("malabarism")) {
+			spr_master = atlas_icecrystal.createSprite("malabarism" + countFrame);		
+		}
+		if(nomeSkill.equals("amplitude")) {
+			spr_master = atlas_icecrystal.createSprite("amplitude" + countFrame);
+		}
 		
 		return spr_master;
 	}
