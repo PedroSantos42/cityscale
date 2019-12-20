@@ -2977,37 +2977,37 @@ public class GameControl {
 				//SchoolerD
 				if(npcframe2 >= 1 && npcframe2 <= 19){
 			        spr_master = atlas_Npcs.createSprite("schoolerD2");   
-			        spr_master.setPosition(endright, -75);
+			        spr_master.setPosition(endleft, -75);
 			        spr_master.setSize(16, 39);
 			        lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 20 && npcframe2 <= 39){
 					spr_master = atlas_Npcs.createSprite("schoolerD1");   
-					spr_master.setPosition(endright, -75);
+					spr_master.setPosition(endleft, -75);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 40 && npcframe2 <= 59){
 					spr_master = atlas_Npcs.createSprite("schoolerD2");   
-					spr_master.setPosition(endright, -75);
+					spr_master.setPosition(endleft, -75);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 60 && npcframe2 <= 79){
 			        spr_master = atlas_Npcs.createSprite("schoolerD3");   
-			        spr_master.setPosition(endright, -75);
+			        spr_master.setPosition(endleft, -75);
 			        spr_master.setSize(16, 40);
 			        lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 80 && npcframe2 <= 99){
 					spr_master = atlas_Npcs.createSprite("schoolerD2");   
-					spr_master.setPosition(endright, -75);
+					spr_master.setPosition(endleft, -75);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 100 && npcframe2 <= 120){
 					spr_master = atlas_Npcs.createSprite("schoolerD1");   
-					spr_master.setPosition(endright, -75);
+					spr_master.setPosition(endleft, -75);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
