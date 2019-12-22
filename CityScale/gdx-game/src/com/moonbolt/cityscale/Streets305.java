@@ -42,6 +42,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 	private int baloonQuestNum = 0;
 	private int questStep = 0;
 	private int objectNum = 0;
+	private int skillSelected = 0;
 	private String playerManualAttack = "no";
 	private String playerAutoAttack = "no";
 	private String state = "Front";
@@ -655,7 +656,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		}
 		
 		
-		//Balão Quest
+		//Balï¿½o Quest
 		baloonQuestNum++;
 		if(baloonQuestNum >= 120) { baloonQuestNum = 0; }
 		
@@ -849,7 +850,11 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		
 		//Morte Invalida Comandos
 		if(deadState) { movement = false; return false; }
-			
+		
+		if(areaState) {
+            gameControl.SetaSkillArea(skillSelected,coordsTouch.x,coordsTouch.y);
+		}
+		
 		if(mainState) {
 			if(!menuState && !questState && !deadState && !shopState) {
 				//Menu
@@ -880,15 +885,17 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 				}
 				//Skill 1
 				if((coordsTouch.x >= cameraCoordsX + 55 && coordsTouch.x <= cameraCoordsX + 62) && (coordsTouch.y >= cameraCoordsY - 70 && coordsTouch.y <= cameraCoordsY - 53)){
-					areaState = gameControl.VerificaRangedSkill(1);
+					skillSelected = 1;
+					areaState = gameControl.VerificaRangedSkill(skillSelected);
+					if(!areaState){
+						gameControl.SetaSkillSolo(skillSelected);
+					}
 					return false;
 				}
 			}
 		}
 		
-		if(areaState) {
-			
-		}
+		
 		
 		if(menuState) {
 			if(menuBlock == 1) { // Main

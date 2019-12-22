@@ -2293,7 +2293,7 @@ public class GameControl {
 			return playerAttackCooldown;
 		}
 		
-		public void SetaSkill(int numSkill) {
+		public void SetaSkillSolo(int numSkill) {
 			
 			if(delayTime > 0) { return; }
 			
@@ -2308,6 +2308,112 @@ public class GameControl {
 					if(Skill.CheckMP("tripleattack",mpPlayer)) { VerificaSkillDano(skillUsed);}
 				}			
 			}		
+		}
+		
+		public void SetaSkillArea(int numSkill, float posXSelect,float posYSelect){
+			if(delayTime > 0) { return; }
+			
+			int mpPlayer = Integer.parseInt(Character_Data.MP_A);
+			Skill skillUsed = new Skill();
+			
+			if(Character_Data.Job_A.equals("Swordman")) {
+				//Protect
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("protect", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("Protect",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}		
+			}
+			
+			if(Character_Data.Job_A.equals("Mage")) {			
+				//Fireball
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("fireball", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("fireball",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}		
+				//IceCrystal
+				if(numSkill == 2) {
+					skillUsed = Skill.RetornaDadosSKill("icecrystal", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("icecrystal",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}			
+				//Thundercloud
+				if(numSkill == 3) {
+					skillUsed = Skill.RetornaDadosSKill("thundercloud", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("thundercloud",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}		
+				//Rockbound
+				if(numSkill == 4) {
+					skillUsed = Skill.RetornaDadosSKill("rockbound", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("rockbound",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}		
+				//Soulclash
+				if(numSkill == 5) {
+					skillUsed = Skill.RetornaDadosSKill("soulclash", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("soulclash",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}		
+			}
+			if(Character_Data.Job_A.equals("Priest")) {	
+				//Heal
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("heal", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("heal",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}		
+				//defboost
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("defboost", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("defboost",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}	
+				//atkboost
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("atkboost", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("atkboost",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}	
+				//regen
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("regen", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("regen",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}	
+				//holyprism
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("holyprism", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("holyprims",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}	
+			}
+			
+			if(Character_Data.Job_A.equals("Gunner")) {	
+				//bulletrain
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("bulletrain", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("bulletrain",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}	
+				//lockshot
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("bulletrain", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("bulletrain",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}	
+				//mine
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("bulletrain", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("bulletrain",mpPlayer)) { VerificaSkillDano(skillUsed);}
+				}	
+			}
+		}
+		
+		public void VerificaCampoSkill(){
+			
 		}
 		
 		public int delayinfo() {
