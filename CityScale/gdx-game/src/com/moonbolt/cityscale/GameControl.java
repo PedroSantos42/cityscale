@@ -48,6 +48,7 @@ public class GameControl {
 		
 		private boolean inBattle = false;
 		private boolean attackFrame = false;
+		private boolean isCasting = false;
 		
 		private int showLootTime = 0;
 		private int countA;
@@ -79,6 +80,7 @@ public class GameControl {
 		private int playerManualAtkDelay = 40;
 		private int spAttackMob = 0;
 		private int delayTime = 0;
+		private int castTime = 0;
 		
 	    private float npcframe = 1;
 	    private float npcframe2 = 2;
@@ -1990,6 +1992,9 @@ public class GameControl {
 				pAttackZoneYPlus = pY - 70;
 			}
 			
+			
+			if(!isCasting){
+			
 			if(playerManualAtkDelay > 0) { playerManualAtkDelay--; }
 			if(playerManualAtkDelay < 10) { attackFrame = false; }
 			if(ManualAttack.equals("yes") && playerManualAtkDelay == 0){
@@ -2168,6 +2173,8 @@ public class GameControl {
 				}	
 			}
 			
+			}// is casting
+			
 			//Para Monstros
 			for(countA = 0; countA < lstMonsters.size(); countA++){ 		  //Verifica Monstro Target dentro da lista			
 				if(lstMonsters.get(countA).TARGET.equals(Character_Data.Name_A)) {
@@ -2305,7 +2312,7 @@ public class GameControl {
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("tripleattack", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("tripleattack",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("tripleattack",mpPlayer)) { VerificaSkillDano(skillUsed, 0,0);}
 				}			
 			}		
 		}
@@ -2321,7 +2328,7 @@ public class GameControl {
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("protect", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("Protect",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("Protect",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
 				}		
 			}
 			
@@ -2330,31 +2337,31 @@ public class GameControl {
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("fireball", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("fireball",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("fireball",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
 				}		
 				//IceCrystal
 				if(numSkill == 2) {
 					skillUsed = Skill.RetornaDadosSKill("icecrystal", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("icecrystal",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("icecrystal",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
 				}			
 				//Thundercloud
 				if(numSkill == 3) {
 					skillUsed = Skill.RetornaDadosSKill("thundercloud", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("thundercloud",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("thundercloud",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
 				}		
 				//Rockbound
 				if(numSkill == 4) {
 					skillUsed = Skill.RetornaDadosSKill("rockbound", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("rockbound",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("rockbound",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
 				}		
 				//Soulclash
 				if(numSkill == 5) {
 					skillUsed = Skill.RetornaDadosSKill("soulclash", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("soulclash",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("soulclash",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
 				}		
 			}
 			if(Character_Data.Job_A.equals("Priest")) {	
@@ -2362,31 +2369,31 @@ public class GameControl {
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("heal", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("heal",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("heal",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
 				}		
 				//defboost
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("defboost", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("defboost",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("defboost",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect,posYSelect);}
 				}	
 				//atkboost
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("atkboost", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("atkboost",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("atkboost",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect,posYSelect);}
 				}	
 				//regen
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("regen", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("regen",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("regen",mpPlayer)) { VerificaSkillDano(skillUsed,posXSelect,posYSelect);}
 				}	
 				//holyprism
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("holyprism", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("holyprims",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("holyprims",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect,posYSelect);}
 				}	
 			}
 			
@@ -2395,25 +2402,31 @@ public class GameControl {
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("bulletrain", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("bulletrain",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("bulletrain",mpPlayer)) { VerificaSkillDano(skillUsed,posXSelect,posYSelect);}
 				}	
 				//lockshot
 				if(numSkill == 1) {
-					skillUsed = Skill.RetornaDadosSKill("bulletrain", Character_Data.Name_A);
+					skillUsed = Skill.RetornaDadosSKill("lockshot", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("bulletrain",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("lockshot",mpPlayer)) { VerificaSkillDano(skillUsed,posXSelect,posYSelect);}
 				}	
 				//mine
 				if(numSkill == 1) {
-					skillUsed = Skill.RetornaDadosSKill("bulletrain", Character_Data.Name_A);
+					skillUsed = Skill.RetornaDadosSKill("mine", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("bulletrain",mpPlayer)) { VerificaSkillDano(skillUsed);}
+					if(Skill.CheckMP("mine",mpPlayer)) { isCasting = true; CastTime(); }
 				}	
 			}
 		}
 		
 		public void VerificaCampoSkill(){
 			
+		}
+		
+		public void CastTime(){
+			
+			
+			//VerificaSkillDano(skillUsed,posXSelect,posYSelect);
 		}
 		
 		public int delayinfo() {
@@ -2485,7 +2498,7 @@ public class GameControl {
 			return false;
 		}
 		
-		public void VerificaSkillDano(Skill sk) {
+		public void VerificaSkillDano(Skill sk, float areaselectedX, float areaselectedY) {
 			
 			pX = Float.parseFloat(Character_Data.PX_A);
 			pY = Float.parseFloat(Character_Data.PY_A);
@@ -2530,9 +2543,15 @@ public class GameControl {
 					mobX = Float.parseFloat(lstMonsters.get(countA).PX) + (Float.parseFloat(lstMonsters.get(countA).WIDTH) / 2);
 					mobY = Float.parseFloat(lstMonsters.get(countA).PY) + (Float.parseFloat(lstMonsters.get(countA).HEIGHT) / 2);
 					
-					if(pX > sk.areaSpreadX) { Character_Data.Battle_A = "yes_Left";}
-					if(pX < sk.areaSpreadX) { Character_Data.Battle_A = "yes_Right";}
 					
+					pAttackZoneXMinus = (areaselectedX - sk.areaSpreadX);
+					pAttackZoneXPlus = (areaselectedX + sk.areaSpreadX);
+					pAttackZoneYMinus = (areaselectedY - sk.areaSpreadY);
+					pAttackZoneYPlus = (areaselectedY + sk.areaSpreadY);
+					
+					
+					if(pX > mobX) { Character_Data.Battle_A = "yes_Left";}
+					if(pX < mobX) { Character_Data.Battle_A = "yes_Right";}	
 					if((mobX > pAttackZoneXMinus && mobX < pAttackZoneXPlus) && (mobY > pAttackZoneYMinus && mobY < pAttackZoneYPlus) ) {
 						
 						
