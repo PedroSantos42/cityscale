@@ -106,6 +106,23 @@ public class Skill
 			spr_master = atlas_icecrystal.createSprite("fastshot" + countFrame);
 		}
 		
+		//Thief
+		if(nomeSkill.equals("invisibility")) {
+			spr_master = atlas_icecrystal.createSprite("invisibility" + countFrame);
+		}
+		if(nomeSkill.equals("poisonhit")) {
+			spr_master = atlas_icecrystal.createSprite("poisonhit" + countFrame);
+		}
+		if(nomeSkill.equals("dashkick")) {
+			spr_master = atlas_icecrystal.createSprite("dashkick" + countFrame);
+		}
+		if(nomeSkill.equals("steal")) {
+			spr_master = atlas_icecrystal.createSprite("steal" + countFrame);		
+		}
+		if(nomeSkill.equals("doublehit")) {
+			spr_master = atlas_icecrystal.createSprite("doublehit" + countFrame);
+		}
+		
 		//Beater
 		if(nomeSkill.equals("hammercrash")) {
 			spr_master = atlas_icecrystal.createSprite("hammercrash" + countFrame);

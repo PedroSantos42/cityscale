@@ -871,12 +871,12 @@ public class GameControl {
 			}
 			if(walk.equals("Walk") && side.equals("Front")) {
 				fUsable = Float.parseFloat(Character_Data.PY_A);
-				fUsable = fUsable - 0.8f;
+				fUsable = fUsable - 1f;
 				Character_Data.PY_A = String.valueOf(fUsable);
 			}
 			if(walk.equals("Walk") && side.equals("Back")) {
 				fUsable = Float.parseFloat(Character_Data.PY_A);
-				fUsable = fUsable + 0.8f;
+				fUsable = fUsable + 1f;
 				Character_Data.PY_A = String.valueOf(fUsable);
 			}
 			
