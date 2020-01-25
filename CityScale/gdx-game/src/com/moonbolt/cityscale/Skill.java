@@ -780,6 +780,13 @@ public class Skill
 		
 		return false;
 	}
+	
+	public int CalculaDanoSkill(Skill sk, Player char_data){
+		
+		
+		
+		return 0;
+	}
 }
 
 

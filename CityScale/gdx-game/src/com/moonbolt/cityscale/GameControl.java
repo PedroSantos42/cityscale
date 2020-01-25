@@ -2200,7 +2200,7 @@ public class GameControl {
 						playerHP = playerHP - mobAtk;
 						//Character_Data.HP_A = String.valueOf(playerHP);
 						
-						Damage danoMob = new Damage();
+					    Damage danoMob = new Damage();
 						danoMob.areaX = Math.round(pX);
 						danoMob.areaY = Math.round(pY);
 						danoMob.dano = String.valueOf(mobAtk);
@@ -2554,7 +2554,9 @@ public class GameControl {
 					if(pX < mobX) { Character_Data.Battle_A = "yes_Right";}	
 					if((mobX > pAttackZoneXMinus && mobX < pAttackZoneXPlus) && (mobY > pAttackZoneYMinus && mobY < pAttackZoneYPlus) ) {
 						
-						
+						//Posiciona personagem baseado no monstro
+						if(pX > mobX) { Character_Data.Battle_A = "yes_Left";}
+						if(pX < mobX) { Character_Data.Battle_A = "yes_Right";}
 					}					
 				}
 			}
@@ -2572,7 +2574,7 @@ public class GameControl {
 							sk.posX = (int) mobX - 10;
 							sk.posY = (int) mobY;
 							mobHP = Integer.parseInt(lstMonsters.get(countA).HP);
-							dmg = 0; //sk.damage * 3;
+							dmg = sk.damage * 3;
 							mobHP = mobHP - dmg;
 							lstMonsters.get(countA).HP = String.valueOf(mobHP);
 							

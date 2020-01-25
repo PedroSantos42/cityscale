@@ -61,7 +61,8 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 	private boolean mainState = true;
 	private boolean menuState = false;
 	private boolean questState = false;
-	private boolean areaState = false;
+	private boolean areaSkillState = false;
+	private boolean selectAreaSkillState = false;
 	private boolean deadState = false;
 	private boolean chatState = false;
 	private boolean partyState =  false;
@@ -851,7 +852,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		//Morte Invalida Comandos
 		if(deadState) { movement = false; return false; }
 		
-		if(areaState) {
+		if(selectAreaSkillState) {
             gameControl.SetaSkillArea(skillSelected,coordsTouch.x,coordsTouch.y);
 		}
 		
@@ -886,9 +887,12 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 				//Skill 1
 				if((coordsTouch.x >= cameraCoordsX + 55 && coordsTouch.x <= cameraCoordsX + 62) && (coordsTouch.y >= cameraCoordsY - 70 && coordsTouch.y <= cameraCoordsY - 53)){
 					skillSelected = 1;
-					areaState = gameControl.VerificaRangedSkill(skillSelected);
-					if(!areaState){
+					areaSkillState = gameControl.VerificaRangedSkill(skillSelected);
+					if(!areaSkillState){
 						gameControl.SetaSkillSolo(skillSelected);
+					}
+				    else {
+						selectAreaSkillState = true;
 					}
 					return false;
 				}
