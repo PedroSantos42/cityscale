@@ -49,6 +49,7 @@ public class GameControl {
 		private boolean inBattle = false;
 		private boolean attackFrame = false;
 		private boolean isCasting = false;
+		private boolean castOver = false;
 		
 		private int showLootTime = 0;
 		private int countA;
@@ -81,6 +82,7 @@ public class GameControl {
 		private int spAttackMob = 0;
 		private int delayTime = 0;
 		private int castTime = 0;
+		private int castAnimation = 0;
 		
 	    private float npcframe = 1;
 	    private float npcframe2 = 2;
@@ -103,11 +105,14 @@ public class GameControl {
 		private float pAttackZoneXMinus;
 		private float pAttackZoneYPlus;
 		private float pAttackZoneYMinus;
+		private float posTouchSkillX;
+		private float posTouchSkillY;
 		
 		private Player Character_Data;
 		private Monster mobContainer;
 		private Damage Dmg;
 		private Skill skillContainer;
+		private Skill skillUsed;
 		
 		private ArrayList<Monster> lstMonsters;
 		private ArrayList<Damage> lstDamage;
@@ -163,6 +168,7 @@ public class GameControl {
 			spr_master = new Sprite(tex_teste);
 			mobContainer = new Monster();
 			skillContainer = new Skill();
+			skillUsed = new Skill();
 			
 			//Instances of lists//
 			lstMonsters = new ArrayList<Monster>();
@@ -859,6 +865,36 @@ public class GameControl {
 	
 		public Sprite MovChar(String set, String side,String walk, String type, float posX, float posY, int posInterject) {
 			
+			if(isCasting && !castOver) {
+				CastTime();
+				
+				if(set.equals("basic_set_male")) {
+					if(text.equals("yes_Right")) {
+						spr_master = atlas_basic_male_set.createSprite("basic_set_male_magician_left2"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master;					
+					}
+					if(text.equals("yes_Left")) {
+						spr_master = atlas_basic_male_set.createSprite("basic_set_male_magician_right2"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master;
+					}
+				}
+				
+				if(set.equals("basic_set_female")) {
+					if(text.equals("yes_Right")) {
+						spr_master = atlas_basic_female_set.createSprite("basic_set_female_magician_right2"); spr_master.setPosition(posX - 4f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master;				
+					}
+					if(text.equals("yes_Left")) {
+						spr_master = atlas_basic_female_set.createSprite("basic_set_female_magician_left2"); spr_master.setPosition(posX - 4f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master;
+					}
+				}
+				
+				if(isCasting && castOver) {
+					sadsa
+				}
+				
+				
+				return spr_master;
+			}
+			
+			
 			if(walk.equals("Walk") && side.equals("Left")) {
 				fUsable = Float.parseFloat(Character_Data.PX_A);
 				fUsable = fUsable - 0.8f;
@@ -1061,6 +1097,7 @@ public class GameControl {
 				//BATTLE
 				if(inBattle && walk.equals("Stop") && !type.equals("Menu")) {
 					text = Character_Data.Battle_A;
+					
 					if(Character_Data.Job_A.equals("Novice")) {
 						if(attackFrame && text.equals("yes_Right")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_meleeAttack_right"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(25, 36); return spr_master; }
 						if(attackFrame && text.equals("yes_Left")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_meleeAttack_left"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(25, 36); return spr_master; }
@@ -2305,7 +2342,7 @@ public class GameControl {
 			if(delayTime > 0) { return; }
 			
 			int mpPlayer = Integer.parseInt(Character_Data.MP_A);
-			Skill skillUsed = new Skill();
+			skillUsed = new Skill();
 			
 			if(Character_Data.Job_A.equals("Novice")) {			
 				//tripleattack
@@ -2319,16 +2356,20 @@ public class GameControl {
 		
 		public void SetaSkillArea(int numSkill, float posXSelect,float posYSelect){
 			if(delayTime > 0) { return; }
+			if(isCasting) { return; }
 			
 			int mpPlayer = Integer.parseInt(Character_Data.MP_A);
 			Skill skillUsed = new Skill();
+			
+			posTouchSkillX = posXSelect;
+			posTouchSkillY = posYSelect;
 			
 			if(Character_Data.Job_A.equals("Swordman")) {
 				//Protect
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("protect", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("Protect",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
+					if(Skill.CheckMP("Protect",mpPlayer)) { isCasting = true; castOver = false; }
 				}		
 			}
 			
@@ -2337,31 +2378,31 @@ public class GameControl {
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("fireball", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("fireball",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
+					if(Skill.CheckMP("fireball",mpPlayer)) { isCasting = true; castOver = false; }
 				}		
 				//IceCrystal
 				if(numSkill == 2) {
 					skillUsed = Skill.RetornaDadosSKill("icecrystal", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("icecrystal",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
+					if(Skill.CheckMP("icecrystal",mpPlayer)) { isCasting = true; castOver = false; }
 				}			
 				//Thundercloud
 				if(numSkill == 3) {
 					skillUsed = Skill.RetornaDadosSKill("thundercloud", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("thundercloud",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
+					if(Skill.CheckMP("thundercloud",mpPlayer)) { isCasting = true; castOver = false; }
 				}		
 				//Rockbound
 				if(numSkill == 4) {
 					skillUsed = Skill.RetornaDadosSKill("rockbound", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("rockbound",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
+					if(Skill.CheckMP("rockbound",mpPlayer)) { isCasting = true; castOver = false; }
 				}		
 				//Soulclash
 				if(numSkill == 5) {
 					skillUsed = Skill.RetornaDadosSKill("soulclash", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("soulclash",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
+					if(Skill.CheckMP("soulclash",mpPlayer)) { isCasting = true; castOver = false; }
 				}		
 			}
 			if(Character_Data.Job_A.equals("Priest")) {	
@@ -2369,31 +2410,31 @@ public class GameControl {
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("heal", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("heal",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect, posYSelect);}
+					if(Skill.CheckMP("heal",mpPlayer)) { isCasting = true; castOver = false; }
 				}		
 				//defboost
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("defboost", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("defboost",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect,posYSelect);}
+					if(Skill.CheckMP("defboost",mpPlayer)) { isCasting = true; castOver = false;}
 				}	
 				//atkboost
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("atkboost", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("atkboost",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect,posYSelect);}
+					if(Skill.CheckMP("atkboost",mpPlayer)) { isCasting = true; castOver = false; }
 				}	
 				//regen
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("regen", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("regen",mpPlayer)) { VerificaSkillDano(skillUsed,posXSelect,posYSelect);}
+					if(Skill.CheckMP("regen",mpPlayer)) { isCasting = true; castOver = false; }
 				}	
 				//holyprism
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("holyprism", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("holyprims",mpPlayer)) { VerificaSkillDano(skillUsed, posXSelect,posYSelect);}
+					if(Skill.CheckMP("holyprims",mpPlayer)) { isCasting = true; castOver = false; }
 				}	
 			}
 			
@@ -2402,19 +2443,19 @@ public class GameControl {
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("bulletrain", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("bulletrain",mpPlayer)) { VerificaSkillDano(skillUsed,posXSelect,posYSelect);}
+					if(Skill.CheckMP("bulletrain",mpPlayer)) { isCasting = true; castOver = false; }
 				}	
 				//lockshot
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("lockshot", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("lockshot",mpPlayer)) { VerificaSkillDano(skillUsed,posXSelect,posYSelect);}
+					if(Skill.CheckMP("lockshot",mpPlayer)) { isCasting = true; castOver = false; }
 				}	
 				//mine
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("mine", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("mine",mpPlayer)) { isCasting = true; CastTime(); }
+					if(Skill.CheckMP("mine",mpPlayer)) { isCasting = true; castOver = false; }
 				}	
 			}
 		}
@@ -2425,8 +2466,21 @@ public class GameControl {
 		
 		public void CastTime(){
 			
+			castTime = skillUsed.castTime;
+			playerDextery = Integer.parseInt(Character_Data.Dextery_A);
+			playerMind = Integer.parseInt(Character_Data.Mind_A);
 			
-			//VerificaSkillDano(skillUsed,posXSelect,posYSelect);
+			castTime--;
+			
+			castTime = castTime - ((playerDextery + playerMind) / 20);
+			
+			if(castTime < 0) {
+				castOver = true;
+				castAnimation = 20;
+				VerificaSkillDano(skillUsed,posTouchSkillX,posTouchSkillY);
+				posTouchSkillX = 0;
+				posTouchSkillY = 0;
+			}		
 		}
 		
 		public int delayinfo() {
@@ -2557,6 +2611,27 @@ public class GameControl {
 						//Posiciona personagem baseado no monstro
 						if(pX > mobX) { Character_Data.Battle_A = "yes_Left";}
 						if(pX < mobX) { Character_Data.Battle_A = "yes_Right";}
+						
+						sk.posX = (int) mobX;
+						sk.posY = (int) mobY;
+						mobHP = Integer.parseInt(lstMonsters.get(countA).HP);
+						dmg = sk.CalculaDanoSkill(sk, Character_Data);
+						mobHP = mobHP - dmg;
+						lstMonsters.get(countA).HP = String.valueOf(mobHP);
+						
+						Damage danoSkill = new Damage();
+						danoSkill.areaX = Math.round(mobX);
+						danoSkill.areaY = Math.round(mobY);
+						danoSkill.dano = String.valueOf(dmg);
+						danoSkill.Color = "Red";
+						danoSkill.time = 60;
+						danoSkill.Descritivo = "Ataque";
+						lstDamage.add(danoSkill);
+						lstSkills.add(sk);
+						attackFrame = true;
+						playerManualAtkDelay = 20;
+						delayTime = sk.delay;
+						
 					}					
 				}
 			}

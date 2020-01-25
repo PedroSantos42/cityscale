@@ -854,6 +854,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		
 		if(selectAreaSkillState) {
             gameControl.SetaSkillArea(skillSelected,coordsTouch.x,coordsTouch.y);
+            selectAreaSkillState = false;
 		}
 		
 		if(mainState) {

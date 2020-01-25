@@ -783,7 +783,9 @@ public class Skill
 	
 	public int CalculaDanoSkill(Skill sk, Player char_data){
 		
+		int pMind
 		
+		//Mage
 		
 		return 0;
 	}
