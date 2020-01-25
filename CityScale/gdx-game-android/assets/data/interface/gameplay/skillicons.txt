@@ -1,0 +1,61 @@
+skillicons.png
+size: 304, 27
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+btnfireball
+  rotate: false
+  xy: 0, 0
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnheal
+  rotate: false
+  xy: 38, 0
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnicecrystal
+  rotate: false
+  xy: 76, 0
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnrockbound
+  rotate: false
+  xy: 114, 0
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnsoulclash
+  rotate: false
+  xy: 152, 0
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btntemplate
+  rotate: false
+  xy: 190, 0
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnthundercloud
+  rotate: false
+  xy: 228, 0
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btntripleattack
+  rotate: false
+  xy: 266, 0
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
