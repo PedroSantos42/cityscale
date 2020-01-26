@@ -783,10 +783,16 @@ public class Skill
 	
 	public int CalculaDanoSkill(Skill sk, Player char_data){
 		
-		int pMind
+		int pMind;
+		int pDex;
+		int pStr;
+		int pAgi;
+		int pluk;
 		
 		//Mage
-		
+		if(sk.nameSkill.equals("")){
+			
+		}
 		return 0;
 	}
 }
