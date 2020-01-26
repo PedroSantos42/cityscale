@@ -1,0 +1,47 @@
+rockbound.png
+size: 240, 810
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+rockbound1
+  rotate: false
+  xy: 0, 0
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+rockbound2
+  rotate: false
+  xy: 0, 135
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+rockbound3
+  rotate: false
+  xy: 0, 270
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+rockbound4
+  rotate: false
+  xy: 0, 405
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+rockbound5
+  rotate: false
+  xy: 0, 540
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+rockbound6
+  rotate: false
+  xy: 0, 675
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
