@@ -1,0 +1,47 @@
+poisonhit.png
+size: 240, 810
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+poisonhit1
+  rotate: false
+  xy: 0, 0
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+poisonhit2
+  rotate: false
+  xy: 0, 135
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+poisonhit3
+  rotate: false
+  xy: 0, 270
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+poisonhit4
+  rotate: false
+  xy: 0, 405
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+poisonhit5
+  rotate: false
+  xy: 0, 540
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+poisonhit6
+  rotate: false
+  xy: 0, 675
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1

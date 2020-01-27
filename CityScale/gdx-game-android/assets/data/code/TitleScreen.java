@@ -168,7 +168,7 @@ public class TitleScreen implements Screen, ApplicationListener, InputProcessor,
 		}
 		//Acessar sua conta
 		if((coordsTouch.x >= 72 && coordsTouch.x <= 99) && (coordsTouch.y >= 16 && coordsTouch.y <= 24)){
-			
+			Gdx.input.getTextInput(this,"Digite seu código","",""); 
 		}	
 		//Recuperar do Backup
 		if((coordsTouch.x >= 72 && coordsTouch.x <= 99) && (coordsTouch.y >= 2 && coordsTouch.y <= 14)){
@@ -182,6 +182,8 @@ public class TitleScreen implements Screen, ApplicationListener, InputProcessor,
 	@Override
 	public void input(String input){
 		text = input;
+		
+		
 	}
 	
 	@Override

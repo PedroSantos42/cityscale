@@ -1,0 +1,47 @@
+berserk.png
+size: 240, 810
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+berserk1
+  rotate: false
+  xy: 0, 0
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+berserk2
+  rotate: false
+  xy: 0, 135
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+berserk3
+  rotate: false
+  xy: 0, 270
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+berserk4
+  rotate: false
+  xy: 0, 405
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+berserk5
+  rotate: false
+  xy: 0, 540
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1
+berserk6
+  rotate: false
+  xy: 0, 675
+  size: 240, 135
+  orig: 240, 135
+  offset: 0, 0
+  index: -1

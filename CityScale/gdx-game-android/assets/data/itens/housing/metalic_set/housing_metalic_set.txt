@@ -1,0 +1,40 @@
+housing_metalic_set.png
+size: 239, 297
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+metalicbed
+  rotate: false
+  xy: 0, 0
+  size: 88, 181
+  orig: 88, 181
+  offset: 0, 0
+  index: -1
+metaliccooker
+  rotate: false
+  xy: 88, 0
+  size: 71, 114
+  orig: 71, 114
+  offset: 0, 0
+  index: -1
+metalicfreezer
+  rotate: false
+  xy: 159, 0
+  size: 80, 130
+  orig: 80, 130
+  offset: 0, 0
+  index: -1
+metalicsink
+  rotate: false
+  xy: 0, 181
+  size: 236, 59
+  orig: 236, 59
+  offset: 0, 0
+  index: -1
+metalicstorage
+  rotate: false
+  xy: 0, 240
+  size: 235, 57
+  orig: 235, 57
+  offset: 0, 0
+  index: -1

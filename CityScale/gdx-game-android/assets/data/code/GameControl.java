@@ -1,5 +1,12 @@
 package com.moonbolt.cityscale;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.net.URL;
+import java.net.URLConnection;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -15,7 +22,7 @@ import com.badlogic.gdx.utils.Json;
 public class GameControl {
 		
 		//SUMMARY
-		//[Data Process]//
+		//Data Process//
 		//Character Movement and Objects //
 		// Scenario Objects //
 		// Interfaces and Screens //
@@ -24,6 +31,7 @@ public class GameControl {
 		// Itens Management //
 		// Buffs and Debuffs //
 		// NPCS and Quests //
+		// Online Management//
 	
 		//Global Variables 
 		private Json json;
@@ -36,10 +44,14 @@ public class GameControl {
 		private String[] itemUsage;
 	    private String qtdItem;
 	    private String textQuest = "";
+	    private String nomeLoot = "";
 		
 		private boolean inBattle = false;
 		private boolean attackFrame = false;
+		private boolean isCasting = false;
+		private boolean castOver = false;
 		
+		private int showLootTime = 0;
 		private int countA;
 		private int countB;
 		private int regenHPSP = 500;
@@ -67,6 +79,10 @@ public class GameControl {
 		private int mobAttackCooldown = 0;
 		private int playerbattleframe = 0;
 		private int playerManualAtkDelay = 40;
+		private int spAttackMob = 0;
+		private int delayTime = 0;
+		private int castTime = 0;
+		private int castAnimation = 0;
 		
 	    private float npcframe = 1;
 	    private float npcframe2 = 2;
@@ -89,18 +105,24 @@ public class GameControl {
 		private float pAttackZoneXMinus;
 		private float pAttackZoneYPlus;
 		private float pAttackZoneYMinus;
+		private float posTouchSkillX;
+		private float posTouchSkillY;
 		
 		private Player Character_Data;
 		private Monster mobContainer;
 		private Damage Dmg;
+		private Skill skillContainer;
+		private Skill skillUsed;
 		
 		private ArrayList<Monster> lstMonsters;
 		private ArrayList<Damage> lstDamage;
 		private ArrayList<Player> lstOnlinePlayers;
-		private ArrayList<Skills> lstSkills;
+		private ArrayList<Sprite> lstSpritesOnline;
+		private ArrayList<Skill> lstSkills;
 		private ArrayList<Buffs> lstBuffs;
 		private ArrayList<Sprite> lstSprites;
 		private ArrayList<String> lstNomes;
+		private ArrayList<String> lstChats;
 		
 		private TextureAtlas atlas_hairs;
 		private TextureAtlas atlas_basic_male_set;
@@ -118,26 +140,45 @@ public class GameControl {
 		private Sprite spr_master;
 		private Texture tex_teste;
 		
+		//Online Variables
+		private String[] onlineData;
+		private String[] splitonlineData;
+		private String auxOnline;
+		private String retornoOnline = "";
+		private String skillOnline = "";
+		private String sidePlayer = "";
+		private int posOnlineX;
+		private int posOnlineY;
+		private int posInjectorOnline;
+		private int loopOnlineCheck = 0;
+		private float posOnlineFX;
+		private float posOnlineFY;
+		
 		//Constructor//
 		public GameControl(){
 			charNumActive = 0;
 			frameMove = 1;
 			charData = new String[50];
 			itemUsage = new String[2];
+			onlineData = new String [255];
+			splitonlineData = new String [255];
 			json = new Json();
 			
 			tex_teste = new Texture(Gdx.files.internal("data/assets/testdot.png"));
 			spr_master = new Sprite(tex_teste);
 			mobContainer = new Monster();
+			skillContainer = new Skill();
+			skillUsed = new Skill();
 			
 			//Instances of lists//
 			lstMonsters = new ArrayList<Monster>();
 			lstDamage = new ArrayList<Damage>();
 			lstOnlinePlayers = new ArrayList<Player>();
-			lstSkills = new ArrayList<Skills>();
+			lstSkills = new ArrayList<Skill>();
 			lstSprites = new ArrayList<Sprite>();
 			lstNomes = new ArrayList<String>();
 			lstBuffs = new ArrayList<Buffs>();
+			lstChats = new ArrayList<String>();
 			
 			////////Atlas Section//////
 			//Character
@@ -824,6 +865,36 @@ public class GameControl {
 	
 		public Sprite MovChar(String set, String side,String walk, String type, float posX, float posY, int posInterject) {
 			
+			if(isCasting && !castOver) {
+				CastTime();
+				
+				if(set.equals("basic_set_male")) {
+					if(text.equals("yes_Right")) {
+						spr_master = atlas_basic_male_set.createSprite("basic_set_male_magician_left2"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master;					
+					}
+					if(text.equals("yes_Left")) {
+						spr_master = atlas_basic_male_set.createSprite("basic_set_male_magician_right2"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master;
+					}
+				}
+				
+				if(set.equals("basic_set_female")) {
+					if(text.equals("yes_Right")) {
+						spr_master = atlas_basic_female_set.createSprite("basic_set_female_magician_right2"); spr_master.setPosition(posX - 4f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master;				
+					}
+					if(text.equals("yes_Left")) {
+						spr_master = atlas_basic_female_set.createSprite("basic_set_female_magician_left2"); spr_master.setPosition(posX - 4f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master;
+					}
+				}
+				
+				if(isCasting && castOver) {
+					sadsa
+				}
+				
+				
+				return spr_master;
+			}
+			
+			
 			if(walk.equals("Walk") && side.equals("Left")) {
 				fUsable = Float.parseFloat(Character_Data.PX_A);
 				fUsable = fUsable - 0.8f;
@@ -836,12 +907,12 @@ public class GameControl {
 			}
 			if(walk.equals("Walk") && side.equals("Front")) {
 				fUsable = Float.parseFloat(Character_Data.PY_A);
-				fUsable = fUsable - 0.8f;
+				fUsable = fUsable - 1f;
 				Character_Data.PY_A = String.valueOf(fUsable);
 			}
 			if(walk.equals("Walk") && side.equals("Back")) {
 				fUsable = Float.parseFloat(Character_Data.PY_A);
-				fUsable = fUsable + 0.8f;
+				fUsable = fUsable + 1f;
 				Character_Data.PY_A = String.valueOf(fUsable);
 			}
 			
@@ -1017,6 +1088,8 @@ public class GameControl {
 			//Para a arma
 			playerbattleframe = pos;
 			
+			sidePlayer = side;
+			
 			//MASC. /////////////////////////////////////////////////  
 			if(set.equals("basic_set_male")) {
 				
@@ -1024,6 +1097,7 @@ public class GameControl {
 				//BATTLE
 				if(inBattle && walk.equals("Stop") && !type.equals("Menu")) {
 					text = Character_Data.Battle_A;
+					
 					if(Character_Data.Job_A.equals("Novice")) {
 						if(attackFrame && text.equals("yes_Right")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_meleeAttack_right"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(25, 36); return spr_master; }
 						if(attackFrame && text.equals("yes_Left")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_meleeAttack_left"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(25, 36); return spr_master; }
@@ -1297,6 +1371,14 @@ public class GameControl {
 		
 		// Interfaces and Screens //
 		
+		public ArrayList<String> CarregaChats() {
+			return lstChats;
+		}
+		
+		public void InsereChat(String chatmsg) {
+			lstChats.add(Character_Data.Name_A + ":" + chatmsg);
+		}
+		
 		public ArrayList<Damage> ExibeDanos(){
 			for(countA = 0; countA < lstDamage.size(); countA++){ 
 				if(lstDamage.get(countA).time > 0){
@@ -1541,6 +1623,65 @@ public class GameControl {
 				spr_master.setPosition(fX - 68, fY - 25);
 				return spr_master;
 			}
+			
+			if(item.equals("Analog") && complement.equals("Left-Front")) {
+				spr_master = atlas_gameplay_interface.createSprite("controllertouch");
+				spr_master.setSize(20, 25);
+				spr_master.setPosition(fX - 76, fY - 46);
+				return spr_master;
+			}
+			
+			if(item.equals("Analog") && complement.equals("Right-Front")) {
+				spr_master = atlas_gameplay_interface.createSprite("controllertouch");
+				spr_master.setSize(20, 25);
+				spr_master.setPosition(fX - 61, fY - 46);
+				return spr_master;
+			}
+			
+			if(item.equals("Analog") && complement.equals("Left-Back")) {
+				spr_master = atlas_gameplay_interface.createSprite("controllertouch");
+				spr_master.setSize(20, 25);
+				spr_master.setPosition(fX - 76, fY - 30);
+				return spr_master;
+			}
+			
+			if(item.equals("Analog") && complement.equals("Right-Back")) {
+				spr_master = atlas_gameplay_interface.createSprite("controllertouch");
+				spr_master.setSize(20, 25);
+				spr_master.setPosition(fX - 61, fY - 30);
+				return spr_master;
+			}
+			
+			if(item.equals("Analog") && complement.equals("Back-Left")) {
+				spr_master = atlas_gameplay_interface.createSprite("controllertouch");
+				spr_master.setSize(20, 25);
+				spr_master.setPosition(fX - 76, fY - 30);
+				return spr_master;
+			}
+			
+			if(item.equals("Analog") && complement.equals("Back-Right")) {
+				spr_master = atlas_gameplay_interface.createSprite("controllertouch");
+				spr_master.setSize(20, 25);
+				spr_master.setPosition(fX - 61, fY - 30);
+				return spr_master;
+			}
+			
+			if(item.equals("Analog") && complement.equals("Front-Right")) {
+				spr_master = atlas_gameplay_interface.createSprite("controllertouch");
+				spr_master.setSize(20, 25);
+				spr_master.setPosition(fX - 61, fY - 46);			
+				return spr_master;
+			}
+			
+			if(item.equals("Analog") && complement.equals("Front-Left")) {
+				spr_master = atlas_gameplay_interface.createSprite("controllertouch");
+				spr_master.setSize(20, 25);
+				spr_master.setPosition(fX - 76, fY - 46);
+				return spr_master;
+			}
+			
+			//
+			
 			if(item.equals("AreaCombate")) {
 				spr_master = atlas_gameplay_interface.createSprite("btnAreaBatalha");
 				spr_master.setSize(25, 15);
@@ -1655,6 +1796,13 @@ public class GameControl {
 				spr_master = atlas_gameplay_interface.createSprite("bar_text");
 				spr_master.setSize(205,50);
 				spr_master.setPosition(fX - 100, fY - 72);
+				return spr_master;
+			}
+			
+			if(item.equals("lootbox")) {
+				spr_master = atlas_gameplay_interface.createSprite("baritem");
+				spr_master.setSize(80,20);
+				spr_master.setPosition(fX - 40, fY + 80);
 				return spr_master;
 			}
 			
@@ -1881,6 +2029,9 @@ public class GameControl {
 				pAttackZoneYPlus = pY - 70;
 			}
 			
+			
+			if(!isCasting){
+			
 			if(playerManualAtkDelay > 0) { playerManualAtkDelay--; }
 			if(playerManualAtkDelay < 10) { attackFrame = false; }
 			if(ManualAttack.equals("yes") && playerManualAtkDelay == 0){
@@ -1907,8 +2058,8 @@ public class GameControl {
 							lstDamage.add(danoMob);
                                 
 							if(mobHP <= 0 && lstMonsters.get(countA).LOCKDEATH.equals("no")) { 
-								GiveExperience(lstMonsters.get(countA));
-								GiveLoot(lstMonsters.get(countA));
+								DarExperiencia(lstMonsters.get(countA));
+								DarLoot(lstMonsters.get(countA));
 								lstMonsters.get(countA).LOCKDEATH = "yes"; 
 								Character_Data.Battle_A = "no";
 								Character_Data.Target_A = "none"; 
@@ -1916,7 +2067,7 @@ public class GameControl {
 								inBattle = false; 
 								lstMonsters.get(countA).BATTLE = "no";
 							}
-							//lstMonsters.get(countA).HP = String.valueOf(mobHP);
+							lstMonsters.get(countA).HP = String.valueOf(mobHP);
 							playerManualAtkDelay = 50;
 							return;
 				        }
@@ -1928,7 +2079,7 @@ public class GameControl {
 			if(AutoAttack.equals("no")) { Character_Data.Target_A = "none"; inBattle = false; Character_Data.Battle_A = "none"; playerAttackCooldown = 120; }
 			
 			if(AutoAttack.equals("yes")) {
-				//Verifica se ainda est� em batalha
+				//Verifica se ainda estï¿½ em batalha
 				if(Character_Data.Target_A.equals("none")) {  //Verifica os monstros na lista pra adicionar o target
 					for(countA = 0; countA < lstMonsters.size(); countA++){ 
 						mobX = Float.parseFloat(lstMonsters.get(countA).PX) + (Float.parseFloat(lstMonsters.get(countA).WIDTH) / 2);
@@ -1991,8 +2142,8 @@ public class GameControl {
 										
 										
 										if(mobHP <= 0 && lstMonsters.get(countA).LOCKDEATH.equals("no")) { 
-											GiveExperience(lstMonsters.get(countA));
-											GiveLoot(lstMonsters.get(countA));
+											DarExperiencia(lstMonsters.get(countA));
+											DarLoot(lstMonsters.get(countA));
 											lstMonsters.get(countA).LOCKDEATH = "yes"; 
 											Character_Data.Battle_A = "no";
 											Character_Data.Target_A = "none"; 
@@ -2000,7 +2151,7 @@ public class GameControl {
 											inBattle = false; 
 											lstMonsters.get(countA).BATTLE = "no";
 										}
-										//lstMonsters.get(countA).HP = String.valueOf(mobHP);
+										lstMonsters.get(countA).HP = String.valueOf(mobHP);
 										lstMonsters.get(countA).FRAME = "5";
 									}
 								
@@ -2059,6 +2210,8 @@ public class GameControl {
 				}	
 			}
 			
+			}// is casting
+			
 			//Para Monstros
 			for(countA = 0; countA < lstMonsters.size(); countA++){ 		  //Verifica Monstro Target dentro da lista			
 				if(lstMonsters.get(countA).TARGET.equals(Character_Data.Name_A)) {
@@ -2084,7 +2237,7 @@ public class GameControl {
 						playerHP = playerHP - mobAtk;
 						//Character_Data.HP_A = String.valueOf(playerHP);
 						
-						Damage danoMob = new Damage();
+					    Damage danoMob = new Damage();
 						danoMob.areaX = Math.round(pX);
 						danoMob.areaY = Math.round(pY);
 						danoMob.dano = String.valueOf(mobAtk);
@@ -2104,7 +2257,7 @@ public class GameControl {
 			}
 		}
 		
-		public void GiveExperience(Monster mob) {
+		public void DarExperiencia(Monster mob) {
 			
 			int exp = Integer.parseInt(mob.EXP);
 			int expPlayer = Integer.parseInt(Character_Data.Exp_A);
@@ -2167,10 +2320,6 @@ public class GameControl {
 			Character_Data.StatusPoint_A = String.valueOf(pontosStatus);
 		}
 		
-		public int VerificaCooldown() {
-			return playerAttackCooldown;
-		}
-		
 		public int DanoArma() {
 			text = Character_Data.Weapon_A;
 			
@@ -2184,6 +2333,358 @@ public class GameControl {
 			return 0;
 		}
 		
+		public int VerificaCooldown() {
+			return playerAttackCooldown;
+		}
+		
+		public void SetaSkillSolo(int numSkill) {
+			
+			if(delayTime > 0) { return; }
+			
+			int mpPlayer = Integer.parseInt(Character_Data.MP_A);
+			skillUsed = new Skill();
+			
+			if(Character_Data.Job_A.equals("Novice")) {			
+				//tripleattack
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("tripleattack", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("tripleattack",mpPlayer)) { VerificaSkillDano(skillUsed, 0,0);}
+				}			
+			}		
+		}
+		
+		public void SetaSkillArea(int numSkill, float posXSelect,float posYSelect){
+			if(delayTime > 0) { return; }
+			if(isCasting) { return; }
+			
+			int mpPlayer = Integer.parseInt(Character_Data.MP_A);
+			Skill skillUsed = new Skill();
+			
+			posTouchSkillX = posXSelect;
+			posTouchSkillY = posYSelect;
+			
+			if(Character_Data.Job_A.equals("Swordman")) {
+				//Protect
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("protect", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("Protect",mpPlayer)) { isCasting = true; castOver = false; }
+				}		
+			}
+			
+			if(Character_Data.Job_A.equals("Mage")) {			
+				//Fireball
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("fireball", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("fireball",mpPlayer)) { isCasting = true; castOver = false; }
+				}		
+				//IceCrystal
+				if(numSkill == 2) {
+					skillUsed = Skill.RetornaDadosSKill("icecrystal", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("icecrystal",mpPlayer)) { isCasting = true; castOver = false; }
+				}			
+				//Thundercloud
+				if(numSkill == 3) {
+					skillUsed = Skill.RetornaDadosSKill("thundercloud", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("thundercloud",mpPlayer)) { isCasting = true; castOver = false; }
+				}		
+				//Rockbound
+				if(numSkill == 4) {
+					skillUsed = Skill.RetornaDadosSKill("rockbound", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("rockbound",mpPlayer)) { isCasting = true; castOver = false; }
+				}		
+				//Soulclash
+				if(numSkill == 5) {
+					skillUsed = Skill.RetornaDadosSKill("soulclash", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("soulclash",mpPlayer)) { isCasting = true; castOver = false; }
+				}		
+			}
+			if(Character_Data.Job_A.equals("Priest")) {	
+				//Heal
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("heal", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("heal",mpPlayer)) { isCasting = true; castOver = false; }
+				}		
+				//defboost
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("defboost", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("defboost",mpPlayer)) { isCasting = true; castOver = false;}
+				}	
+				//atkboost
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("atkboost", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("atkboost",mpPlayer)) { isCasting = true; castOver = false; }
+				}	
+				//regen
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("regen", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("regen",mpPlayer)) { isCasting = true; castOver = false; }
+				}	
+				//holyprism
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("holyprism", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("holyprims",mpPlayer)) { isCasting = true; castOver = false; }
+				}	
+			}
+			
+			if(Character_Data.Job_A.equals("Gunner")) {	
+				//bulletrain
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("bulletrain", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("bulletrain",mpPlayer)) { isCasting = true; castOver = false; }
+				}	
+				//lockshot
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("lockshot", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("lockshot",mpPlayer)) { isCasting = true; castOver = false; }
+				}	
+				//mine
+				if(numSkill == 1) {
+					skillUsed = Skill.RetornaDadosSKill("mine", Character_Data.Name_A);
+					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
+					if(Skill.CheckMP("mine",mpPlayer)) { isCasting = true; castOver = false; }
+				}	
+			}
+		}
+		
+		public void VerificaCampoSkill(){
+			
+		}
+		
+		public void CastTime(){
+			
+			castTime = skillUsed.castTime;
+			playerDextery = Integer.parseInt(Character_Data.Dextery_A);
+			playerMind = Integer.parseInt(Character_Data.Mind_A);
+			
+			castTime--;
+			
+			castTime = castTime - ((playerDextery + playerMind) / 20);
+			
+			if(castTime < 0) {
+				castOver = true;
+				castAnimation = 20;
+				VerificaSkillDano(skillUsed,posTouchSkillX,posTouchSkillY);
+				posTouchSkillX = 0;
+				posTouchSkillY = 0;
+			}		
+		}
+		
+		public int delayinfo() {
+			return delayTime;
+		}
+		
+		public void CalculaCooldown() {
+			if(delayTime > 0) { delayTime--; }
+			if(delayTime <= 0) { delayTime = 0; }
+		}
+		
+		public boolean VerificaRangedSkill(int numSkill) {
+			Skill skillUsed = new Skill();
+			
+			//Novice
+			if(numSkill == 1 && Character_Data.Job_A.equals("Novice")) { skillUsed.IsRangedSkill("tripleattack"); }
+			
+			//Swordman
+			if(numSkill == 1 && Character_Data.Job_A.equals("Swordman")) { skillUsed.IsRangedSkill("flysword"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Swordman")) { skillUsed.IsRangedSkill("healthboost"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Swordman")) { skillUsed.IsRangedSkill("havenblade"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Swordman")) { skillUsed.IsRangedSkill("ironshield"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Swordman")) { skillUsed.IsRangedSkill("protect"); }
+			
+			//Mage
+			if(numSkill == 1 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("fireball"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("icecrystal"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("thundercloud"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("rockbound"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("soulclash"); }
+			
+			//Thief
+			if(numSkill == 1 && Character_Data.Job_A.equals("Thief")) { skillUsed.IsRangedSkill("invisibility"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Thief")) { skillUsed.IsRangedSkill("poisonhit"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Thief")) { skillUsed.IsRangedSkill("dashkick"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Thief")) { skillUsed.IsRangedSkill("steal"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Thief")) { skillUsed.IsRangedSkill("doublehit"); }
+			
+			//Artist
+			if(numSkill == 1 && Character_Data.Job_A.equals("Artist")) { skillUsed.IsRangedSkill("drawcard"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Artist")) { skillUsed.IsRangedSkill("spellstep"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Artist")) { skillUsed.IsRangedSkill("creditdance"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Artist")) { skillUsed.IsRangedSkill("malabarism"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Artist")) { skillUsed.IsRangedSkill("amplitude"); }
+			
+			//gunner
+			if(numSkill == 1 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("bulletrain"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("healthboost"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("precision"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("mine"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Gunner")) { skillUsed.IsRangedSkill("fastshot"); }
+			
+			//Beater
+			if(numSkill == 1 && Character_Data.Job_A.equals("Beater")) { skillUsed.IsRangedSkill("hammercrash"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Beater")) { skillUsed.IsRangedSkill("overpower"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Beater")) { skillUsed.IsRangedSkill("boundrage"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Beater")) { skillUsed.IsRangedSkill("berserk"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Beater")) { skillUsed.IsRangedSkill("impound"); }
+			
+			//Doctor
+			if(numSkill == 1 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("heal"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("atkboost"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("defboost"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("regen"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("holyprism"); }
+			
+			
+			
+			return false;
+		}
+		
+		public void VerificaSkillDano(Skill sk, float areaselectedX, float areaselectedY) {
+			
+			pX = Float.parseFloat(Character_Data.PX_A);
+			pY = Float.parseFloat(Character_Data.PY_A);
+			playerHP  = Integer.parseInt(Character_Data.HP_A);
+			playerAtk  = Integer.parseInt(Character_Data.Atk_A);
+			playerDef  = Integer.parseInt(Character_Data.Def_A);
+			playerStrenght  = Integer.parseInt(Character_Data.Strengh_A);
+			playerAgility  = Integer.parseInt(Character_Data.Agility_A);
+			playerLucky = Integer.parseInt(Character_Data.Lucky_A);
+			playerDextery  = Integer.parseInt(Character_Data.Dextery_A);
+			playerMind = Integer.parseInt(Character_Data.Mind_A);
+			int mobHP  = 0;
+			int dmg = 0;
+			attackCooldown--;
+			
+			pX = pX + 7;
+			pY = pY + 11;
+			
+			//Montando zona de attack do jogador
+			if(Character_Data.Job_A.equals("Novice") ||
+			   Character_Data.Job_A.equals("Swordman") ||
+			   Character_Data.Job_A.equals("Merchant") ||
+			   Character_Data.Job_A.equals("Thief") ||
+			   Character_Data.Job_A.equals("Monk")) {
+				
+				pAttackZoneXPlus = pX + 20;
+				pAttackZoneXMinus = pX - 20;
+				pAttackZoneYPlus = pY + 30;
+				pAttackZoneYMinus = pY - 30;		
+			}
+			
+			if(Character_Data.Job_A.equals("Gunner") ||
+			   Character_Data.Job_A.equals("Magician")) {
+				pAttackZoneXPlus = pX + 60;
+				pAttackZoneXMinus = pX - 60;
+				pAttackZoneYPlus = pY + 70;
+				pAttackZoneYPlus = pY - 70;
+			}
+			
+			if(sk.isAreaSkill == true) {
+				for(countA = 0; countA < lstMonsters.size(); countA++){ //Verifica Monstro Target dentro da �rea do range	
+					mobX = Float.parseFloat(lstMonsters.get(countA).PX) + (Float.parseFloat(lstMonsters.get(countA).WIDTH) / 2);
+					mobY = Float.parseFloat(lstMonsters.get(countA).PY) + (Float.parseFloat(lstMonsters.get(countA).HEIGHT) / 2);
+					
+					
+					pAttackZoneXMinus = (areaselectedX - sk.areaSpreadX);
+					pAttackZoneXPlus = (areaselectedX + sk.areaSpreadX);
+					pAttackZoneYMinus = (areaselectedY - sk.areaSpreadY);
+					pAttackZoneYPlus = (areaselectedY + sk.areaSpreadY);
+					
+					
+					if(pX > mobX) { Character_Data.Battle_A = "yes_Left";}
+					if(pX < mobX) { Character_Data.Battle_A = "yes_Right";}	
+					if((mobX > pAttackZoneXMinus && mobX < pAttackZoneXPlus) && (mobY > pAttackZoneYMinus && mobY < pAttackZoneYPlus) ) {
+						
+						//Posiciona personagem baseado no monstro
+						if(pX > mobX) { Character_Data.Battle_A = "yes_Left";}
+						if(pX < mobX) { Character_Data.Battle_A = "yes_Right";}
+						
+						sk.posX = (int) mobX;
+						sk.posY = (int) mobY;
+						mobHP = Integer.parseInt(lstMonsters.get(countA).HP);
+						dmg = sk.CalculaDanoSkill(sk, Character_Data);
+						mobHP = mobHP - dmg;
+						lstMonsters.get(countA).HP = String.valueOf(mobHP);
+						
+						Damage danoSkill = new Damage();
+						danoSkill.areaX = Math.round(mobX);
+						danoSkill.areaY = Math.round(mobY);
+						danoSkill.dano = String.valueOf(dmg);
+						danoSkill.Color = "Red";
+						danoSkill.time = 60;
+						danoSkill.Descritivo = "Ataque";
+						lstDamage.add(danoSkill);
+						lstSkills.add(sk);
+						attackFrame = true;
+						playerManualAtkDelay = 20;
+						delayTime = sk.delay;
+						
+					}					
+				}
+			}
+			else {
+				for(countA = 0; countA < lstMonsters.size(); countA++){ 		  //Verifica Monstro Target dentro da lista			
+					if(lstMonsters.get(countA).ID.equals(Character_Data.Target_A)) {
+						mobX = Float.parseFloat(lstMonsters.get(countA).PX) + (Float.parseFloat(lstMonsters.get(countA).WIDTH) / 2);
+						mobY = Float.parseFloat(lstMonsters.get(countA).PY) + (Float.parseFloat(lstMonsters.get(countA).HEIGHT) / 2);
+						if((mobX > pAttackZoneXMinus && mobX < pAttackZoneXPlus) && (mobY > pAttackZoneYMinus && mobY < pAttackZoneYPlus) ) {						
+							
+							//Posiciona personagem baseado no monstro
+							if(pX > mobX) { Character_Data.Battle_A = "yes_Left";}
+							if(pX < mobX) { Character_Data.Battle_A = "yes_Right";}
+							
+							sk.posX = (int) mobX - 10;
+							sk.posY = (int) mobY;
+							mobHP = Integer.parseInt(lstMonsters.get(countA).HP);
+							dmg = sk.damage * 3;
+							mobHP = mobHP - dmg;
+							lstMonsters.get(countA).HP = String.valueOf(mobHP);
+							
+							Damage danoSkill = new Damage();
+							danoSkill.areaX = Math.round(mobX);
+							danoSkill.areaY = Math.round(mobY);
+							danoSkill.dano = String.valueOf(dmg);
+							danoSkill.Color = "Red";
+							danoSkill.time = 60;
+							danoSkill.Descritivo = "Ataque";
+							lstDamage.add(danoSkill);
+							lstSkills.add(sk);
+							attackFrame = true;
+							playerManualAtkDelay = 20;
+							delayTime = sk.delay;
+						}
+					}
+				}
+			}
+		}
+		
+		public ArrayList<Skill> RetornaSkills(){
+			return lstSkills;
+		}
+		
+		public Sprite ImageSkill(Skill sk) {			
+			spr_master = skillContainer.CarregaEfeitoFrame(sk.nameSkill, sk.countFrameEffect);			
+			return spr_master;
+		}
+		
+		public void RemoveSkill(int num) {
+			skillOnline = "";
+			lstSkills.remove(num);
+		}
+		
 		
 		// Itens Management //
 		public Sprite ItemImage(String item, int pos, float ccX, float ccY){
@@ -2194,7 +2695,7 @@ public class GameControl {
 			
 			if(text.equals("None")) { return spr_master; }
 			
-			if(text.equals("Cola")) {
+			if(text.equals("Refrigerante")) {
 				spr_master = atlas_Usable.createSprite("Cola");
 			}
 			
@@ -2250,7 +2751,7 @@ public class GameControl {
 		}
 		
 		public String ItemDescritivo(String item){
-			if(item.equals("Cola")){ return "Restaura 20 de HP";}
+			if(item.equals("Refrigerante")){ return "Restaura 20 de HP";}
 			if(item.equals("SucoHP")){ return "Restaura 90 de HP";}
 			if(item.equals("IoguteHP")){ return "Restaura 200 de HP";}
 			if(item.equals("RefrigeranteMP")){ return "Restaura 20 de MP";}
@@ -2302,7 +2803,7 @@ public class GameControl {
 		
 		private String VerificaTipo(String item) {
 			
-			if(item.equals("Cola")){
+			if(item.equals("Refrigerante")){
 				return "usable";
 			}
 			
@@ -2315,7 +2816,7 @@ public class GameControl {
 		
 		private void ItemEfeito(String item){
 			//Consumivel
-			if(item.equals("Cola")){
+			if(item.equals("Refrigerante")){
 				countA = Integer.parseInt(Character_Data.HP_A);
 				countA = countA + 20;
 				playerHPMAX = Integer.parseInt(Character_Data.HPMAX_A);
@@ -2337,18 +2838,73 @@ public class GameControl {
 			}
 		}
 		
-		private void GiveLoot(Monster mobdeath) {		
+		private void DarLoot(Monster mobdeath) {		
 			int sortie = 0;		
+			
+			sortie = randnumber.nextInt(100);
+			
+			if(sortie < 5) {
+				AdicionaItemMochila(mobdeath.ITEMA);
+				nomeLoot = mobdeath.ITEMA;
+			}
+			
+			if(sortie >=  5 && sortie <= 25) {
+				AdicionaItemMochila(mobdeath.ITEMB);
+				nomeLoot = mobdeath.ITEMB;
+			}
+			
+			if(sortie > 25 && sortie <= 50) {
+				AdicionaItemMochila(mobdeath.ITEMC);
+				nomeLoot = mobdeath.ITEMC;
+			}
+			
+			if(sortie > 50 && sortie <= 100) {
+				AdicionaItemMochila(mobdeath.ITEMD);
+				nomeLoot = mobdeath.ITEMD;
+			}
+			
+			showLootTime = 300;
 		}
+		
+		public boolean ExibirMsgItem() {
+			
+			if(showLootTime > 0) {
+				showLootTime--;
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
+		
+		public String itemDrop() {
+			if(showLootTime > 0) {
+				showLootTime--;
+				return nomeLoot;
+			}
+			else {
+				return nomeLoot;
+			}
+		}
+		
+		public Sprite ItemDropImage(String item) {
+			
+			if(showLootTime > 0) {
+				if(item.equals("Refrigerante")) {
+					spr_master = atlas_Usable.createSprite("Cola");
+					spr_master.setSize(15, 30);
+				}
+			}			
+			return spr_master;
+		}
+		
 		
 		public void VerificaItemCompra(String nomeloja, int numeroItem) {
 			
-			int money = Integer.parseInt(Character_Data.Money_A);
-			
-			
+			int money = Integer.parseInt(Character_Data.Money_A);		
 			if(nomeloja.equals("SodaMachine")) {
 				if(numeroItem == 1) {
-					if(money >= 0) { AdicionaItemMochila("Cola"); money = money;  Character_Data.Money_A = String.valueOf(money); }
+					if(money >= 10) { AdicionaItemMochila("Refrigerante"); money = money;  Character_Data.Money_A = String.valueOf(money); }
 				}
 			}
 		}
@@ -2445,40 +3001,11 @@ public class GameControl {
 		
 		// NPCS and Quests //
 		
-		public int IniciaQuest(String nomeQuest) {
-			
-			
+		public int IniciaQuest(String nomeQuest) {	
 			return 1;
 		}
 		
-		public String ConfiguraQuest(String nomeQuest, int etapaTexto) {
-			
-			if(!Character_Data.Quests_A.contains("Um pedido gentil")) {
-				Character_Data.Quests_A = "Um pedido gentil";
-			
-				if(nomeQuest.equals("Um pedido gentil") && etapaTexto == 1) {
-					return "Bom dia,  estou vendo que voce e novo por aqui...";
-				}
-				if(nomeQuest.equals("Um pedido gentil") && etapaTexto == 2) {
-					return "desculpe-me, voce parece um pouco surpreso de estar aqui hihi";
-				}
-				if(nomeQuest.equals("Um pedido gentil") && etapaTexto == 3) {
-					return "nao sei de onde voce veio, mas parece ser de longe";
-				}
-				if(nomeQuest.equals("Um pedido gentil") && etapaTexto == 4) {
-					return "sabe, eu estou meio encrencada. Minha mae me pediu para comprar Mel, mas todas as lojas onde procurei esta em falta";
-				}
-				if(nomeQuest.equals("Um pedido gentil") && etapaTexto == 5) {
-					return "ouvi algumas pessoas falando que voce pode encontrar 'Mel' diretamente das abelhas";
-				}
-				if(nomeQuest.equals("Um pedido gentil") && etapaTexto == 6) {
-					return "se voce encontrar alguma pelo seu caminho poderia trazer um pouco pra min?";
-				}
-				if(nomeQuest.equals("Um pedido gentil") && etapaTexto == 7) {
-					return "ohh...  nossa...  muito obrigada!";
-				}
-			}
-			
+		public String ConfiguraQuest(String nomeQuest, int etapaTexto) {			
 			return "";
 		}
 		
@@ -2652,37 +3179,37 @@ public class GameControl {
 				//SchoolerD
 				if(npcframe2 >= 1 && npcframe2 <= 19){
 			        spr_master = atlas_Npcs.createSprite("schoolerD2");   
-			        spr_master.setPosition(endright, -75);
+			        spr_master.setPosition(endleft, -75);
 			        spr_master.setSize(16, 39);
 			        lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 20 && npcframe2 <= 39){
 					spr_master = atlas_Npcs.createSprite("schoolerD1");   
-					spr_master.setPosition(endright, -75);
+					spr_master.setPosition(endleft, -75);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 40 && npcframe2 <= 59){
 					spr_master = atlas_Npcs.createSprite("schoolerD2");   
-					spr_master.setPosition(endright, -75);
+					spr_master.setPosition(endleft, -75);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 60 && npcframe2 <= 79){
 			        spr_master = atlas_Npcs.createSprite("schoolerD3");   
-			        spr_master.setPosition(endright, -75);
+			        spr_master.setPosition(endleft, -75);
 			        spr_master.setSize(16, 40);
 			        lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 80 && npcframe2 <= 99){
 					spr_master = atlas_Npcs.createSprite("schoolerD2");   
-					spr_master.setPosition(endright, -75);
+					spr_master.setPosition(endleft, -75);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 100 && npcframe2 <= 120){
 					spr_master = atlas_Npcs.createSprite("schoolerD1");   
-					spr_master.setPosition(endright, -75);
+					spr_master.setPosition(endleft, -75);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
@@ -2829,5 +3356,256 @@ public class GameControl {
 			}
 			
 			return lstSprites;
+		}
+		
+		
+		// Online Management//
+		
+		public void OperacaoOnline(String nomeOperacao, String subdado) {
+			
+			try {
+				String retorno = "retry";
+				
+				if(nomeOperacao.equals("Upload")) {
+					retorno = GerenciamentoOnline("Upload", "");
+				}
+				
+				if(nomeOperacao.equals("Download")) {
+					retorno = GerenciamentoOnline("Download", "");
+				}
+				
+				if(nomeOperacao.equals("Sincronizar")) {
+					retorno = GerenciamentoOnline("Sincronizar", "");
+				}
+				
+				if(nomeOperacao.equals("Chat")) {
+					retorno = GerenciamentoOnline("Chat", subdado);
+				}
+			}
+			
+			catch(Exception ex) {
+				
+			}		
+		}
+		
+		
+		public String GerenciamentoOnline(String tipoRequisicao, String subdado) throws IOException {
+			
+			String linhaLida;
+			String resposta;
+			String skill;
+			
+			try {
+			
+			if(tipoRequisicao.equals("Sincronizar")){
+				// Construct data
+				//data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("cityscale.mysql.uhserver.com", "UTF-8");
+		        
+				if(loopOnlineCheck <= 10) {
+					loopOnlineCheck++;
+				}
+				
+				if(loopOnlineCheck > 10) {
+				lstChats.clear();
+				lstOnlinePlayers.clear();
+				
+				posOnlineFX = Float.parseFloat(Character_Data.PX_A);
+				posOnlineFY = Float.parseFloat(Character_Data.PY_A);
+				
+				posOnlineX = Math.round(posOnlineFX);
+				posOnlineY = Math.round(posOnlineFX);
+				
+				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Account, "UTF-8");
+		        data += "&" + URLEncoder.encode("lrequest", "UTF-8") + "=" + URLEncoder.encode("Sincronizar", "UTF-8");
+		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("localhost", "UTF-8");
+		        data += "&" + URLEncoder.encode("lusername", "UTF-8") + "=" + URLEncoder.encode("citymaster", "UTF-8");
+		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("city123", "UTF-8");
+		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("cityscale", "UTF-8");
+		        data += "&" + URLEncoder.encode("lversion", "UTF-8") + "=" + URLEncoder.encode("a1", "UTF-8");
+		        //UserData
+		        data += "&" + URLEncoder.encode("lnome", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Name_A, "UTF-8");
+		        data += "&" + URLEncoder.encode("lhp", "UTF-8") + "=" + URLEncoder.encode(Character_Data.HP_A, "UTF-8");
+		        data += "&" + URLEncoder.encode("lmp", "UTF-8") + "=" + URLEncoder.encode(Character_Data.MP_A, "UTF-8");
+		        data += "&" + URLEncoder.encode("lposX", "UTF-8") + "=" + URLEncoder.encode(String.valueOf(posOnlineX), "UTF-8");
+		        data += "&" + URLEncoder.encode("lposY", "UTF-8") + "=" + URLEncoder.encode(String.valueOf(posOnlineY), "UTF-8");
+		        data += "&" + URLEncoder.encode("lmap", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Map_A, "UTF-8");
+		        data += "&" + URLEncoder.encode("llevel", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Level_A, "UTF-8");
+		        data += "&" + URLEncoder.encode("lsetchar", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Set_A, "UTF-8");
+		        data += "&" + URLEncoder.encode("lhair", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Hair_A, "UTF-8");
+		        data += "&" + URLEncoder.encode("lhat", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Hat_A, "UTF-8");
+		        data += "&" + URLEncoder.encode("lweapon", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Weapon_A, "UTF-8");
+		        data += "&" + URLEncoder.encode("lbattle", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Battle_A, "UTF-8");
+				data += "&" + URLEncoder.encode("lside", "UTF-8") + "=" + URLEncoder.encode(sidePlayer, "UTF-8");
+				data += "&" + URLEncoder.encode("lpos", "UTF-8") + "=" + URLEncoder.encode(String.valueOf(pos), "UTF-8");
+				data += "&" + URLEncoder.encode("lskillOnline", "UTF-8") + "=" + URLEncoder.encode("none", "UTF-8");
+				data += "&" + URLEncoder.encode("lchat", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8");
+				
+					
+		        // Send data
+		        //URL url = new URL("http://moonbolt.online/Conector/Online.php");
+		        URL url = new URL("http://localhost/Online.php");
+		        URLConnection conn = url.openConnection();
+		        conn.setDoOutput(true);
+		        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+		        wr.write(data);
+		        wr.flush();
+		        
+		        // Get the response
+		        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		        String line;
+		        line = "";
+		        retornoOnline = "retry";
+		        while ((line = rd.readLine()) != null) {
+		        	linhaLida = line;   
+		        	//Resultado: - Logado -. <br>done
+		        	
+		        	if(linhaLida.contains("SYSTEMCHAT")) {
+		        		TrataChatOnline(linhaLida);
+		        	}
+		        	
+			        if (linhaLida.contains("SYSTEMPLAYERS")) {            	
+		        		TrataPlayersOnline(linhaLida);     		
+		            }		            
+	    		}	        
+		        wr.close();
+		        rd.close();
+        
+		        loopOnlineCheck = 0;
+		        
+		        return retornoOnline;
+				}
+			}
+			
+			if(tipoRequisicao.equals("Chat")){
+				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Account, "UTF-8");
+		        data += "&" + URLEncoder.encode("lrequest", "UTF-8") + "=" + URLEncoder.encode("Chat", "UTF-8");
+		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("localhost", "UTF-8");
+		        data += "&" + URLEncoder.encode("lusername", "UTF-8") + "=" + URLEncoder.encode("citymaster", "UTF-8");
+		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("city123", "UTF-8");
+		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("cityscale", "UTF-8");		 
+		        data += "&" + URLEncoder.encode("lchat", "UTF-8") + "=" + URLEncoder.encode(subdado, "UTF-8");
+		        data += "&" + URLEncoder.encode("lnome", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Name_A, "UTF-8");
+		        
+		        // Send data
+		        URL url = new URL("http://localhost/Online.php");
+		        URLConnection conn = url.openConnection();
+		        conn.setDoOutput(true);
+		        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+		        wr.write(data);
+		        wr.flush();
+		        
+		        // Get the response
+		        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		        String line;
+		        line = subdado;
+		        retornoOnline = "retry";
+		        while ((line = rd.readLine()) != null) {
+		        	linhaLida = line;   
+		        	//Resultado: - Logado -. <br>done
+			        if (linhaLida.contains("Works")) {            	
+		        		retornoOnline = "Works";       		
+		            }		            
+	    		}	        
+		        wr.close();
+		        rd.close();
+			}
+					
+			return "";
+			}
+			
+			catch(Exception ex) {
+				return "retry";
+			}
+		}
+		
+		public ArrayList<Sprite> RecuperaPlayersOnline() {
+			
+			for(int i = 0; i < lstOnlinePlayers.size(); i++) {				
+				posOnlineFX = Float.parseFloat(lstOnlinePlayers.get(i).PX_A); 
+				posOnlineFY = Float.parseFloat(lstOnlinePlayers.get(i).PY_A);
+				posInjectorOnline = Integer.parseInt(lstOnlinePlayers.get(i).Position_A);
+				spr_master = MovChar(lstOnlinePlayers.get(i).Set_A,lstOnlinePlayers.get(i).Side_A,"","",posOnlineFX,posOnlineFY,posInjectorOnline);
+			}
+					
+			return lstSpritesOnline;
+		}
+		
+		public void TrataPlayersOnline(String dadosPlayer) {
+			onlineData = dadosPlayer.split(":");			
+			
+			Player plOnline = new Player();
+			
+			auxOnline = onlineData[16];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.Account = splitonlineData[1];
+			
+			auxOnline = onlineData[1];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.Name_A = splitonlineData[1];
+			
+			auxOnline = onlineData[2];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.HP_A = splitonlineData[1];
+			
+			auxOnline = onlineData[3];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.MP_A = splitonlineData[1];
+			
+			auxOnline = onlineData[4];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.PX_A = splitonlineData[1];
+			
+			auxOnline = onlineData[5];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.PY_A = splitonlineData[1];
+			
+			auxOnline = onlineData[6];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.Map_A = splitonlineData[1];
+			
+			auxOnline = onlineData[7];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.Level_A = splitonlineData[1];
+			
+			auxOnline = onlineData[8];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.Set_A = splitonlineData[1];
+			
+			auxOnline = onlineData[9];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.Hair_A = splitonlineData[1];
+			
+			auxOnline = onlineData[10];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.Hat_A = splitonlineData[1];
+		
+			auxOnline = onlineData[11];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.Weapon_A = splitonlineData[1];
+			
+			auxOnline = onlineData[12];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.Battle_A = splitonlineData[1];
+			
+			auxOnline = onlineData[13];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.Side_A = splitonlineData[1];
+			
+			auxOnline = onlineData[14];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.Position_A = splitonlineData[1];	
+			
+			lstOnlinePlayers.add(plOnline);
+		}
+		
+		public void TrataChatOnline(String dadosChat) {
+			onlineData = dadosChat.split(":");
+			auxOnline = onlineData[1];
+			splitonlineData = auxOnline.split("=");		
+			text = splitonlineData[1];	
+			auxOnline = onlineData[2];
+			splitonlineData = auxOnline.split("=");
+			text = text + ":" + splitonlineData[1].replaceFirst("<br />", "");
+			lstChats.add(auxOnline);
 		}
 }

@@ -33,6 +33,7 @@ public class Player {
 		public String Target_1;
 		public String Party_1;
 		public String Map_1;
+		public String Housing_1;
 		
 		public String Weapon_1;
 		public String Hat_1;
@@ -86,6 +87,7 @@ public class Player {
 		public String Target_2;
 		public String Party_2;
 		public String Map_2;
+		public String Housing_2;
 		
 		public String Weapon_2;
 		public String Hat_2;
@@ -139,6 +141,7 @@ public class Player {
 		public String Target_3;
 		public String Party_3;
 		public String Map_3;
+		public String Housing_3;
 		
 		public String Weapon_3;
 		public String Hat_3;
@@ -163,6 +166,90 @@ public class Player {
 		public String ActiveQuest_3;
 		public String Pet_3;
 		public String Online_3;
+	
+		public String Atk_A;
+		public String Def_A;
+		public String Name_A;
+		public String Job_A;
+		public String Level_A;
+		public String Sex_A;
+		public String HP_A;
+		public String MP_A;
+		public String HPMAX_A;
+		public String MPMAX_A;
+		public String StatusPoint_A;
+		public String SkillPoint_A;
+		public String Exp_A;
+		public String PX_A;
+		public String PY_A;
+		public String Jump_A;
+		public String Couch_A;
+		public String Money_A;
+		public String Stamina_A;
+		public String Speed_A;
+		public String State_A;
+		public String Walk_A;
+		public String Battle_A;
+		public String Target_A;
+		public String Party_A;
+		public String Map_A;
+		
+		public String Weapon_A;
+		public String Hat_A;
+		public String Hair_A;
+		public String Top_A;
+		public String Bottom_A;
+		public String Shoes_A;
+		public String AcessoryA_A;
+		public String AcessoryB_A;
+		
+		public String Strengh_A;
+		public String Agility_A;
+		public String Resistence_A;
+		public String Vitality_A;
+		public String Dextery_A;
+		public String Mind_A;
+		public String Lucky_A;
+		
+		public String Status_A;
+		public String Skills_A;
+		public String Itens_A;
+		public String Crystals_A;
+		public String Quests_A;
+		public String ActiveQuest_A;
+		public String Pet_A;
+		public String Online_A;
+		
+		
+		public String Position_A;
+		public String Side_A;
+		
+		
+		public String getHousing_1() {
+			return Housing_1;
+		}
+		public void setHousing_1(String housing_1) {
+			Housing_1 = housing_1;
+		}
+		public String getHousing_2() {
+			return Housing_2;
+		}
+		public void setHousing_2(String housing_2) {
+			Housing_2 = housing_2;
+		}
+		public String getHousing_3() {
+			return Housing_3;
+		}
+		public void setHousing_3(String housing_3) {
+			Housing_3 = housing_3;
+		}
+		public String getHousing_A() {
+			return Housing_A;
+		}
+		public void setHousing_A(String housing_A) {
+			Housing_A = housing_A;
+		}
+		public String Housing_A;
 		
 		public String Set_A;
 		
@@ -217,7 +304,7 @@ public class Player {
 			Set_3 = set_3;
 		}
 		//Character Active //	
-		public String Atk_A;
+		
 		public String getAtk_A() {
 			return Atk_A;
 		}
@@ -230,8 +317,7 @@ public class Player {
 		public void setDef_A(String def_A) {
 			Def_A = def_A;
 		}
-		public String Def_A;
-		public String Name_A;
+		
 		public String getAtk_1() {
 			return Atk_1;
 		}
@@ -550,55 +636,7 @@ public class Player {
 		public void setOnline_A(String online_A) {
 			Online_A = online_A;
 		}
-		public String Job_A;
-		public String Level_A;
-		public String Sex_A;
-		public String HP_A;
-		public String MP_A;
-		public String HPMAX_A;
-		public String MPMAX_A;
-		public String StatusPoint_A;
-		public String SkillPoint_A;
-		public String Exp_A;
-		public String PX_A;
-		public String PY_A;
-		public String Jump_A;
-		public String Couch_A;
-		public String Money_A;
-		public String Stamina_A;
-		public String Speed_A;
-		public String State_A;
-		public String Walk_A;
-		public String Battle_A;
-		public String Target_A;
-		public String Party_A;
-		public String Map_A;
 		
-		public String Weapon_A;
-		public String Hat_A;
-		public String Hair_A;
-		public String Top_A;
-		public String Bottom_A;
-		public String Shoes_A;
-		public String AcessoryA_A;
-		public String AcessoryB_A;
-		
-		public String Strengh_A;
-		public String Agility_A;
-		public String Resistence_A;
-		public String Vitality_A;
-		public String Dextery_A;
-		public String Mind_A;
-		public String Lucky_A;
-		
-		public String Status_A;
-		public String Skills_A;
-		public String Itens_A;
-		public String Crystals_A;
-		public String Quests_A;
-		public String ActiveQuest_A;
-		public String Pet_A;
-		public String Online_A;
 		
 		
 		public String getWalk_1() {

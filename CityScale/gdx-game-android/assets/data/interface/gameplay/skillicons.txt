@@ -1,60 +1,228 @@
 skillicons.png
-size: 304, 27
+size: 38, 864
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-btnfireball
+btnatkboost
   rotate: false
   xy: 0, 0
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
   index: -1
+btnberserk
+  rotate: false
+  xy: 0, 27
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnbulletrain
+  rotate: false
+  xy: 0, 54
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btndashkick
+  rotate: false
+  xy: 0, 81
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btndefboost
+  rotate: false
+  xy: 0, 108
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btndoublehit
+  rotate: false
+  xy: 0, 135
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnfastshot
+  rotate: false
+  xy: 0, 162
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnfireball
+  rotate: false
+  xy: 0, 189
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnflysword
+  rotate: false
+  xy: 0, 216
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnhammercrash
+  rotate: false
+  xy: 0, 243
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
 btnheal
   rotate: false
-  xy: 38, 0
+  xy: 0, 270
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnhealthboost
+  rotate: false
+  xy: 0, 297
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnholyprism
+  rotate: false
+  xy: 0, 324
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
   index: -1
 btnicecrystal
   rotate: false
-  xy: 76, 0
+  xy: 0, 351
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnimpound
+  rotate: false
+  xy: 0, 378
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btninvisibility
+  rotate: false
+  xy: 0, 405
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnironshield
+  rotate: false
+  xy: 0, 432
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnlockshot
+  rotate: false
+  xy: 0, 459
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnmine
+  rotate: false
+  xy: 0, 486
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnoverpower
+  rotate: false
+  xy: 0, 513
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnpoisonhit
+  rotate: false
+  xy: 0, 540
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnprecision
+  rotate: false
+  xy: 0, 567
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnprotect
+  rotate: false
+  xy: 0, 594
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnragebound
+  rotate: false
+  xy: 0, 621
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnravenblade
+  rotate: false
+  xy: 0, 648
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnregen
+  rotate: false
+  xy: 0, 675
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
   index: -1
 btnrockbound
   rotate: false
-  xy: 114, 0
+  xy: 0, 702
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
   index: -1
 btnsoulclash
   rotate: false
-  xy: 152, 0
+  xy: 0, 729
+  size: 38, 27
+  orig: 38, 27
+  offset: 0, 0
+  index: -1
+btnsteal
+  rotate: false
+  xy: 0, 756
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
   index: -1
 btntemplate
   rotate: false
-  xy: 190, 0
+  xy: 0, 783
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
   index: -1
 btnthundercloud
   rotate: false
-  xy: 228, 0
+  xy: 0, 810
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
   index: -1
 btntripleattack
   rotate: false
-  xy: 266, 0
+  xy: 0, 837
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
