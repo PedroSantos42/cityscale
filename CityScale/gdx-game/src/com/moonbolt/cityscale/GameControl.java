@@ -865,7 +865,7 @@ public class GameControl {
 	
 		public Sprite MovChar(String set, String side,String walk, String type, float posX, float posY, int posInterject) {
 			
-			if(isCasting && !castOver) {
+			if(isCasting) {
 				CastTime();
 				
 				if(set.equals("basic_set_male")) {
@@ -885,11 +885,6 @@ public class GameControl {
 						spr_master = atlas_basic_female_set.createSprite("basic_set_female_magician_left2"); spr_master.setPosition(posX - 4f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master;
 					}
 				}
-				
-				if(isCasting && castOver) {
-					sadsa
-				}
-				
 				
 				return spr_master;
 			}
@@ -2649,7 +2644,7 @@ public class GameControl {
 							sk.posX = (int) mobX - 10;
 							sk.posY = (int) mobY;
 							mobHP = Integer.parseInt(lstMonsters.get(countA).HP);
-							dmg = sk.damage * 3;
+							dmg = sk.CalculaDanoSkill(sk, Character_Data);
 							mobHP = mobHP - dmg;
 							lstMonsters.get(countA).HP = String.valueOf(mobHP);
 							

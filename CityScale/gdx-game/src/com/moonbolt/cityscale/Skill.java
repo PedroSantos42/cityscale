@@ -24,11 +24,100 @@ public class Skill
 	public boolean overEffect;
 	public boolean isAreaSkill;
 	public TextureAtlas atlas_tripleattack;
+	
 	public TextureAtlas atlas_icecrystal;
+	public TextureAtlas atlas_fireball;
+	public TextureAtlas atlas_thundercloud;
+	public TextureAtlas atlas_rockbound;
+	public TextureAtlas atlas_soulclash;
+	
+	public TextureAtlas atlas_flysword;
+	public TextureAtlas atlas_healthboost;
+	public TextureAtlas atlas_havenblade;
+	public TextureAtlas atlas_ironshield;
+	public TextureAtlas atlas_protect;
+	
+	public TextureAtlas atlas_heal;
+	public TextureAtlas atlas_atkboost;
+	public TextureAtlas atlas_defboost;
+	public TextureAtlas atlas_regen;
+	public TextureAtlas atlas_holyprism;
+	
+	public TextureAtlas atlas_bulletrain;
+	public TextureAtlas atlas_lockshot;
+	public TextureAtlas atlas_precision;
+	public TextureAtlas atlas_mine;
+	public TextureAtlas atlas_fastshot;
+	
+	public TextureAtlas atlas_invisibility;
+	public TextureAtlas atlas_poisonhit;
+	public TextureAtlas atlas_dashkick;
+	public TextureAtlas atlas_steal;
+	public TextureAtlas atlas_doublehit;
+	
+	public TextureAtlas atlas_hammercrash;
+	public TextureAtlas atlas_ragebound;
+	public TextureAtlas atlas_overpower;
+	public TextureAtlas atlas_berserk;
+	public TextureAtlas atlas_impound;
+	
+	//public TextureAtlas atlas
+	
+	
 	public Sprite spr_master;
 	
 	public Skill() {
+		//Novice
 		atlas_tripleattack = new TextureAtlas(Gdx.files.internal("data/skills/tripleattack.txt"));
+		
+		//Mage
+		atlas_icecrystal = new TextureAtlas(Gdx.files.internal("data/skills/icecrystal.txt"));
+		atlas_fireball = new TextureAtlas(Gdx.files.internal("data/skills/fireball.txt"));
+		atlas_thundercloud = new TextureAtlas(Gdx.files.internal("data/skills/thundercloud.txt"));
+		atlas_rockbound = new TextureAtlas(Gdx.files.internal("data/skills/rockbound.txt"));
+		atlas_soulclash = new TextureAtlas(Gdx.files.internal("data/skills/soulclash.txt"));
+		
+		//Swordman
+		atlas_flysword = new TextureAtlas(Gdx.files.internal("data/skills/flysword.txt"));
+		atlas_healthboost = new TextureAtlas(Gdx.files.internal("data/skills/healthboost.txt"));
+		atlas_havenblade = new TextureAtlas(Gdx.files.internal("data/skills/havenblade.txt"));
+		atlas_ironshield = new TextureAtlas(Gdx.files.internal("data/skills/ironshield.txt"));
+		atlas_protect = new TextureAtlas(Gdx.files.internal("data/skills/protect.txt"));
+		
+		//Medic
+		atlas_heal = new TextureAtlas(Gdx.files.internal("data/skills/flysword.txt"));
+		atlas_atkboost = new TextureAtlas(Gdx.files.internal("data/skills/atkboost.txt"));
+		atlas_defboost = new TextureAtlas(Gdx.files.internal("data/skills/defboost.txt"));
+		atlas_regen = new TextureAtlas(Gdx.files.internal("data/skills/regen.txt"));
+		atlas_holyprism = new TextureAtlas(Gdx.files.internal("data/skills/holyprism.txt"));
+		
+		//Gunner
+		atlas_bulletrain = new TextureAtlas(Gdx.files.internal("data/skills/bulletrain.txt"));
+		atlas_lockshot = new TextureAtlas(Gdx.files.internal("data/skills/lockshot.txt"));
+		atlas_precision = new TextureAtlas(Gdx.files.internal("data/skills/precision.txt"));
+		atlas_mine = new TextureAtlas(Gdx.files.internal("data/skills/mine.txt"));
+		atlas_fastshot = new TextureAtlas(Gdx.files.internal("data/skills/fastshot.txt"));
+		
+		//Gunner
+		atlas_bulletrain = new TextureAtlas(Gdx.files.internal("data/skills/bulletrain.txt"));
+		atlas_lockshot = new TextureAtlas(Gdx.files.internal("data/skills/lockshot.txt"));
+		atlas_precision = new TextureAtlas(Gdx.files.internal("data/skills/precision.txt"));
+		atlas_mine = new TextureAtlas(Gdx.files.internal("data/skills/mine.txt"));
+		atlas_fastshot = new TextureAtlas(Gdx.files.internal("data/skills/fastshot.txt"));
+		
+		//Thief
+		atlas_invisibility = new TextureAtlas(Gdx.files.internal("data/skills/invisibility.txt"));
+		atlas_poisonhit = new TextureAtlas(Gdx.files.internal("data/skills/poisonhit.txt"));
+		atlas_dashkick = new TextureAtlas(Gdx.files.internal("data/skills/dashkick.txt"));
+		atlas_steal = new TextureAtlas(Gdx.files.internal("data/skills/steal.txt"));
+		atlas_doublehit = new TextureAtlas(Gdx.files.internal("data/skills/doublehit.txt"));
+		
+		//Beater
+		atlas_hammercrash = new TextureAtlas(Gdx.files.internal("data/skills/hammercrash.txt"));
+		atlas_ragebound = new TextureAtlas(Gdx.files.internal("data/skills/ragebound.txt"));
+		atlas_overpower = new TextureAtlas(Gdx.files.internal("data/skills/overpower.txt"));
+		atlas_berserk = new TextureAtlas(Gdx.files.internal("data/skills/berserk.txt"));
+		atlas_impound = new TextureAtlas(Gdx.files.internal("data/skills/impound.txt"));
 	}
 	
 	public Sprite CarregaEfeitoFrame(String nomeSkill, int countFrame) {
@@ -788,12 +877,59 @@ public class Skill
 		int pStr;
 		int pAgi;
 		int pluk;
+		int dmg = 0;
 		
-		//Mage
-		if(sk.nameSkill.equals("")){
-			
+		pStr = Integer.parseInt(char_data.Strengh_A);
+		pMind = Integer.parseInt(char_data.Mind_A);
+		
+		////////Novice //////
+		if(sk.nameSkill.equals("tripleattack")){
+			dmg = pStr * 3;
 		}
-		return 0;
+		
+		////////Mage //////
+		if(sk.nameSkill.equals("fireball")){
+			dmg = (pMind + 20) * 3;
+		}
+		
+		if(sk.nameSkill.equals("thundercloud")){
+			dmg = (pMind + 20) * 3;
+		}
+		
+		if(sk.nameSkill.equals("rockbound")){
+			dmg = (pMind + 20) * 3;
+		}
+		
+		if(sk.nameSkill.equals("soulclash")){
+			dmg = (pMind + 20) * 3;
+		}
+		
+		if(sk.nameSkill.equals("icecrystal")){
+			dmg = (pMind + 20) * 3;
+		}
+		
+		////////Swordman //////
+		if(sk.nameSkill.equals("flysword")){
+			dmg = (pMind + 20) * 3;
+		}
+		
+		if(sk.nameSkill.equals("healthboost")){
+			dmg = (pMind + 20) * 3;
+		}
+		
+		if(sk.nameSkill.equals("havenblade")){
+			dmg = (pMind + 20) * 3;
+		}
+		
+		if(sk.nameSkill.equals("ironshield")){
+			dmg = (pMind + 20) * 3;
+		}
+		
+		if(sk.nameSkill.equals("protect")){
+			dmg = (pMind + 20) * 3;
+		}
+		
+		return dmg;
 	}
 }
 
