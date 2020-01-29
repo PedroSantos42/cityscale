@@ -33,7 +33,7 @@ public class Skill
 	
 	public TextureAtlas atlas_flysword;
 	public TextureAtlas atlas_healthboost;
-	public TextureAtlas atlas_havenblade;
+	public TextureAtlas atlas_ravenblade;
 	public TextureAtlas atlas_ironshield;
 	public TextureAtlas atlas_protect;
 	
@@ -80,7 +80,7 @@ public class Skill
 		//Swordman
 		atlas_flysword = new TextureAtlas(Gdx.files.internal("data/skills/flysword.txt"));
 		atlas_healthboost = new TextureAtlas(Gdx.files.internal("data/skills/healthboost.txt"));
-		atlas_havenblade = new TextureAtlas(Gdx.files.internal("data/skills/havenblade.txt"));
+		atlas_ravenblade = new TextureAtlas(Gdx.files.internal("data/skills/ravenblade.txt"));
 		atlas_ironshield = new TextureAtlas(Gdx.files.internal("data/skills/ironshield.txt"));
 		atlas_protect = new TextureAtlas(Gdx.files.internal("data/skills/protect.txt"));
 		
@@ -229,7 +229,7 @@ public class Skill
 			spr_master = atlas_icecrystal.createSprite("impound" + countFrame);
 		}
 		
-		//Clown
+		//Gambler
 		if(nomeSkill.equals("drawcard")) {
 			spr_master = atlas_icecrystal.createSprite("drawcard" + countFrame);
 		}
@@ -487,8 +487,8 @@ public class Skill
 			novaSkill.overEffect = false;
 			novaSkill.isAreaSkill = false;
 		}
-		if(nomeSkill == "havenblade") {
-			novaSkill.nameSkill = "havenblade";
+		if(nomeSkill == "ravenblade") {
+			novaSkill.nameSkill = "ravenblade";
 			novaSkill.caster = usr;
 			novaSkill.posX = 0;
 			novaSkill.posY = 0;
@@ -841,7 +841,7 @@ public class Skill
 		//Swordman
 		if(nomeSkill.equals("flysword")) { return false; }
 		if(nomeSkill.equals("healthboost")) { return false; }
-		if(nomeSkill.equals("havenblade")) { return false; }
+		if(nomeSkill.equals("ravenblade")) { return false; }
 		if(nomeSkill.equals("ironshield")) { return false; }
 		if(nomeSkill.equals("protect")) { return true; }
 		
@@ -877,10 +877,16 @@ public class Skill
 		int pStr;
 		int pAgi;
 		int pluk;
+		int pvit;
 		int dmg = 0;
-		
+		int weapon = 0;
 		pStr = Integer.parseInt(char_data.Strengh_A);
 		pMind = Integer.parseInt(char_data.Mind_A);
+		pDex = Integer.parseInt(char_data.Dextery_A);
+		pluk = Integer.parseInt(char_data.Lucky_A);
+		pAgi = Integer.parseInt(char_data.Agility_A);
+		pvit = Integer.parseInt(char_data.Vitality_A);
+		
 		
 		////////Novice //////
 		if(sk.nameSkill.equals("tripleattack")){
@@ -893,42 +899,111 @@ public class Skill
 		}
 		
 		if(sk.nameSkill.equals("thundercloud")){
-			dmg = (pMind + 20) * 3;
+			dmg = (pMind + 40 + pDex) * 2;
 		}
 		
 		if(sk.nameSkill.equals("rockbound")){
-			dmg = (pMind + 20) * 3;
+			dmg = (pMind + 5 + pluk * 2) * 2;
 		}
 		
 		if(sk.nameSkill.equals("soulclash")){
-			dmg = (pMind + 20) * 3;
+			dmg = (pMind + 100) * 5;
 		}
 		
 		if(sk.nameSkill.equals("icecrystal")){
-			dmg = (pMind + 20) * 3;
+			dmg = (pMind + pvit + 30) * 2;
 		}
 		
 		////////Swordman //////
 		if(sk.nameSkill.equals("flysword")){
-			dmg = (pMind + 20) * 3;
+			dmg = ((pStr * 2) + (pluk) * 2);
 		}
 		
 		if(sk.nameSkill.equals("healthboost")){
-			dmg = (pMind + 20) * 3;
+			//dmg = (pvit * 2);
 		}
 		
-		if(sk.nameSkill.equals("havenblade")){
-			dmg = (pMind + 20) * 3;
+		if(sk.nameSkill.equals("ravenblade")){
+			dmg = (pStr + 60 + pAgi) * 2;
 		}
 		
 		if(sk.nameSkill.equals("ironshield")){
-			dmg = (pMind + 20) * 3;
+			//dmg = (pMind + 20) * 3;
 		}
 		
 		if(sk.nameSkill.equals("protect")){
-			dmg = (pMind + 20) * 3;
+			//dmg = (pMind + 0) * 3;
 		}
 		
+		////////Gunner //////
+		if(sk.nameSkill.equals("bulletrain")){
+			dmg = (pDex + pluk + 60) * 2;
+		}
+
+		if(sk.nameSkill.equals("lockshot")){
+			dmg = (pDex + 120) * 2;
+		}
+
+		if(sk.nameSkill.equals("precision")){
+			//dmg = (pMind + 5 + pluk * 2) * 2;
+		}
+
+		if(sk.nameSkill.equals("mine")){
+			dmg = (pMind + 200) * 2;
+		}
+
+		if(sk.nameSkill.equals("fastshot")){
+			dmg = (pAgi + 5);
+		}
+		
+		////////Thief //////
+		if(sk.nameSkill.equals("invisibility")){
+			//dmg = (pDex + pluk + 60) * 2;
+		}
+
+		if(sk.nameSkill.equals("poisonhit")){
+			dmg = (pDex + pluk + 60) * 2;
+		}
+
+		if(sk.nameSkill.equals("dashkick")){
+			dmg = (pStr * 2) + (pluk * 2);
+		}
+
+		if(sk.nameSkill.equals("steal")){
+			//dmg = (pMind + 200) * 2;
+		}
+
+		if(sk.nameSkill.equals("doublehit")){
+			dmg = (pAgi + 50) * 3;
+		}
+		
+		////////Beater //////
+		if(sk.nameSkill.equals("hammercrash")){
+			dmg = (pDex + pStr + 130) * 3;
+		}
+
+		if(sk.nameSkill.equals("ragebound")){
+			//dmg = (pDex + pluk + 60) * 2;
+		}
+
+		if(sk.nameSkill.equals("overpower")){
+			//dmg = (pStr * 2) + (pluk * 2);
+		}
+
+		if(sk.nameSkill.equals("berserk")){
+			dmg = ((pStr * 3) + (pvit * 2) + (pluk * 2)) * 3;
+		}
+
+		if(sk.nameSkill.equals("impound")){
+			dmg = (pAgi + pMind + 20) * 3;
+		}
+		
+		////////Gambler //////
+		if(sk.nameSkill.equals("amplitude")){
+			dmg = (pluk * 3) * 2;
+		}
+		
+		dmg = dmg + weapon;
 		return dmg;
 	}
 }
