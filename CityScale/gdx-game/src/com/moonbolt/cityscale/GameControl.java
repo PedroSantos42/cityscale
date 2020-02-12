@@ -82,7 +82,6 @@ public class GameControl {
 		private int spAttackMob = 0;
 		private int delayTime = 0;
 		private int castTime = 0;
-		private int castAnimation = 0;
 		
 	    private float npcframe = 1;
 	    private float npcframe2 = 2;
@@ -824,7 +823,7 @@ public class GameControl {
 						if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i); spr_master.setPosition(posX, posY + 20.7f); spr_master.setSize(10, 15); return spr_master; }
 					}
 					
-					if(inBattle && walk.equals("Stop")) {
+					if((inBattle && walk.equals("Stop")) || isCasting) {
 						text = Character_Data.Battle_A;
 						if(text.equals("yes_Right") && (pos == 1 || pos == 3 || pos == 5 || pos == 6)) { if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i + "battle2_right"); spr_master.setPosition(posX  + 6.5f, posY + 44f); spr_master.setSize(10, 15); return spr_master; } }
 						if(text.equals("yes_Right") && (pos == 2 || pos == 4)) { if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i + "battle2_right"); spr_master.setPosition(posX  + 6.5f, posY + 44.2f); spr_master.setSize(10, 15); return spr_master; } }
@@ -846,7 +845,7 @@ public class GameControl {
 						if(hairName.equals("hair" + i + "_f")) { spr_master = atlas_hairs.createSprite("hair" + i + "_f"); spr_master.setPosition(posX - 0.2f, posY + 19f); spr_master.setSize(10, 15); return spr_master; }
 					}
 					
-					if(inBattle && walk.equals("Stop")) {
+					if((inBattle && walk.equals("Stop")) || isCasting) {
 						text = Character_Data.Battle_A;
 						if(text.equals("yes_Right") && (pos == 1 || pos == 3 || pos == 5 || pos == 6)) { if(hairName.equals("hair" + i + "_f")) { spr_master = atlas_hairs.createSprite("hair" + i + "battle" + "_f" + "_right"); spr_master.setPosition(posX  + 3.8f, posY + 38.3f); spr_master.setSize(10, 15); return spr_master; } }
      					if(text.equals("yes_Right") && (pos == 2 || pos == 4)) { if(hairName.equals("hair" + i + "_f")) { spr_master = atlas_hairs.createSprite("hair" + i + "battle" + "_f" + "_right"); spr_master.setPosition(posX  + 3.8f, posY + 38.1f); spr_master.setSize(10, 15); return spr_master; } }					
@@ -2451,13 +2450,9 @@ public class GameControl {
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("mine", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("mine",mpPlayer)) { isCasting = true; castOver = false; }
+					if(Skill.CheckMP("mine",mpPlayer)) { isCasting = true; }
 				}	
 			}
-		}
-		
-		public void VerificaCampoSkill(){
-			
 		}
 		
 		public void CastTime(){
@@ -2467,12 +2462,9 @@ public class GameControl {
 			playerMind = Integer.parseInt(Character_Data.Mind_A);
 			
 			castTime--;
-			
 			castTime = castTime - ((playerDextery + playerMind) / 20);
 			
 			if(castTime < 0) {
-				castOver = true;
-				castAnimation = 20;
 				VerificaSkillDano(skillUsed,posTouchSkillX,posTouchSkillY);
 				posTouchSkillX = 0;
 				posTouchSkillY = 0;
@@ -2626,8 +2618,7 @@ public class GameControl {
 						lstSkills.add(sk);
 						attackFrame = true;
 						playerManualAtkDelay = 20;
-						delayTime = sk.delay;
-						
+						delayTime = sk.delay;						
 					}					
 				}
 			}
