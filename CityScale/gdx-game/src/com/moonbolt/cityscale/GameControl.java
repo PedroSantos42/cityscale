@@ -128,6 +128,7 @@ public class GameControl {
 		private TextureAtlas atlas_basic_male_set;
 		private TextureAtlas atlas_basic_female_set;
 		private TextureAtlas atlas_gameplay_interface;
+		private TextureAtlas atlas_btnskills;
 		private TextureAtlas atlas_shop;
 		private TextureAtlas atlas_objectsMetro;
 		private TextureAtlas atlas_Mob;
@@ -190,7 +191,7 @@ public class GameControl {
 			atlas_gameplay_interface = new TextureAtlas(Gdx.files.internal("data/interface/gameplay/gameplay.txt"));
 			atlas_objectsMetro = new TextureAtlas(Gdx.files.internal("data/assets/objects1.txt"));
 			atlas_shop = new TextureAtlas(Gdx.files.internal("data/interface/shops/shops.txt"));
-			
+			atlas_btnskills = new TextureAtlas(Gdx.files.internal("data/interface/gameplay/skillicons.txt"));
 			//Monsters
 			atlas_MonsterSlime = new TextureAtlas(Gdx.files.internal("data/monsters/mobs.txt"));
 			
@@ -823,14 +824,14 @@ public class GameControl {
 						if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i); spr_master.setPosition(posX, posY + 20.7f); spr_master.setSize(10, 15); return spr_master; }
 					}
 					
-					if((inBattle && walk.equals("Stop")) || isCasting) {
+					if(inBattle && walk.equals("Stop")) {
 						text = Character_Data.Battle_A;
 						if(text.equals("yes_Right") && (pos == 1 || pos == 3 || pos == 5 || pos == 6)) { if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i + "battle2_right"); spr_master.setPosition(posX  + 6.5f, posY + 44f); spr_master.setSize(10, 15); return spr_master; } }
 						if(text.equals("yes_Right") && (pos == 2 || pos == 4)) { if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i + "battle2_right"); spr_master.setPosition(posX  + 6.5f, posY + 44.2f); spr_master.setSize(10, 15); return spr_master; } }
 						if(text.equals("yes_Left") && (pos == 1 || pos == 3 || pos == 5 || pos == 6)) { if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i + "battle2_left"); spr_master.setPosition(posX + 6.3f, posY + 44f); spr_master.setSize(10, 15); return spr_master; } }
 						if(text.equals("yes_Left") && (pos == 2 || pos == 4)) { if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i + "battle2_left"); spr_master.setPosition(posX + 6.3f, posY + 44.2f); spr_master.setSize(10, 15); return spr_master; } }
 					}
-					
+								
 					if(side.equals("Front") || side.equals("Front-Left") || side.equals("Front-Right")) { if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i); spr_master.setPosition(posX + 7f, posY + 43.5f); spr_master.setSize(10, 15); return spr_master; } }
 					if(side.equals("Right") || side.equals("Right-Front") || side.equals("Right-Back")) { if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i + "right"); spr_master.setPosition(posX + 5.5f, posY + 45f); spr_master.setSize(12, 15); return spr_master; } }
 					if(side.equals("Left") || side.equals("Left-Front") || side.equals("Left-Back")) { if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i + "left"); spr_master.setPosition(posX + 7f, posY + 45f); spr_master.setSize(12, 15); return spr_master; } }
@@ -845,7 +846,7 @@ public class GameControl {
 						if(hairName.equals("hair" + i + "_f")) { spr_master = atlas_hairs.createSprite("hair" + i + "_f"); spr_master.setPosition(posX - 0.2f, posY + 19f); spr_master.setSize(10, 15); return spr_master; }
 					}
 					
-					if((inBattle && walk.equals("Stop")) || isCasting) {
+					if(inBattle && walk.equals("Stop")) {
 						text = Character_Data.Battle_A;
 						if(text.equals("yes_Right") && (pos == 1 || pos == 3 || pos == 5 || pos == 6)) { if(hairName.equals("hair" + i + "_f")) { spr_master = atlas_hairs.createSprite("hair" + i + "battle" + "_f" + "_right"); spr_master.setPosition(posX  + 3.8f, posY + 38.3f); spr_master.setSize(10, 15); return spr_master; } }
      					if(text.equals("yes_Right") && (pos == 2 || pos == 4)) { if(hairName.equals("hair" + i + "_f")) { spr_master = atlas_hairs.createSprite("hair" + i + "battle" + "_f" + "_right"); spr_master.setPosition(posX  + 3.8f, posY + 38.1f); spr_master.setSize(10, 15); return spr_master; } }					
@@ -865,7 +866,7 @@ public class GameControl {
 	
 		public Sprite MovChar(String set, String side,String walk, String type, float posX, float posY, int posInterject) {
 			
-			if(isCasting && !castOver) {
+			if(isCasting) {
 				CastTime();
 				
 				if(set.equals("basic_set_male")) {
@@ -886,9 +887,6 @@ public class GameControl {
 					}
 				}
 				
-				if(isCasting && castOver) {
-					isCasting = false;
-				}
 				return spr_master;
 			}
 			
@@ -1735,13 +1733,13 @@ public class GameControl {
 				return spr_master;
 			}
 			if(item.equals("tripleAttackbtn")) {
-				spr_master = atlas_gameplay_interface.createSprite("btntripleattack");
+			    spr_master = atlas_btnskills.createSprite("btntripleattack");
 				spr_master.setSize(8, 16);
 				spr_master.setPosition(fX + 55, fY - 68.5f);
 				return spr_master;
 			}
 			if(item.equals("tripleAttackbtnMenu")) {
-				spr_master = atlas_gameplay_interface.createSprite("btntripleattack");
+				spr_master = atlas_btnskills.createSprite("btntripleattack");
 				spr_master.setSize(8, 16);
 				spr_master.setPosition(fX - 55, fY + 22);
 				return spr_master;
@@ -2403,7 +2401,7 @@ public class GameControl {
 					if(Skill.CheckMP("soulclash",mpPlayer)) { isCasting = true; castOver = false; }
 				}		
 			}
-			if(Character_Data.Job_A.equals("Priest")) {	
+			if(Character_Data.Job_A.equals("Medic")) {	
 				//Heal
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("heal", Character_Data.Name_A);
@@ -2539,11 +2537,11 @@ public class GameControl {
 			if(numSkill == 5 && Character_Data.Job_A.equals("Beater")) { skillUsed.IsRangedSkill("impound"); }
 			
 			//Doctor
-			if(numSkill == 1 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("heal"); }
-			if(numSkill == 2 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("atkboost"); }
-			if(numSkill == 3 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("defboost"); }
-			if(numSkill == 4 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("regen"); }
-			if(numSkill == 5 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("holyprism"); }
+			if(numSkill == 1 && Character_Data.Job_A.equals("Medic")) { skillUsed.IsRangedSkill("heal"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Medic")) { skillUsed.IsRangedSkill("atkboost"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Medic")) { skillUsed.IsRangedSkill("defboost"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Medic")) { skillUsed.IsRangedSkill("regen"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Medic")) { skillUsed.IsRangedSkill("holyprism"); }
 			
 			
 			
@@ -2572,9 +2570,9 @@ public class GameControl {
 			//Montando zona de attack do jogador
 			if(Character_Data.Job_A.equals("Novice") ||
 			   Character_Data.Job_A.equals("Swordman") ||
-			   Character_Data.Job_A.equals("Merchant") ||
+			   Character_Data.Job_A.equals("Beater") ||
 			   Character_Data.Job_A.equals("Thief") ||
-			   Character_Data.Job_A.equals("Monk")) {
+			   Character_Data.Job_A.equals("Medic")) {
 				
 				pAttackZoneXPlus = pX + 20;
 				pAttackZoneXMinus = pX - 20;
@@ -2647,7 +2645,7 @@ public class GameControl {
 							sk.posX = (int) mobX - 10;
 							sk.posY = (int) mobY;
 							mobHP = Integer.parseInt(lstMonsters.get(countA).HP);
-							dmg = sk.damage * 3;
+							dmg = sk.CalculaDanoSkill(sk, Character_Data);
 							mobHP = mobHP - dmg;
 							lstMonsters.get(countA).HP = String.valueOf(mobHP);
 							

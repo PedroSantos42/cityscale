@@ -303,6 +303,9 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 				spr_Interface = gameControl.InterfaceStreets305("tripleAttackbtn", ""); spr_Interface.draw(game.batch);  //ATK
 			}
 			
+			//Se for skill AoE  exibir aviso
+			spr_Interface = gameControl.InterfaceStreets305("ActionBtn", ""); spr_Interface.draw(game.batch);  //ATK
+			
 			//Chats
 			ExibeChats();
 			
