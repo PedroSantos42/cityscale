@@ -24,11 +24,100 @@ public class Skill
 	public boolean overEffect;
 	public boolean isAreaSkill;
 	public TextureAtlas atlas_tripleattack;
+	
 	public TextureAtlas atlas_icecrystal;
+	public TextureAtlas atlas_fireball;
+	public TextureAtlas atlas_thundercloud;
+	public TextureAtlas atlas_rockbound;
+	public TextureAtlas atlas_soulclash;
+	
+	public TextureAtlas atlas_flysword;
+	public TextureAtlas atlas_healthboost;
+	public TextureAtlas atlas_ravenblade;
+	public TextureAtlas atlas_ironshield;
+	public TextureAtlas atlas_protect;
+	
+	public TextureAtlas atlas_heal;
+	public TextureAtlas atlas_atkboost;
+	public TextureAtlas atlas_defboost;
+	public TextureAtlas atlas_regen;
+	public TextureAtlas atlas_holyprism;
+	
+	public TextureAtlas atlas_bulletrain;
+	public TextureAtlas atlas_lockshot;
+	public TextureAtlas atlas_precision;
+	public TextureAtlas atlas_mine;
+	public TextureAtlas atlas_fastshot;
+	
+	public TextureAtlas atlas_invisibility;
+	public TextureAtlas atlas_poisonhit;
+	public TextureAtlas atlas_dashkick;
+	public TextureAtlas atlas_steal;
+	public TextureAtlas atlas_doublehit;
+	
+	public TextureAtlas atlas_hammercrash;
+	public TextureAtlas atlas_ragebound;
+	public TextureAtlas atlas_overpower;
+	public TextureAtlas atlas_berserk;
+	public TextureAtlas atlas_impound;
+	
+	//public TextureAtlas atlas
+	
+	
 	public Sprite spr_master;
 	
 	public Skill() {
+		//Novice
 		atlas_tripleattack = new TextureAtlas(Gdx.files.internal("data/skills/tripleattack.txt"));
+		
+		//Mage
+		atlas_icecrystal = new TextureAtlas(Gdx.files.internal("data/skills/icecrystal.txt"));
+		atlas_fireball = new TextureAtlas(Gdx.files.internal("data/skills/fireball.txt"));
+		atlas_thundercloud = new TextureAtlas(Gdx.files.internal("data/skills/thundercloud.txt"));
+		atlas_rockbound = new TextureAtlas(Gdx.files.internal("data/skills/rockbound.txt"));
+		atlas_soulclash = new TextureAtlas(Gdx.files.internal("data/skills/soulclash.txt"));
+		
+		//Swordman
+		atlas_flysword = new TextureAtlas(Gdx.files.internal("data/skills/flysword.txt"));
+		atlas_healthboost = new TextureAtlas(Gdx.files.internal("data/skills/healthboost.txt"));
+		atlas_ravenblade = new TextureAtlas(Gdx.files.internal("data/skills/ravenblade.txt"));
+		atlas_ironshield = new TextureAtlas(Gdx.files.internal("data/skills/ironshield.txt"));
+		atlas_protect = new TextureAtlas(Gdx.files.internal("data/skills/protect.txt"));
+		
+		//Medic
+		atlas_heal = new TextureAtlas(Gdx.files.internal("data/skills/flysword.txt"));
+		atlas_atkboost = new TextureAtlas(Gdx.files.internal("data/skills/atkboost.txt"));
+		atlas_defboost = new TextureAtlas(Gdx.files.internal("data/skills/defboost.txt"));
+		atlas_regen = new TextureAtlas(Gdx.files.internal("data/skills/regen.txt"));
+		atlas_holyprism = new TextureAtlas(Gdx.files.internal("data/skills/holyprism.txt"));
+		
+		//Gunner
+		atlas_bulletrain = new TextureAtlas(Gdx.files.internal("data/skills/bulletrain.txt"));
+		atlas_lockshot = new TextureAtlas(Gdx.files.internal("data/skills/lockshot.txt"));
+		atlas_precision = new TextureAtlas(Gdx.files.internal("data/skills/precision.txt"));
+		atlas_mine = new TextureAtlas(Gdx.files.internal("data/skills/mine.txt"));
+		atlas_fastshot = new TextureAtlas(Gdx.files.internal("data/skills/fastshot.txt"));
+		
+		//Gunner
+		atlas_bulletrain = new TextureAtlas(Gdx.files.internal("data/skills/bulletrain.txt"));
+		atlas_lockshot = new TextureAtlas(Gdx.files.internal("data/skills/lockshot.txt"));
+		atlas_precision = new TextureAtlas(Gdx.files.internal("data/skills/precision.txt"));
+		atlas_mine = new TextureAtlas(Gdx.files.internal("data/skills/mine.txt"));
+		atlas_fastshot = new TextureAtlas(Gdx.files.internal("data/skills/fastshot.txt"));
+		
+		//Thief
+		atlas_invisibility = new TextureAtlas(Gdx.files.internal("data/skills/invisibility.txt"));
+		atlas_poisonhit = new TextureAtlas(Gdx.files.internal("data/skills/poisonhit.txt"));
+		atlas_dashkick = new TextureAtlas(Gdx.files.internal("data/skills/dashkick.txt"));
+		atlas_steal = new TextureAtlas(Gdx.files.internal("data/skills/steal.txt"));
+		atlas_doublehit = new TextureAtlas(Gdx.files.internal("data/skills/doublehit.txt"));
+		
+		//Beater
+		atlas_hammercrash = new TextureAtlas(Gdx.files.internal("data/skills/hammercrash.txt"));
+		atlas_ragebound = new TextureAtlas(Gdx.files.internal("data/skills/ragebound.txt"));
+		atlas_overpower = new TextureAtlas(Gdx.files.internal("data/skills/overpower.txt"));
+		atlas_berserk = new TextureAtlas(Gdx.files.internal("data/skills/berserk.txt"));
+		atlas_impound = new TextureAtlas(Gdx.files.internal("data/skills/impound.txt"));
 	}
 	
 	public Sprite CarregaEfeitoFrame(String nomeSkill, int countFrame) {
@@ -140,7 +229,7 @@ public class Skill
 			spr_master = atlas_icecrystal.createSprite("impound" + countFrame);
 		}
 		
-		//Clown
+		//Gambler
 		if(nomeSkill.equals("drawcard")) {
 			spr_master = atlas_icecrystal.createSprite("drawcard" + countFrame);
 		}
@@ -398,8 +487,8 @@ public class Skill
 			novaSkill.overEffect = false;
 			novaSkill.isAreaSkill = false;
 		}
-		if(nomeSkill == "havenblade") {
-			novaSkill.nameSkill = "havenblade";
+		if(nomeSkill == "ravenblade") {
+			novaSkill.nameSkill = "ravenblade";
 			novaSkill.caster = usr;
 			novaSkill.posX = 0;
 			novaSkill.posY = 0;
@@ -752,7 +841,7 @@ public class Skill
 		//Swordman
 		if(nomeSkill.equals("flysword")) { return false; }
 		if(nomeSkill.equals("healthboost")) { return false; }
-		if(nomeSkill.equals("havenblade")) { return false; }
+		if(nomeSkill.equals("ravenblade")) { return false; }
 		if(nomeSkill.equals("ironshield")) { return false; }
 		if(nomeSkill.equals("protect")) { return true; }
 		
@@ -788,12 +877,134 @@ public class Skill
 		int pStr;
 		int pAgi;
 		int pluk;
+		int pvit;
+		int dmg = 0;
+		int weapon = 0;
+		pStr = Integer.parseInt(char_data.Strengh_A);
+		pMind = Integer.parseInt(char_data.Mind_A);
+		pDex = Integer.parseInt(char_data.Dextery_A);
+		pluk = Integer.parseInt(char_data.Lucky_A);
+		pAgi = Integer.parseInt(char_data.Agility_A);
+		pvit = Integer.parseInt(char_data.Vitality_A);
 		
-		//Mage
-		if(sk.nameSkill.equals("")){
-			
+		
+		////////Novice //////
+		if(sk.nameSkill.equals("tripleattack")){
+			dmg = pStr * 3;
 		}
-		return 0;
+		
+		////////Mage //////
+		if(sk.nameSkill.equals("fireball")){
+			dmg = (pMind + 20) * 3;
+		}
+		
+		if(sk.nameSkill.equals("thundercloud")){
+			dmg = (pMind + 40 + pDex) * 2;
+		}
+		
+		if(sk.nameSkill.equals("rockbound")){
+			dmg = (pMind + 5 + pluk * 2) * 2;
+		}
+		
+		if(sk.nameSkill.equals("soulclash")){
+			dmg = (pMind + 100) * 5;
+		}
+		
+		if(sk.nameSkill.equals("icecrystal")){
+			dmg = (pMind + pvit + 30) * 2;
+		}
+		
+		////////Swordman //////
+		if(sk.nameSkill.equals("flysword")){
+			dmg = ((pStr * 2) + (pluk) * 2);
+		}
+		
+		if(sk.nameSkill.equals("healthboost")){
+			//dmg = (pvit * 2);
+		}
+		
+		if(sk.nameSkill.equals("ravenblade")){
+			dmg = (pStr + 60 + pAgi) * 2;
+		}
+		
+		if(sk.nameSkill.equals("ironshield")){
+			//dmg = (pMind + 20) * 3;
+		}
+		
+		if(sk.nameSkill.equals("protect")){
+			//dmg = (pMind + 0) * 3;
+		}
+		
+		////////Gunner //////
+		if(sk.nameSkill.equals("bulletrain")){
+			dmg = (pDex + pluk + 60) * 2;
+		}
+
+		if(sk.nameSkill.equals("lockshot")){
+			dmg = (pDex + 120) * 2;
+		}
+
+		if(sk.nameSkill.equals("precision")){
+			//dmg = (pMind + 5 + pluk * 2) * 2;
+		}
+
+		if(sk.nameSkill.equals("mine")){
+			dmg = (pMind + 200) * 2;
+		}
+
+		if(sk.nameSkill.equals("fastshot")){
+			dmg = (pAgi + 5);
+		}
+		
+		////////Thief //////
+		if(sk.nameSkill.equals("invisibility")){
+			//dmg = (pDex + pluk + 60) * 2;
+		}
+
+		if(sk.nameSkill.equals("poisonhit")){
+			dmg = (pDex + pluk + 60) * 2;
+		}
+
+		if(sk.nameSkill.equals("dashkick")){
+			dmg = (pStr * 2) + (pluk * 2);
+		}
+
+		if(sk.nameSkill.equals("steal")){
+			//dmg = (pMind + 200) * 2;
+		}
+
+		if(sk.nameSkill.equals("doublehit")){
+			dmg = (pAgi + 50) * 3;
+		}
+		
+		////////Beater //////
+		if(sk.nameSkill.equals("hammercrash")){
+			dmg = (pDex + pStr + 130) * 3;
+		}
+
+		if(sk.nameSkill.equals("ragebound")){
+			//dmg = (pDex + pluk + 60) * 2;
+		}
+
+		if(sk.nameSkill.equals("overpower")){
+			//dmg = (pStr * 2) + (pluk * 2);
+		}
+
+		if(sk.nameSkill.equals("berserk")){
+			dmg = ((pStr * 3) + (pvit * 2) + (pluk * 2)) * 3;
+		}
+
+		if(sk.nameSkill.equals("impound")){
+			dmg = (pAgi + pMind + 20) * 3;
+		}
+		
+		////////Gambler //////
+		if(sk.nameSkill.equals("amplitude")){
+			dmg = (pluk * 3) * 2;
+		}
+		
+		dmg = dmg + weapon;
+		return dmg;
 	}
 }
 

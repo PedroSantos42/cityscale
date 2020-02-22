@@ -82,7 +82,6 @@ public class GameControl {
 		private int spAttackMob = 0;
 		private int delayTime = 0;
 		private int castTime = 0;
-		private int castAnimation = 0;
 		
 	    private float npcframe = 1;
 	    private float npcframe2 = 2;
@@ -128,6 +127,7 @@ public class GameControl {
 		private TextureAtlas atlas_basic_male_set;
 		private TextureAtlas atlas_basic_female_set;
 		private TextureAtlas atlas_gameplay_interface;
+		private TextureAtlas atlas_btnskills;
 		private TextureAtlas atlas_shop;
 		private TextureAtlas atlas_objectsMetro;
 		private TextureAtlas atlas_Mob;
@@ -179,6 +179,7 @@ public class GameControl {
 			lstNomes = new ArrayList<String>();
 			lstBuffs = new ArrayList<Buffs>();
 			lstChats = new ArrayList<String>();
+			lstSpritesOnline = new ArrayList<Sprite>();
 			
 			////////Atlas Section//////
 			//Character
@@ -190,7 +191,7 @@ public class GameControl {
 			atlas_gameplay_interface = new TextureAtlas(Gdx.files.internal("data/interface/gameplay/gameplay.txt"));
 			atlas_objectsMetro = new TextureAtlas(Gdx.files.internal("data/assets/objects1.txt"));
 			atlas_shop = new TextureAtlas(Gdx.files.internal("data/interface/shops/shops.txt"));
-			
+			atlas_btnskills = new TextureAtlas(Gdx.files.internal("data/interface/gameplay/skillicons.txt"));
 			//Monsters
 			atlas_MonsterSlime = new TextureAtlas(Gdx.files.internal("data/monsters/mobs.txt"));
 			
@@ -823,7 +824,7 @@ public class GameControl {
 						if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i); spr_master.setPosition(posX, posY + 20.7f); spr_master.setSize(10, 15); return spr_master; }
 					}
 					
-					if(inBattle && walk.equals("Stop")) {
+					if((inBattle && walk.equals("Stop")) || isCasting) {
 						text = Character_Data.Battle_A;
 						if(text.equals("yes_Right") && (pos == 1 || pos == 3 || pos == 5 || pos == 6)) { if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i + "battle2_right"); spr_master.setPosition(posX  + 6.5f, posY + 44f); spr_master.setSize(10, 15); return spr_master; } }
 						if(text.equals("yes_Right") && (pos == 2 || pos == 4)) { if(hairName.equals("hair" + i)) { spr_master = atlas_hairs.createSprite("hair" + i + "battle2_right"); spr_master.setPosition(posX  + 6.5f, posY + 44.2f); spr_master.setSize(10, 15); return spr_master; } }
@@ -845,7 +846,7 @@ public class GameControl {
 						if(hairName.equals("hair" + i + "_f")) { spr_master = atlas_hairs.createSprite("hair" + i + "_f"); spr_master.setPosition(posX - 0.2f, posY + 19f); spr_master.setSize(10, 15); return spr_master; }
 					}
 					
-					if(inBattle && walk.equals("Stop")) {
+					if((inBattle && walk.equals("Stop")) || isCasting) {
 						text = Character_Data.Battle_A;
 						if(text.equals("yes_Right") && (pos == 1 || pos == 3 || pos == 5 || pos == 6)) { if(hairName.equals("hair" + i + "_f")) { spr_master = atlas_hairs.createSprite("hair" + i + "battle" + "_f" + "_right"); spr_master.setPosition(posX  + 3.8f, posY + 38.3f); spr_master.setSize(10, 15); return spr_master; } }
      					if(text.equals("yes_Right") && (pos == 2 || pos == 4)) { if(hairName.equals("hair" + i + "_f")) { spr_master = atlas_hairs.createSprite("hair" + i + "battle" + "_f" + "_right"); spr_master.setPosition(posX  + 3.8f, posY + 38.1f); spr_master.setSize(10, 15); return spr_master; } }					
@@ -865,7 +866,7 @@ public class GameControl {
 	
 		public Sprite MovChar(String set, String side,String walk, String type, float posX, float posY, int posInterject) {
 			
-			if(isCasting && !castOver) {
+			if(isCasting) {
 				CastTime();
 				
 				if(set.equals("basic_set_male")) {
@@ -885,11 +886,6 @@ public class GameControl {
 						spr_master = atlas_basic_female_set.createSprite("basic_set_female_magician_left2"); spr_master.setPosition(posX - 4f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master;
 					}
 				}
-				
-				if(isCasting && castOver) {
-					sadsa
-				}
-				
 				
 				return spr_master;
 			}
@@ -1737,13 +1733,13 @@ public class GameControl {
 				return spr_master;
 			}
 			if(item.equals("tripleAttackbtn")) {
-				spr_master = atlas_gameplay_interface.createSprite("btntripleattack");
+			    spr_master = atlas_btnskills.createSprite("btntripleattack");
 				spr_master.setSize(8, 16);
 				spr_master.setPosition(fX + 55, fY - 68.5f);
 				return spr_master;
 			}
 			if(item.equals("tripleAttackbtnMenu")) {
-				spr_master = atlas_gameplay_interface.createSprite("btntripleattack");
+				spr_master = atlas_btnskills.createSprite("btntripleattack");
 				spr_master.setSize(8, 16);
 				spr_master.setPosition(fX - 55, fY + 22);
 				return spr_master;
@@ -2405,7 +2401,7 @@ public class GameControl {
 					if(Skill.CheckMP("soulclash",mpPlayer)) { isCasting = true; castOver = false; }
 				}		
 			}
-			if(Character_Data.Job_A.equals("Priest")) {	
+			if(Character_Data.Job_A.equals("Medic")) {	
 				//Heal
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("heal", Character_Data.Name_A);
@@ -2455,13 +2451,9 @@ public class GameControl {
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("mine", Character_Data.Name_A);
 					skillOnline = skillUsed.nameSkill + "|" + String.valueOf(skillUsed.countFrameEffect);
-					if(Skill.CheckMP("mine",mpPlayer)) { isCasting = true; castOver = false; }
+					if(Skill.CheckMP("mine",mpPlayer)) { isCasting = true; }
 				}	
 			}
-		}
-		
-		public void VerificaCampoSkill(){
-			
 		}
 		
 		public void CastTime(){
@@ -2471,12 +2463,9 @@ public class GameControl {
 			playerMind = Integer.parseInt(Character_Data.Mind_A);
 			
 			castTime--;
-			
 			castTime = castTime - ((playerDextery + playerMind) / 20);
 			
 			if(castTime < 0) {
-				castOver = true;
-				castAnimation = 20;
 				VerificaSkillDano(skillUsed,posTouchSkillX,posTouchSkillY);
 				posTouchSkillX = 0;
 				posTouchSkillY = 0;
@@ -2541,11 +2530,11 @@ public class GameControl {
 			if(numSkill == 5 && Character_Data.Job_A.equals("Beater")) { skillUsed.IsRangedSkill("impound"); }
 			
 			//Doctor
-			if(numSkill == 1 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("heal"); }
-			if(numSkill == 2 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("atkboost"); }
-			if(numSkill == 3 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("defboost"); }
-			if(numSkill == 4 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("regen"); }
-			if(numSkill == 5 && Character_Data.Job_A.equals("Doctor")) { skillUsed.IsRangedSkill("holyprism"); }
+			if(numSkill == 1 && Character_Data.Job_A.equals("Medic")) { skillUsed.IsRangedSkill("heal"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Medic")) { skillUsed.IsRangedSkill("atkboost"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Medic")) { skillUsed.IsRangedSkill("defboost"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Medic")) { skillUsed.IsRangedSkill("regen"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Medic")) { skillUsed.IsRangedSkill("holyprism"); }
 			
 			
 			
@@ -2574,9 +2563,9 @@ public class GameControl {
 			//Montando zona de attack do jogador
 			if(Character_Data.Job_A.equals("Novice") ||
 			   Character_Data.Job_A.equals("Swordman") ||
-			   Character_Data.Job_A.equals("Merchant") ||
+			   Character_Data.Job_A.equals("Beater") ||
 			   Character_Data.Job_A.equals("Thief") ||
-			   Character_Data.Job_A.equals("Monk")) {
+			   Character_Data.Job_A.equals("Medic")) {
 				
 				pAttackZoneXPlus = pX + 20;
 				pAttackZoneXMinus = pX - 20;
@@ -2630,8 +2619,7 @@ public class GameControl {
 						lstSkills.add(sk);
 						attackFrame = true;
 						playerManualAtkDelay = 20;
-						delayTime = sk.delay;
-						
+						delayTime = sk.delay;						
 					}					
 				}
 			}
@@ -2649,7 +2637,7 @@ public class GameControl {
 							sk.posX = (int) mobX - 10;
 							sk.posY = (int) mobY;
 							mobHP = Integer.parseInt(lstMonsters.get(countA).HP);
-							dmg = sk.damage * 3;
+							dmg = sk.CalculaDanoSkill(sk, Character_Data);
 							mobHP = mobHP - dmg;
 							lstMonsters.get(countA).HP = String.valueOf(mobHP);
 							
@@ -3415,12 +3403,14 @@ public class GameControl {
 				posOnlineX = Math.round(posOnlineFX);
 				posOnlineY = Math.round(posOnlineFX);
 				
-				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Account, "UTF-8");
+				String account = Character_Data.Account;
+				
+				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(account, "UTF-8");
 		        data += "&" + URLEncoder.encode("lrequest", "UTF-8") + "=" + URLEncoder.encode("Sincronizar", "UTF-8");
-		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("localhost", "UTF-8");
+		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("citybase.mysql.uhserver.com", "UTF-8");
 		        data += "&" + URLEncoder.encode("lusername", "UTF-8") + "=" + URLEncoder.encode("citymaster", "UTF-8");
-		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("city123", "UTF-8");
-		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("cityscale", "UTF-8");
+		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("City@2020", "UTF-8");
+		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("citybase", "UTF-8");
 		        data += "&" + URLEncoder.encode("lversion", "UTF-8") + "=" + URLEncoder.encode("a1", "UTF-8");
 		        //UserData
 		        data += "&" + URLEncoder.encode("lnome", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Name_A, "UTF-8");
@@ -3443,7 +3433,7 @@ public class GameControl {
 					
 		        // Send data
 		        //URL url = new URL("http://moonbolt.online/Conector/Online.php");
-		        URL url = new URL("http://localhost/Online.php");
+		        URL url = new URL("http://moonbolt.online/Conector/Online.php");
 		        URLConnection conn = url.openConnection();
 		        conn.setDoOutput(true);
 		        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
@@ -3479,15 +3469,15 @@ public class GameControl {
 			if(tipoRequisicao.equals("Chat")){
 				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Account, "UTF-8");
 		        data += "&" + URLEncoder.encode("lrequest", "UTF-8") + "=" + URLEncoder.encode("Chat", "UTF-8");
-		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("localhost", "UTF-8");
+		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("citybase.mysql.uhserver.com", "UTF-8");
 		        data += "&" + URLEncoder.encode("lusername", "UTF-8") + "=" + URLEncoder.encode("citymaster", "UTF-8");
-		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("city123", "UTF-8");
-		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("cityscale", "UTF-8");		 
+		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("City@2020", "UTF-8");
+		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("citybase", "UTF-8");		 
 		        data += "&" + URLEncoder.encode("lchat", "UTF-8") + "=" + URLEncoder.encode(subdado, "UTF-8");
 		        data += "&" + URLEncoder.encode("lnome", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Name_A, "UTF-8");
 		        
 		        // Send data
-		        URL url = new URL("http://localhost/Online.php");
+		        URL url = new URL("http://moonbolt.online/Conector/Online.php");
 		        URLConnection conn = url.openConnection();
 		        conn.setDoOutput(true);
 		        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
@@ -3520,11 +3510,13 @@ public class GameControl {
 		
 		public ArrayList<Sprite> RecuperaPlayersOnline() {
 			
+			lstSpritesOnline.clear();
 			for(int i = 0; i < lstOnlinePlayers.size(); i++) {				
 				posOnlineFX = Float.parseFloat(lstOnlinePlayers.get(i).PX_A); 
 				posOnlineFY = Float.parseFloat(lstOnlinePlayers.get(i).PY_A);
 				posInjectorOnline = Integer.parseInt(lstOnlinePlayers.get(i).Position_A);
 				spr_master = MovChar(lstOnlinePlayers.get(i).Set_A,lstOnlinePlayers.get(i).Side_A,"","",posOnlineFX,posOnlineFY,posInjectorOnline);
+				lstSpritesOnline.add(spr_master);
 			}
 					
 			return lstSpritesOnline;
@@ -3595,17 +3587,24 @@ public class GameControl {
 			splitonlineData = auxOnline.split("=");	
 			plOnline.Position_A = splitonlineData[1];	
 			
-			lstOnlinePlayers.add(plOnline);
+			if(!plOnline.Name_A.equals(Character_Data.Name_A)) {
+				lstOnlinePlayers.add(plOnline);
+			}
 		}
 		
 		public void TrataChatOnline(String dadosChat) {
 			onlineData = dadosChat.split(":");
 			auxOnline = onlineData[1];
+			//Nome do personagem
 			splitonlineData = auxOnline.split("=");		
 			text = splitonlineData[1];	
+			//Mensagem 
+			onlineData = dadosChat.split(":");
 			auxOnline = onlineData[2];
-			splitonlineData = auxOnline.split("=");
-			text = text + ":" + splitonlineData[1].replaceFirst("<br />", "");
+			splitonlineData = auxOnline.split("=");		
+			text = text + ": " + splitonlineData[1];	
+			//Conclusão
+			auxOnline = text;
 			lstChats.add(auxOnline);
 		}
 }

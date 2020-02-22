@@ -483,13 +483,12 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 	
 	private void TrataOnline() {
 		
-		if(lstPlayersOnline.size() > 0) {
 			lstPlayersOnline = gameControl.RecuperaPlayersOnline();
 			for(int i = 0; i < lstPlayersOnline.size(); i ++) {
 				spr_master = lstPlayersOnline.get(i);
 				spr_master.draw(game.batch);
 			}
-		}
+		
 	}
 	
 	public void ExibirNpcs(){

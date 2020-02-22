@@ -21,6 +21,8 @@
 	$lside = $_POST['lside'];
 	$lpos = $_POST['lpos'];
 	$lskillOnline = $_POST['lskillOnline'];
+	$laccount = $_POST['laccount'];
+	$lparty = $_POST['lparty'];
 	$lchat = $_POST['lchat'];
 	
 	#Variaveis de uso Global
@@ -53,7 +55,7 @@
 		}
 	
 		//Recupera Chat
-		$sql = "SELECT * FROM chats ORDER BY ChatID DESC LIMIT 3";
+		$sql = "SELECT * FROM Chats ORDER BY ChatID DESC LIMIT 3";
 		$result = $conn->query($sql);
 		
 		$lAll = '';
@@ -68,7 +70,7 @@
 		}
 		
 		//Verifica se já está ativo
-		$sql = "SELECT * FROM processo where ACCOUNT = '$ldata' ";
+		$sql = "SELECT * FROM Processos where ACCOUNT = '$ldata' ";
 		$result = $conn->query($sql);
 	
 		if ($result->num_rows > 0) {
@@ -77,7 +79,7 @@
 			//	$lnomeplayer = $row["NOME"];
 			//}
 			
-			$sql = "UPDATE processo set NOME = '$lnome',
+			$sql = "UPDATE Processos set NOME = '$lnome',
 									  HP = '$lhp',
 									  MP = '$lmp',
 									  POSX = '$lposX',
@@ -93,19 +95,19 @@
 									  POS = '$lpos',
 									  SKILLONLINE = '$lskillOnline',
 									  ACCOUNT = '$ldata'
+									  PARTY = '$lparty'
 									  where ACCOUNT = '$ldata' ";
 									  
 			$result = $conn->query($sql);
 			
 			if ($conn->query($sql) === TRUE) { echo nl2br("Resultado: \n - Atualizado com sucesso - \n"); } else { echo nl2br("Resultado: \n - Falhou na Atualizacao - \n") . $conn->error; }
 			$lAll = '';
-			$sql = "SELECT * FROM processo";
+			$sql = "SELECT * FROM Processos";
 			$result = $conn->query($sql);
 			
 				if ($result->num_rows > 0) {
 					while($row = $result->fetch_assoc()) {
-						
-						
+											
 						$lAll = $lAll . ("SYSTEMPLAYERS - :NOME=" . $row["NOME"]. 
 							          ":HP=" .  $row["HP"]. 
 									  ":MP=" . $row["MP"] . 
@@ -122,6 +124,7 @@
 									  ":POS=" . $row["POS"] .
 									  ":SKILLONLINE=" . $row["SKILLONLINE"] .
 									  ":ACCOUNT=" . $row["ACCOUNT"] .
+									  ":PARTY=" . $row["PARTY"] .
 									  ": - \n");
 					}
 					echo nl2br ($lAll);					
@@ -133,8 +136,8 @@
 			} else {
 			$lAll = '';
 			$sql = 
-			"INSERT INTO processo (NOME, HP, MP, POSX, POSY, MAP, LEVEL, SETCHAR, HAIR, HAT, WEAPON, BATTLE, SIDE, POS, SKILLONLINE, ACCOUNT, PARTY)  VALUES 
-			('$lnome', '$lhp', '$lmp', '$lposX', '$lposY', '$lmap', '$llevel', '$lsetchar','$lhair', '$lhat', '$lweapon', '$lbattle' ,'$lside', '$lpos', '$lskillOnline','$ldata', '$lskillOnline') ";
+			"INSERT INTO Processos (NOME, HP, MP, POSX, POSY, MAP, LEVEL, SETCHAR, HAIR, HAT, WEAPON, BATTLE, SIDE, POS, SKILLONLINE, ACCOUNT, PARTY)  VALUES 
+			('$lnome', '$lhp', '$lmp', '$lposX', '$lposY', '$lmap', '$llevel', '$lsetchar','$lhair', '$lhat', '$lweapon', '$lbattle' ,'$lside', '$lpos', '$lskillOnline','$ldata', '$lparty') ";
 			
 			if ($conn->query($sql) === TRUE) {
 				$result = $conn->query($sql);
@@ -158,6 +161,7 @@
 									  ":POS=" . $row["POS"] .
 									  ":SKILLONLINE=" . $row["SKILLONLINE"] .
 									  ":ACCOUNT=" . $row["ACCOUNT"] .
+									  ":PARTY=" . $row["PARTY"] .
 									  ": - \n");
 					}
 					echo nl2br ($lAll);
@@ -182,7 +186,7 @@
 	if ($lrequest == "Chat"){
 		
 		$lAll = '';
-			$sql = "INSERT INTO chats (Nome,Mensagem) 
+			$sql = "INSERT INTO Chats (Nome,Mensagem) 
 						        VALUES ('$lnome','$lchat') ";
 								
 		if ($conn->query($sql) === TRUE) {	

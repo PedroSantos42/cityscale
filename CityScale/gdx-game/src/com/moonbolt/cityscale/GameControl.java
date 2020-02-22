@@ -179,6 +179,7 @@ public class GameControl {
 			lstNomes = new ArrayList<String>();
 			lstBuffs = new ArrayList<Buffs>();
 			lstChats = new ArrayList<String>();
+			lstSpritesOnline = new ArrayList<Sprite>();
 			
 			////////Atlas Section//////
 			//Character
@@ -3402,12 +3403,14 @@ public class GameControl {
 				posOnlineX = Math.round(posOnlineFX);
 				posOnlineY = Math.round(posOnlineFX);
 				
-				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Account, "UTF-8");
+				String account = Character_Data.Account;
+				
+				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(account, "UTF-8");
 		        data += "&" + URLEncoder.encode("lrequest", "UTF-8") + "=" + URLEncoder.encode("Sincronizar", "UTF-8");
-		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("localhost", "UTF-8");
+		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("citybase.mysql.uhserver.com", "UTF-8");
 		        data += "&" + URLEncoder.encode("lusername", "UTF-8") + "=" + URLEncoder.encode("citymaster", "UTF-8");
-		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("city123", "UTF-8");
-		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("cityscale", "UTF-8");
+		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("City@2020", "UTF-8");
+		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("citybase", "UTF-8");
 		        data += "&" + URLEncoder.encode("lversion", "UTF-8") + "=" + URLEncoder.encode("a1", "UTF-8");
 		        //UserData
 		        data += "&" + URLEncoder.encode("lnome", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Name_A, "UTF-8");
@@ -3430,7 +3433,7 @@ public class GameControl {
 					
 		        // Send data
 		        //URL url = new URL("http://moonbolt.online/Conector/Online.php");
-		        URL url = new URL("http://localhost/Online.php");
+		        URL url = new URL("http://moonbolt.online/Conector/Online.php");
 		        URLConnection conn = url.openConnection();
 		        conn.setDoOutput(true);
 		        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
@@ -3466,15 +3469,15 @@ public class GameControl {
 			if(tipoRequisicao.equals("Chat")){
 				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Account, "UTF-8");
 		        data += "&" + URLEncoder.encode("lrequest", "UTF-8") + "=" + URLEncoder.encode("Chat", "UTF-8");
-		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("localhost", "UTF-8");
+		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("citybase.mysql.uhserver.com", "UTF-8");
 		        data += "&" + URLEncoder.encode("lusername", "UTF-8") + "=" + URLEncoder.encode("citymaster", "UTF-8");
-		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("city123", "UTF-8");
-		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("cityscale", "UTF-8");		 
+		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("City@2020", "UTF-8");
+		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("citybase", "UTF-8");		 
 		        data += "&" + URLEncoder.encode("lchat", "UTF-8") + "=" + URLEncoder.encode(subdado, "UTF-8");
 		        data += "&" + URLEncoder.encode("lnome", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Name_A, "UTF-8");
 		        
 		        // Send data
-		        URL url = new URL("http://localhost/Online.php");
+		        URL url = new URL("http://moonbolt.online/Conector/Online.php");
 		        URLConnection conn = url.openConnection();
 		        conn.setDoOutput(true);
 		        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
@@ -3507,11 +3510,13 @@ public class GameControl {
 		
 		public ArrayList<Sprite> RecuperaPlayersOnline() {
 			
+			lstSpritesOnline.clear();
 			for(int i = 0; i < lstOnlinePlayers.size(); i++) {				
 				posOnlineFX = Float.parseFloat(lstOnlinePlayers.get(i).PX_A); 
 				posOnlineFY = Float.parseFloat(lstOnlinePlayers.get(i).PY_A);
 				posInjectorOnline = Integer.parseInt(lstOnlinePlayers.get(i).Position_A);
 				spr_master = MovChar(lstOnlinePlayers.get(i).Set_A,lstOnlinePlayers.get(i).Side_A,"","",posOnlineFX,posOnlineFY,posInjectorOnline);
+				lstSpritesOnline.add(spr_master);
 			}
 					
 			return lstSpritesOnline;
@@ -3582,17 +3587,24 @@ public class GameControl {
 			splitonlineData = auxOnline.split("=");	
 			plOnline.Position_A = splitonlineData[1];	
 			
-			lstOnlinePlayers.add(plOnline);
+			if(!plOnline.Name_A.equals(Character_Data.Name_A)) {
+				lstOnlinePlayers.add(plOnline);
+			}
 		}
 		
 		public void TrataChatOnline(String dadosChat) {
 			onlineData = dadosChat.split(":");
 			auxOnline = onlineData[1];
+			//Nome do personagem
 			splitonlineData = auxOnline.split("=");		
 			text = splitonlineData[1];	
+			//Mensagem 
+			onlineData = dadosChat.split(":");
 			auxOnline = onlineData[2];
-			splitonlineData = auxOnline.split("=");
-			text = text + ":" + splitonlineData[1].replaceFirst("<br />", "");
+			splitonlineData = auxOnline.split("=");		
+			text = text + ": " + splitonlineData[1];	
+			//Conclusão
+			auxOnline = text;
 			lstChats.add(auxOnline);
 		}
 }
