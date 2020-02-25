@@ -1,0 +1,411 @@
+swords.png
+size: 2030, 140
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+cutter_sword_attack_left
+  rotate: false
+  xy: 0, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+cutter_sword_attack_right
+  rotate: false
+  xy: 70, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+cutter_sword_left
+  rotate: false
+  xy: 140, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+cutter_sword_right
+  rotate: false
+  xy: 210, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+cutter_sword_side_left
+  rotate: false
+  xy: 280, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+cutter_sword_side_right
+  rotate: false
+  xy: 350, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+doubleedge_sword_attack_left
+  rotate: false
+  xy: 420, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+doubleedge_sword_attack_right
+  rotate: false
+  xy: 490, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+doubleedge_sword_left
+  rotate: false
+  xy: 560, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+doubleedge_sword_right
+  rotate: false
+  xy: 630, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+doubleedge_sword_side_left
+  rotate: false
+  xy: 700, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+doubleedge_sword_side_right
+  rotate: false
+  xy: 770, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flame_sword_attack_left
+  rotate: false
+  xy: 840, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flame_sword_attack_right
+  rotate: false
+  xy: 910, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flame_sword_left
+  rotate: false
+  xy: 980, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flame_sword_right
+  rotate: false
+  xy: 1050, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flame_sword_side_left
+  rotate: false
+  xy: 1120, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+flame_sword_side_right
+  rotate: false
+  xy: 1190, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+icecrystal_sword_left
+  rotate: false
+  xy: 1260, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+icecrystal_sword_right
+  rotate: false
+  xy: 1330, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+icecrystal_sword_side_left
+  rotate: false
+  xy: 1400, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+icecrystal_sword_side_right
+  rotate: false
+  xy: 1470, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+light_sword_attack_left
+  rotate: false
+  xy: 1540, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+light_sword_attack_right
+  rotate: false
+  xy: 1610, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+light_sword_left
+  rotate: false
+  xy: 1680, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+light_sword_right
+  rotate: false
+  xy: 1750, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+light_sword_side_left
+  rotate: false
+  xy: 1820, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+light_sword_side_right
+  rotate: false
+  xy: 1890, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+normal_sword_attack_left
+  rotate: false
+  xy: 1960, 0
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+normal_sword_attack_right
+  rotate: false
+  xy: 0, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+normal_sword_left
+  rotate: false
+  xy: 70, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+normal_sword_right
+  rotate: false
+  xy: 140, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+normal_sword_side_left
+  rotate: false
+  xy: 210, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+normal_sword_side_right
+  rotate: false
+  xy: 280, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+serpent_sword_attack_left
+  rotate: false
+  xy: 350, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+serpent_sword_attack_right
+  rotate: false
+  xy: 420, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+serpent_sword_left
+  rotate: false
+  xy: 490, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+serpent_sword_right
+  rotate: false
+  xy: 560, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+serpent_sword_side_left
+  rotate: false
+  xy: 630, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+serpent_sword_side_right
+  rotate: false
+  xy: 700, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+venom_sword_attack_left
+  rotate: false
+  xy: 770, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+venom_sword_attack_right
+  rotate: false
+  xy: 840, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+venom_sword_left
+  rotate: false
+  xy: 910, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+venom_sword_side_left
+  rotate: false
+  xy: 980, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+venom_sword_side_right
+  rotate: false
+  xy: 1050, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+venon_sword_right
+  rotate: false
+  xy: 1120, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+vorpal_sword_attack_left
+  rotate: false
+  xy: 1190, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+vorpal_sword_attack_right
+  rotate: false
+  xy: 1260, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+vorpal_sword_left
+  rotate: false
+  xy: 1330, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+vorpal_sword_right
+  rotate: false
+  xy: 1400, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+vorpal_sword_side_left
+  rotate: false
+  xy: 1470, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+vorpal_sword_side_right
+  rotate: false
+  xy: 1540, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+wood_sword_attack_left
+  rotate: false
+  xy: 1610, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+wood_sword_attack_right
+  rotate: false
+  xy: 1680, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+wood_sword_left
+  rotate: false
+  xy: 1750, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+wood_sword_right
+  rotate: false
+  xy: 1820, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+wood_sword_side_left
+  rotate: false
+  xy: 1890, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+wood_sword_side_right
+  rotate: false
+  xy: 1960, 70
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1

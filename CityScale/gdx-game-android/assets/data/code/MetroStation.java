@@ -192,7 +192,7 @@ public class MetroStation implements Screen, ApplicationListener, InputProcessor
 			ScenarioObjects("Metro2");
 			spr_background.draw(game.batch);
 			ScenarioObjects("TVShow");
-			ExibirNpcs();
+			
 			
 			gameControl.AtualizaCameraX(cameraCoordsX);
 			gameControl.AtualizaCameraY(cameraCoordsY);
@@ -227,6 +227,8 @@ public class MetroStation implements Screen, ApplicationListener, InputProcessor
 		
 		//Recupera��o de HP
 		gameControl.RegenerateHPTiming();
+		
+		ExibirNpcs();
 		
 		//Colision
 		CheckColision();

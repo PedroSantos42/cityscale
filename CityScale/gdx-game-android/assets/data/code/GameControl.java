@@ -45,6 +45,7 @@ public class GameControl {
 	    private String qtdItem;
 	    private String textQuest = "";
 	    private String nomeLoot = "";
+	    
 		
 		private boolean inBattle = false;
 		private boolean attackFrame = false;
@@ -131,7 +132,7 @@ public class GameControl {
 		private TextureAtlas atlas_shop;
 		private TextureAtlas atlas_objectsMetro;
 		private TextureAtlas atlas_Mob;
-		private TextureAtlas atlas_MonsterSlime;
+		private TextureAtlas atlas_Forest;
 		private TextureAtlas atlas_Usable;
 		private TextureAtlas atlas_Loots;
 		private TextureAtlas atlas_Npcs;
@@ -144,6 +145,7 @@ public class GameControl {
 		private String[] onlineData;
 		private String[] splitonlineData;
 		private String auxOnline;
+		private String retornoThread = "retry";
 		private String retornoOnline = "";
 		private String skillOnline = "";
 		private String sidePlayer = "";
@@ -151,6 +153,7 @@ public class GameControl {
 		private int posOnlineY;
 		private int posInjectorOnline;
 		private int loopOnlineCheck = 0;
+		private int threahCount = 0;
 		private float posOnlineFX;
 		private float posOnlineFY;
 		
@@ -193,7 +196,8 @@ public class GameControl {
 			atlas_shop = new TextureAtlas(Gdx.files.internal("data/interface/shops/shops.txt"));
 			atlas_btnskills = new TextureAtlas(Gdx.files.internal("data/interface/gameplay/skillicons.txt"));
 			//Monsters
-			atlas_MonsterSlime = new TextureAtlas(Gdx.files.internal("data/monsters/mobs.txt"));
+			atlas_Mob = new TextureAtlas(Gdx.files.internal("data/monsters/mobsForest.txt"));
+			atlas_Forest = new TextureAtlas(Gdx.files.internal("data/monsters/mobsForest.txt"));
 			
 			//Itens
 			atlas_Usable = new TextureAtlas(Gdx.files.internal("data/itens/Usables/Usables.txt"));		
@@ -232,9 +236,26 @@ public class GameControl {
 			}			
 		}
 		
+		public void LoadDownloadData(String hash) {
+			FileHandle file = Gdx.files.local("SaveData/SvDT.json");
+			Character_Data = json.fromJson(Player.class,Base64Coder.decodeString(hash));			
+			file.writeString(Base64Coder.encodeString(json.prettyPrint(Character_Data)),false);
+		}
+		
+		
 		public void LoadData() {
 			FileHandle file = Gdx.files.local("SaveData/SvDT.json");
 			Character_Data = json.fromJson(Player.class,Base64Coder.decodeString(file.readString()));
+		}
+		
+		public String LoadDataText() {
+			FileHandle file = Gdx.files.local("SaveData/SvDT.json");
+			String dataStr = file.readString();
+			return dataStr;
+		}
+		
+		public String GetAccount() {
+			return Character_Data.Account;
 		}
 		
 		public void CreateNewCharacter(String[] configChar) {
@@ -1751,38 +1772,8 @@ public class GameControl {
 				return spr_master;
 			}
 			
-			if(item.equals("QuestBaloon1")) {
-				spr_master = atlas_gameplay_interface.createSprite("avisoMissao1");
-				spr_master.setSize(12, 12);
-				spr_master.setPosition(64, -40);
-				return spr_master;
-			}
-			if(item.equals("QuestBaloon2")) {
-				spr_master = atlas_gameplay_interface.createSprite("avisoMissao2");
-				spr_master.setSize(12, 12);
-				spr_master.setPosition(64, -40);
-				return spr_master;
-			}
-			if(item.equals("QuestBaloon3")) {
-				spr_master = atlas_gameplay_interface.createSprite("avisoMissao3");
-				spr_master.setSize(12, 12);
-				spr_master.setPosition(64, -40);
-				return spr_master;
-			}
-			if(item.equals("QuestBaloon4")) {
-				spr_master = atlas_gameplay_interface.createSprite("avisoMissao4");
-				spr_master.setSize(12, 12);
-				spr_master.setPosition(64, -40);
-				return spr_master;
-			}
-			if(item.equals("QuestBaloon5")) {
-				spr_master = atlas_gameplay_interface.createSprite("avisoMissao5");
-				spr_master.setSize(12, 12);
-				spr_master.setPosition(64, -40);
-				return spr_master;
-			}
-			if(item.equals("QuestBaloon6")) {
-				spr_master = atlas_gameplay_interface.createSprite("avisoMissao6");
+			if(item.equals("avisoMissao")) {
+				spr_master = atlas_gameplay_interface.createSprite("avisoMissao");
 				spr_master.setSize(12, 12);
 				spr_master.setPosition(64, -40);
 				return spr_master;
@@ -1802,6 +1793,14 @@ public class GameControl {
 				return spr_master;
 			}
 			
+			return spr_master;
+		}
+		
+		public Sprite InterfaceMain(String tipo) {
+			if(tipo.equals("IDbox"))
+			spr_master = atlas_gameplay_interface.createSprite("bar_text");
+			spr_master.setSize(60,30);
+			spr_master.setPosition(fX + 20, fY + 35);
 			return spr_master;
 		}
 		
@@ -1851,8 +1850,18 @@ public class GameControl {
 		// Monsters //
 		public void CarregaMonstrosMapa(String mapa) {
 			lstMonsters.clear();
+			
 			if(mapa.equals("Streets305")) {
 				lstMonsters.add(mobContainer.GetMonster("slimeA", "Streets305"));
+			}
+			
+			if(mapa.equals("ForestArea")) {
+				lstMonsters.add(mobContainer.GetMonster("slimeA", "ForestArea"));
+				lstMonsters.add(mobContainer.GetMonster("beeA", "ForestArea"));
+				lstMonsters.add(mobContainer.GetMonster("slimeB", "ForestArea"));
+				lstMonsters.add(mobContainer.GetMonster("poroA", "ForestArea"));
+				lstMonsters.add(mobContainer.GetMonster("poroB", "ForestArea"));
+				lstMonsters.add(mobContainer.GetMonster("beeB", "ForestArea"));
 			}
 		}
 				
@@ -1874,7 +1883,8 @@ public class GameControl {
 				if(mobY < -357) { mobY = -354; }
 				
 				
-					if(mobContainer.NAME.equals("slime")) { atlas_Mob = atlas_MonsterSlime; }
+					if(mobContainer.NAME.equals("slime")) { atlas_Mob = atlas_Forest; }
+					if(mobContainer.NAME.equals("bee")) { atlas_Mob = atlas_Forest; }
 				
 					if(lstMonsters.get(countA).SIDE.equals("right")) {
 						
@@ -1980,6 +1990,7 @@ public class GameControl {
 						lstMonsters.get(countA).HP = lstMonsters.get(countA).HPMAX;
 						lstMonsters.get(countA).MP = lstMonsters.get(countA).MPMAX;
 						lstMonsters.get(countA).LOCKDEATH = "no";
+						lstMonsters.get(countA).TARGET = "none";
 					}
 				}
 			}
@@ -2054,8 +2065,9 @@ public class GameControl {
 							lstDamage.add(danoMob);
                                 
 							if(mobHP <= 0 && lstMonsters.get(countA).LOCKDEATH.equals("no")) { 
-								DarExperiencia(lstMonsters.get(countA));
-								DarLoot(lstMonsters.get(countA));
+								GiveExp(lstMonsters.get(countA));
+								GiveLoot(lstMonsters.get(countA));
+								GiveMoney(lstMonsters.get(countA));
 								lstMonsters.get(countA).LOCKDEATH = "yes"; 
 								Character_Data.Battle_A = "no";
 								Character_Data.Target_A = "none"; 
@@ -2138,8 +2150,9 @@ public class GameControl {
 										
 										
 										if(mobHP <= 0 && lstMonsters.get(countA).LOCKDEATH.equals("no")) { 
-											DarExperiencia(lstMonsters.get(countA));
-											DarLoot(lstMonsters.get(countA));
+											GiveExp(lstMonsters.get(countA));
+											GiveLoot(lstMonsters.get(countA));
+											GiveMoney(lstMonsters.get(countA));
 											lstMonsters.get(countA).LOCKDEATH = "yes"; 
 											Character_Data.Battle_A = "no";
 											Character_Data.Target_A = "none"; 
@@ -2192,7 +2205,7 @@ public class GameControl {
 										mobHP = mobHP - (playerAtk + dmgWeapon);
 									}
 									
-									if(Character_Data.Job_A.equals("Monk")) {
+									if(Character_Data.Job_A.equals("Juggle")) {
 										playerAtk = playerAtk + (playerStrenght * 2) + (playerDextery) + (playerMind * 2) + (playerAgility);
 										mobHP = Integer.parseInt(lstMonsters.get(countA).HP);
 										mobDef = Integer.parseInt(lstMonsters.get(countA).DEF);
@@ -2253,7 +2266,7 @@ public class GameControl {
 			}
 		}
 		
-		public void DarExperiencia(Monster mob) {
+		public void GiveExp(Monster mob) {
 			
 			int exp = Integer.parseInt(mob.EXP);
 			int expPlayer = Integer.parseInt(Character_Data.Exp_A);
@@ -2645,7 +2658,7 @@ public class GameControl {
 							danoSkill.areaX = Math.round(mobX);
 							danoSkill.areaY = Math.round(mobY);
 							danoSkill.dano = String.valueOf(dmg);
-							danoSkill.Color = "Red";
+							danoSkill.Color = "Yellow";
 							danoSkill.time = 60;
 							danoSkill.Descritivo = "Ataque";
 							lstDamage.add(danoSkill);
@@ -2826,7 +2839,7 @@ public class GameControl {
 			}
 		}
 		
-		private void DarLoot(Monster mobdeath) {		
+		private void GiveLoot(Monster mobdeath) {		
 			int sortie = 0;		
 			
 			sortie = randnumber.nextInt(100);
@@ -2852,6 +2865,15 @@ public class GameControl {
 			}
 			
 			showLootTime = 300;
+		}
+		
+		private void GiveMoney(Monster mob) {
+			int money = Integer.parseInt(mob.MONEY);
+			int playerMoney = Integer.parseInt(Character_Data.Money_A);
+			
+			playerMoney = playerMoney + money;
+			Character_Data.Money_A = String.valueOf(playerMoney);
+			
 		}
 		
 		public boolean ExibirMsgItem() {
@@ -3166,37 +3188,37 @@ public class GameControl {
 				
 				//SchoolerD
 				if(npcframe2 >= 1 && npcframe2 <= 19){
-			        spr_master = atlas_Npcs.createSprite("schoolerD2");   
+			        spr_master = atlas_Npcs.createSprite("schoolerC2");   
 			        spr_master.setPosition(endleft, -75);
 			        spr_master.setSize(16, 39);
 			        lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 20 && npcframe2 <= 39){
-					spr_master = atlas_Npcs.createSprite("schoolerD1");   
+					spr_master = atlas_Npcs.createSprite("schoolerC1");   
 					spr_master.setPosition(endleft, -75);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 40 && npcframe2 <= 59){
-					spr_master = atlas_Npcs.createSprite("schoolerD2");   
+					spr_master = atlas_Npcs.createSprite("schoolerC2");   
 					spr_master.setPosition(endleft, -75);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 60 && npcframe2 <= 79){
-			        spr_master = atlas_Npcs.createSprite("schoolerD3");   
+			        spr_master = atlas_Npcs.createSprite("schoolerC3");   
 			        spr_master.setPosition(endleft, -75);
 			        spr_master.setSize(16, 40);
 			        lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 80 && npcframe2 <= 99){
-					spr_master = atlas_Npcs.createSprite("schoolerD2");   
+					spr_master = atlas_Npcs.createSprite("schoolerC2");   
 					spr_master.setPosition(endleft, -75);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 100 && npcframe2 <= 120){
-					spr_master = atlas_Npcs.createSprite("schoolerD1");   
+					spr_master = atlas_Npcs.createSprite("schoolerC1");   
 					spr_master.setPosition(endleft, -75);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
@@ -3204,37 +3226,37 @@ public class GameControl {
 				
 				//SchoolerC
 				if(npcframe2 >= 1 && npcframe2 <= 19){
-			        spr_master = atlas_Npcs.createSprite("schoolerC2");   
+			        spr_master = atlas_Npcs.createSprite("schoolerD2");   
 			        spr_master.setPosition(endright + 70, -30);
 			        spr_master.setSize(16, 39);
 			        lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 20 && npcframe2 <= 39){
-					spr_master = atlas_Npcs.createSprite("schoolerC1");   
+					spr_master = atlas_Npcs.createSprite("schoolerD1");   
 					spr_master.setPosition(endright + 70, -30);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 40 && npcframe2 <= 59){
-					spr_master = atlas_Npcs.createSprite("schoolerC2");   
+					spr_master = atlas_Npcs.createSprite("schoolerD2");   
 					spr_master.setPosition(endright + 70, -30);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 60 && npcframe2 <= 79){
-			        spr_master = atlas_Npcs.createSprite("schoolerC3");   
+			        spr_master = atlas_Npcs.createSprite("schoolerD3");   
 			        spr_master.setPosition(endright + 70, -30);
 			        spr_master.setSize(16, 40);
 			        lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 80 && npcframe2 <= 99){
-					spr_master = atlas_Npcs.createSprite("schoolerC2");   
+					spr_master = atlas_Npcs.createSprite("schoolerD2");   
 					spr_master.setPosition(endright + 70, -30);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
 				}
 				if(npcframe2 >= 100 && npcframe2 <= 120){
-					spr_master = atlas_Npcs.createSprite("schoolerC1");   
+					spr_master = atlas_Npcs.createSprite("schoolerD1");   
 					spr_master.setPosition(endright + 70, -30);
 					spr_master.setSize(16, 40);
 					lstSprites.add(spr_master);
@@ -3347,27 +3369,32 @@ public class GameControl {
 		}
 		
 		
-		// Online Management//
-		
+		// Online Management//		
 		public void OperacaoOnline(String nomeOperacao, String subdado) {
 			
 			try {
-				String retorno = "retry";
+				
+				String retorno = "";
 				
 				if(nomeOperacao.equals("Upload")) {
-					retorno = GerenciamentoOnline("Upload", "");
+					retorno = GerenciamentoOnline("Upload", subdado);
 				}
 				
 				if(nomeOperacao.equals("Download")) {
-					retorno = GerenciamentoOnline("Download", "");
+					retorno = GerenciamentoOnline("Download", subdado);
 				}
 				
 				if(nomeOperacao.equals("Sincronizar")) {
-					retorno = GerenciamentoOnline("Sincronizar", "");
+					threahCount = 1;
+					ThreadsSincronia();				
 				}
 				
 				if(nomeOperacao.equals("Chat")) {
 					retorno = GerenciamentoOnline("Chat", subdado);
+				}
+				
+				if(nomeOperacao.equals("Desligar")) {
+					threahCount = 0;
 				}
 			}
 			
@@ -3375,6 +3402,29 @@ public class GameControl {
 				
 			}		
 		}
+		
+		///////////////////////////// Threads Sincronia //////////////////////////////
+		private void ThreadsSincronia() {
+			new Thread(t1).start();			
+		}
+		
+		//////////////////////////////////////////INICIO DAS THREADS ////////////////////////////////////////////////
+		
+		//Threads para Sincronia
+		private Runnable t1 = new Runnable() {
+			public void run() {
+				try{    
+					while(threahCount == 1) {
+						retornoThread = GerenciamentoOnline("Sincronizar", "");    
+						//System.out.println(String.valueOf(RetornoOnline));         	
+					}
+		}
+		catch(Exception ex) {}
+				//} catch (InterruptedException e){}	
+			}
+		};	
+		////////////////////////////////////////// FIM DAS THREADS ////////////////////////////////////////////////
+		
 		
 		
 		public String GerenciamentoOnline(String tipoRequisicao, String subdado) throws IOException {
@@ -3393,7 +3443,7 @@ public class GameControl {
 					loopOnlineCheck++;
 				}
 				
-				if(loopOnlineCheck > 10) {
+				if(loopOnlineCheck > 1) {
 				lstChats.clear();
 				lstOnlinePlayers.clear();
 				
@@ -3428,6 +3478,7 @@ public class GameControl {
 				data += "&" + URLEncoder.encode("lside", "UTF-8") + "=" + URLEncoder.encode(sidePlayer, "UTF-8");
 				data += "&" + URLEncoder.encode("lpos", "UTF-8") + "=" + URLEncoder.encode(String.valueOf(pos), "UTF-8");
 				data += "&" + URLEncoder.encode("lskillOnline", "UTF-8") + "=" + URLEncoder.encode("none", "UTF-8");
+				data += "&" + URLEncoder.encode("lparty", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Party_A, "UTF-8");
 				data += "&" + URLEncoder.encode("lchat", "UTF-8") + "=" + URLEncoder.encode("", "UTF-8");
 				
 					
@@ -3455,7 +3506,11 @@ public class GameControl {
 		        	
 			        if (linhaLida.contains("SYSTEMPLAYERS")) {            	
 		        		TrataPlayersOnline(linhaLida);     		
-		            }		            
+		            }		
+			        if(linhaLida.contains("ready")){
+			        	retornoOnline = "Funcionou";
+			        }
+			        
 	    		}	        
 		        wr.close();
 		        rd.close();
@@ -3475,6 +3530,77 @@ public class GameControl {
 		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("citybase", "UTF-8");		 
 		        data += "&" + URLEncoder.encode("lchat", "UTF-8") + "=" + URLEncoder.encode(subdado, "UTF-8");
 		        data += "&" + URLEncoder.encode("lnome", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Name_A, "UTF-8");
+		        
+		        // Send data
+		        URL url = new URL("http://moonbolt.online/Conector/Online.php");
+		        URLConnection conn = url.openConnection();
+		        conn.setDoOutput(true);
+		        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+		        wr.write(data);
+		        wr.flush();
+		        
+		        // Get the response
+		        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		        String line;
+		        line = subdado;
+		        retornoOnline = "retry";
+		        while ((line = rd.readLine()) != null) {
+		        	linhaLida = line;   
+		        	//Resultado: - Logado -. <br>done
+			        if (linhaLida.contains("Works")) {            	
+		        		retornoOnline = "Works";       		
+		            }		            
+	    		}	        
+		        wr.close();
+		        rd.close();
+			}
+			
+			if(tipoRequisicao.equals("Download")){
+				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(subdado, "UTF-8");
+		        data += "&" + URLEncoder.encode("lrequest", "UTF-8") + "=" + URLEncoder.encode("Download", "UTF-8");
+		        data += "&" + URLEncoder.encode("laccount", "UTF-8") + "=" + URLEncoder.encode(subdado, "UTF-8");
+		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("citybase.mysql.uhserver.com", "UTF-8");
+		        data += "&" + URLEncoder.encode("lusername", "UTF-8") + "=" + URLEncoder.encode("citymaster", "UTF-8");
+		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("City@2020", "UTF-8");
+		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("citybase", "UTF-8");		 
+		        
+		        // Send data
+		        URL url = new URL("http://moonbolt.online/Conector/Online.php");
+		        URLConnection conn = url.openConnection();
+		        conn.setDoOutput(true);
+		        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+		        wr.write(data);
+		        wr.flush();
+		        
+		        // Get the response
+		        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		        String line;
+		        line = subdado;
+		        retornoOnline = "retry";
+		        while ((line = rd.readLine()) != null) {
+		        	linhaLida = line;   
+		        	//Resultado: - Logado -. <br>done
+			        if (!linhaLida.contains("Inexistente")) {            	
+			        	LoadDownloadData(linhaLida);       		
+		            }		            
+	    		}	        
+		        wr.close();
+		        rd.close();
+			}
+			
+			if(tipoRequisicao.equals("Upload")){
+				
+				WriteDataCharacterActive();
+				SaveData();
+				String accountData = LoadDataText();
+							
+				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(accountData, "UTF-8");
+				data += "&" + URLEncoder.encode("lrequest", "UTF-8") + "=" + URLEncoder.encode("Upload", "UTF-8");
+		        data += "&" + URLEncoder.encode("laccount", "UTF-8") + "=" + URLEncoder.encode(subdado, "UTF-8");
+		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("citybase.mysql.uhserver.com", "UTF-8");
+		        data += "&" + URLEncoder.encode("lusername", "UTF-8") + "=" + URLEncoder.encode("citymaster", "UTF-8");
+		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("City@2020", "UTF-8");
+		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("citybase", "UTF-8");		 
 		        
 		        // Send data
 		        URL url = new URL("http://moonbolt.online/Conector/Online.php");

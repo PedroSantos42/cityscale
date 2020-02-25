@@ -166,13 +166,9 @@ public class TitleScreen implements Screen, ApplicationListener, InputProcessor,
 			gameControl.CreateNewData();
 			check = true;
 		}
-		//Acessar sua conta
-		if((coordsTouch.x >= 72 && coordsTouch.x <= 99) && (coordsTouch.y >= 16 && coordsTouch.y <= 24)){
-			Gdx.input.getTextInput(this,"Digite seu código","",""); 
-		}	
 		//Recuperar do Backup
 		if((coordsTouch.x >= 72 && coordsTouch.x <= 99) && (coordsTouch.y >= 2 && coordsTouch.y <= 14)){
-			
+			Gdx.input.getTextInput(this,"Digite o código","",""); 
 		}	
 			
 		
@@ -181,9 +177,8 @@ public class TitleScreen implements Screen, ApplicationListener, InputProcessor,
 	
 	@Override
 	public void input(String input){
-		text = input;
-		
-		
+		text = input;		
+		gameControl.OperacaoOnline("Download", text);
 	}
 	
 	@Override

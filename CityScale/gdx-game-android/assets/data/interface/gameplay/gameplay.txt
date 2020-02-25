@@ -1,51 +1,9 @@
 gameplay.png
-size: 1007, 1401
+size: 1001, 1440
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
 avisoMissao
-  rotate: false
-  xy: 244, 0
-  size: 61, 23
-  orig: 61, 23
-  offset: 0, 0
-  index: -1
-avisoMissao1
-  rotate: false
-  xy: 366, 0
-  size: 61, 23
-  orig: 61, 23
-  offset: 0, 0
-  index: -1
-avisoMissao2
-  rotate: false
-  xy: 305, 0
-  size: 61, 23
-  orig: 61, 23
-  offset: 0, 0
-  index: -1
-avisoMissao3
-  rotate: false
-  xy: 122, 0
-  size: 61, 23
-  orig: 61, 23
-  offset: 0, 0
-  index: -1
-avisoMissao4
-  rotate: false
-  xy: 61, 0
-  size: 61, 23
-  orig: 61, 23
-  offset: 0, 0
-  index: -1
-avisoMissao5
-  rotate: false
-  xy: 183, 0
-  size: 61, 23
-  orig: 61, 23
-  offset: 0, 0
-  index: -1
-avisoMissao6
   rotate: false
   xy: 0, 0
   size: 61, 23
@@ -54,210 +12,252 @@ avisoMissao6
   index: -1
 bar_descricao
   rotate: false
-  xy: 0, 89
+  xy: 0, 128
   size: 463, 50
   orig: 463, 50
   offset: 0, 0
   index: -1
 bar_text
   rotate: false
-  xy: 193, 157
+  xy: 193, 196
   size: 500, 100
   orig: 500, 100
   offset: 0, 0
   index: -1
 barareaaskill
   rotate: false
-  xy: 490, 39
+  xy: 760, 39
   size: 196, 39
   orig: 196, 39
   offset: 0, 0
   index: -1
 baritem
   rotate: false
-  xy: 190, 39
+  xy: 0, 78
   size: 300, 39
   orig: 300, 39
   offset: 0, 0
   index: -1
 btnAcao
   rotate: false
-  xy: 465, 0
+  xy: 61, 0
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
   index: -1
 btnAutoAttackOff
   rotate: false
-  xy: 503, 0
+  xy: 175, 0
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
   index: -1
 btnAutoAttackOn
   rotate: false
-  xy: 541, 0
+  xy: 99, 0
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
   index: -1
 btntripleattack
   rotate: false
-  xy: 427, 0
+  xy: 137, 0
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
   index: -1
 controlerbackground
   rotate: false
-  xy: 693, 157
+  xy: 693, 196
   size: 132, 125
   orig: 132, 125
   offset: 0, 0
   index: -1
 controllertouch
   rotate: false
-  xy: 867, 89
+  xy: 867, 128
   size: 72, 68
   orig: 72, 68
   offset: 0, 0
   index: -1
-flagMetro
+flagCavernaSubmersaA
   rotate: false
-  xy: 817, 0
+  xy: 490, 78
   size: 190, 39
   orig: 190, 39
   offset: 0, 0
   index: -1
-flagStreets305
+flagCavernaSubmersaB
+  rotate: false
+  xy: 300, 78
+  size: 190, 39
+  orig: 190, 39
+  offset: 0, 0
+  index: -1
+flagFlorestaA
   rotate: false
   xy: 0, 39
   size: 190, 39
   orig: 190, 39
   offset: 0, 0
   index: -1
+flagFlorestaB
+  rotate: false
+  xy: 441, 0
+  size: 190, 39
+  orig: 190, 39
+  offset: 0, 0
+  index: -1
+flagMetro
+  rotate: false
+  xy: 251, 0
+  size: 190, 39
+  orig: 190, 39
+  offset: 0, 0
+  index: -1
+flagMinasAbandonadasA
+  rotate: false
+  xy: 380, 39
+  size: 190, 39
+  orig: 190, 39
+  offset: 0, 0
+  index: -1
+flagMinasAbandonadasB
+  rotate: false
+  xy: 190, 39
+  size: 190, 39
+  orig: 190, 39
+  offset: 0, 0
+  index: -1
+flagStreets305
+  rotate: false
+  xy: 570, 39
+  size: 190, 39
+  orig: 190, 39
+  offset: 0, 0
+  index: -1
 hand
   rotate: false
-  xy: 778, 39
+  xy: 772, 78
   size: 45, 45
   orig: 45, 45
   offset: 0, 0
   index: -1
 hotAtk
   rotate: false
-  xy: 579, 0
+  xy: 213, 0
   size: 38, 27
   orig: 38, 27
   offset: 0, 0
   index: -1
 hotcrossbar
   rotate: false
-  xy: 463, 89
+  xy: 463, 128
   size: 257, 59
   orig: 257, 59
   offset: 0, 0
   index: -1
 menu
   rotate: false
-  xy: 926, 1101
+  xy: 926, 1140
   size: 75, 300
   orig: 75, 300
   offset: 0, 0
   index: -1
 menubatalha
   rotate: false
-  xy: 0, 282
+  xy: 0, 321
   size: 462, 273
   orig: 462, 273
   offset: 0, 0
   index: -1
 menuitens
   rotate: false
-  xy: 462, 282
+  xy: 462, 321
   size: 464, 273
   orig: 464, 273
   offset: 0, 0
   index: -1
 menuopcoes
   rotate: false
-  xy: 462, 555
+  xy: 462, 594
   size: 462, 273
   orig: 462, 273
   offset: 0, 0
   index: -1
 menuopen
   rotate: false
-  xy: 0, 828
+  xy: 0, 867
   size: 464, 273
   orig: 464, 273
   offset: 0, 0
   index: -1
 menupet
   rotate: false
-  xy: 0, 555
+  xy: 0, 594
   size: 462, 273
   orig: 462, 273
   offset: 0, 0
   index: -1
 menuskills
   rotate: false
-  xy: 464, 828
+  xy: 464, 867
   size: 462, 273
   orig: 462, 273
   offset: 0, 0
   index: -1
 menusocial
   rotate: false
-  xy: 464, 1101
+  xy: 464, 1140
   size: 462, 273
   orig: 462, 273
   offset: 0, 0
   index: -1
 menustatus
   rotate: false
-  xy: 0, 1101
+  xy: 0, 1140
   size: 464, 273
   orig: 464, 273
   offset: 0, 0
   index: -1
 moon
   rotate: false
-  xy: 732, 39
+  xy: 680, 78
   size: 46, 40
   orig: 46, 40
   offset: 0, 0
   index: -1
 mortemsg
   rotate: false
-  xy: 823, 39
+  xy: 817, 78
   size: 150, 50
   orig: 150, 50
   offset: 0, 0
   index: -1
 sun
   rotate: false
-  xy: 686, 39
+  xy: 726, 78
   size: 46, 40
   orig: 46, 40
   offset: 0, 0
   index: -1
 tagmonster
   rotate: false
-  xy: 617, 0
+  xy: 631, 0
   size: 200, 39
   orig: 200, 39
   offset: 0, 0
   index: -1
 tagparty
   rotate: false
-  xy: 720, 89
+  xy: 720, 128
   size: 147, 66
   orig: 147, 66
   offset: 0, 0
   index: -1
 tagplayer
   rotate: false
-  xy: 0, 157
+  xy: 0, 196
   size: 193, 80
   orig: 193, 80
   offset: 0, 0

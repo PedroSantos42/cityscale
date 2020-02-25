@@ -239,8 +239,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 			gameControl.AtualizaCameraX(cameraCoordsX);
 			gameControl.AtualizaCameraY(cameraCoordsY);
 			
-			//ExibeNPC
-			ExibirNpcs();
+			
 			
 			
 			//Set Player
@@ -306,6 +305,9 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 			//Se for skill AoE  exibir aviso
 			spr_Interface = gameControl.InterfaceStreets305("ActionBtn", ""); spr_Interface.draw(game.batch);  //ATK
 			
+			//ExibeNPC
+			ExibirNpcs();
+			
 			//Chats
 			ExibeChats();
 			
@@ -370,7 +372,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 			}
 			
 			//Objects
-			ScenarioObjects("textovershop");
+		    //ScenarioObjects("textovershop");
 			
 			// Show Shops
 			if(shopState) {
@@ -466,18 +468,18 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		}
 		
 		if(onlineState) {
-			gameControl.OperacaoOnline("Sincronizar", "");
 			TrataOnline();
 		}
 		
 		
 		//Tests
-		//spr_teste.setPosition(cameraCoordsX + 55, cameraCoordsY - 52);
-		//spr_teste2.setPosition(cameraCoordsX + 62, cameraCoordsY - 70);
-		//spr_teste.draw(game.batch);
-		//spr_teste2.draw(game.batch);
+		spr_teste.setPosition(cameraCoordsX + 18, cameraCoordsY + 30);
+		spr_teste2.setPosition(cameraCoordsX + 66, cameraCoordsY + 15);
+		spr_teste.draw(game.batch);
+		spr_teste2.draw(game.batch);
 		//font_master.draw(game.batch,String.valueOf(playerX),cameraCoordsX,cameraCoordsY);
 		//font_master.draw(game.batch,String.valueOf(playerY),cameraCoordsX + 30,cameraCoordsY);		
+		
 		game.batch.end();
 	}
 	
@@ -609,7 +611,6 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		}
 	}
 	
-	
 	// World Settings - BEGIN //
 	private void VerificaAction() {
 		
@@ -624,29 +625,6 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		}
 	}
 	
-
-	private void ScenarioObjects(String item) {		
-		objectNum++;
-		
-		if(objectNum > 60) { objectNum = 0;  }
-		
-		if(objectNum >= 0 && objectNum <= 20) {
-			spr_Interface = gameControl.InterfaceStreets305("textovershop1", ""); 
-			spr_Interface.draw(game.batch);  //msg
-		}
-		
-		if(objectNum >= 20 && objectNum <= 40) {
-			spr_Interface = gameControl.InterfaceStreets305("textovershop2", ""); 
-			spr_Interface.draw(game.batch);  //msg
-		}
-		
-		if(objectNum >= 40 && objectNum <= 60) {
-			spr_Interface = gameControl.InterfaceStreets305("textovershop3", ""); 
-			spr_Interface.draw(game.batch);  //msg
-		}
-	}
-	
-	
 	private void ExibeQuests() {
 		//Exibe Texto Quest//
 		if(questState) {
@@ -656,31 +634,10 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 			spr_Interface = gameControl.InterfaceStreets305("questBar", ""); spr_Interface.draw(game.batch);
 			font_master.draw(game.batch,String.valueOf(activePlayer.Job_A),cameraCoordsX - 44,cameraCoordsY + 50);
 			font_master.draw(game.batch,String.valueOf(activePlayer.Job_A),cameraCoordsX - 44,cameraCoordsY + 50);
-		}
+		}	
+		//Balao de Quest
+		spr_Interface = gameControl.InterfaceStreets305("avisoMissao", ""); spr_Interface.draw(game.batch);
 		
-		
-		//Balï¿½o Quest
-		baloonQuestNum++;
-		if(baloonQuestNum >= 120) { baloonQuestNum = 0; }
-		
-		if(baloonQuestNum >= 0 && baloonQuestNum <= 20) {
-		spr_Interface = gameControl.InterfaceStreets305("QuestBaloon1", ""); spr_Interface.draw(game.batch);
-		}
-		if(baloonQuestNum >= 20 && baloonQuestNum <= 40) {
-			spr_Interface = gameControl.InterfaceStreets305("QuestBaloon2", ""); spr_Interface.draw(game.batch);
-		}
-		if(baloonQuestNum >= 40 && baloonQuestNum <= 60) {
-			spr_Interface = gameControl.InterfaceStreets305("QuestBaloon3", ""); spr_Interface.draw(game.batch);
-		}
-		if(baloonQuestNum >= 60 && baloonQuestNum <= 80) {
-			spr_Interface = gameControl.InterfaceStreets305("QuestBaloon4", ""); spr_Interface.draw(game.batch);
-		}
-		if(baloonQuestNum >= 80 && baloonQuestNum <= 100) {
-			spr_Interface = gameControl.InterfaceStreets305("QuestBaloon5", ""); spr_Interface.draw(game.batch);
-		}
-		if(baloonQuestNum >= 100 && baloonQuestNum <= 120){
-			spr_Interface = gameControl.InterfaceStreets305("QuestBaloon6", ""); spr_Interface.draw(game.batch);
-		}
 	}
 	
 	
@@ -1228,6 +1185,24 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 					menuBlock = 1;
 					return false;
 				}
+				
+				//Botão para Cidade
+				if((coordsTouch.x >= cameraCoordsX - 59 && coordsTouch.x <= cameraCoordsX - 20) && (coordsTouch.y >= cameraCoordsY + 32 && coordsTouch.y <= cameraCoordsY + 53)){
+					activePlayer.PX_A = "11";
+					activePlayer.PY_A = "12";
+					gameControl.WriteDataCharacterActive();
+					game.loadingmanager.screenSwitch("MetroStation");
+					return false;
+				}
+				//Botão para Foresta
+				if((coordsTouch.x >= cameraCoordsX - 59 && coordsTouch.x <= cameraCoordsX - 20) && (coordsTouch.y >= cameraCoordsY + 6 && coordsTouch.y <= cameraCoordsY + 28)){
+					activePlayer.PX_A = "84";
+					activePlayer.PY_A = "73";
+					gameControl.WriteDataCharacterActive();
+					game.loadingmanager.screenSwitch("ForestArea");
+					return false;
+				}
+				
 			}
 			
 			if(menuBlock == 8) {
@@ -1242,6 +1217,18 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 					game.loadingmanager.screenSwitch("CharacterSelect");
 					return false;
 				}
+				//Fazer Upload
+				if((coordsTouch.x >= cameraCoordsX + 18 && coordsTouch.x <= cameraCoordsX + 66) && (coordsTouch.y >= cameraCoordsY + 15 && coordsTouch.y <= cameraCoordsY + 30)){
+					try {
+						gameControl.GerenciamentoOnline("Upload", activePlayer.Account);
+						configMsg = "Upload feito com sucesso";
+					} catch (IOException e) {
+						configMsg = "Falha ao tentar fazer upload";
+						e.printStackTrace();
+					}
+					return false;
+				}
+				
 				//Som Ligado
 				if((coordsTouch.x >= cameraCoordsX - 38 && coordsTouch.x <= cameraCoordsX - 13) && (coordsTouch.y >= cameraCoordsY + 36 && coordsTouch.y <= cameraCoordsY + 44)){
 					//TODO
@@ -1256,12 +1243,14 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 				if((coordsTouch.x >= cameraCoordsX - 38 && coordsTouch.x <= cameraCoordsX - 13) && (coordsTouch.y >= cameraCoordsY + 22 && coordsTouch.y <= cameraCoordsY + 31)){
 					configMsg = "Online Ligado";
 					onlineState = true;
+					gameControl.OperacaoOnline("Sincronizar", "");
 					return false;
 				}
 				//Online Desligado
 				if((coordsTouch.x >= cameraCoordsX - 11 && coordsTouch.x <= cameraCoordsX + 13) && (coordsTouch.y >= cameraCoordsY + 22 && coordsTouch.y <= cameraCoordsY + 31)){
 					configMsg = "Online Desligado";
 					onlineState = false;
+					gameControl.OperacaoOnline("Desligar", "");
 					return false;
 				}
 				//Alcance Ligado

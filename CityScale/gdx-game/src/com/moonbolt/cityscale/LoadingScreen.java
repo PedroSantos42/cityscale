@@ -46,6 +46,11 @@ public class LoadingScreen implements Screen{
 			Streets305 streets305Screen = new Streets305(game, config, control,platform);
 			game.setScreen(streets305Screen);
 		}
+		
+		if(tipo.equals("ForestArea")) {
+			ForestArea forestScreen = new ForestArea(game, config, control,platform);
+			game.setScreen(forestScreen);
+		}
 	}
 	
 	public void atualizaComponentes(MainGame maingameAlt, String[] configAlt, GameControl controlAlt, String platformAlt){

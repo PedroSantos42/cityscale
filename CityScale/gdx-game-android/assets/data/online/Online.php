@@ -80,27 +80,29 @@
 			//}
 			
 			$sql = "UPDATE Processos set NOME = '$lnome',
-									  HP = '$lhp',
-									  MP = '$lmp',
-									  POSX = '$lposX',
-									  POSY = '$lposY',
-									  MAP = '$lmap',
-									  LEVEL = '$llevel',
-									  SETCHAR = '$lsetchar',
-									  HAIR = '$lhair',
-									  HAT = '$lhat',
-									  WEAPON = '$lweapon',
-									  BATTLE = '$lbattle',
-									  SIDE = '$lside',
-									  POS = '$lpos',
-									  SKILLONLINE = '$lskillOnline',
-									  ACCOUNT = '$ldata'
-									  PARTY = '$lparty'
-									  where ACCOUNT = '$ldata' ";
-									  
+										 HP = '$lhp',
+										 MP = '$lmp',
+										 POSX = '$lposX',
+										 POSY = '$lposY',
+										 MAP = '$lmap',
+										 LEVEL = '$llevel',
+										 SETCHAR = '$lsetchar',
+										 HAIR = '$lhair',
+										 HAT = '$lhat',
+										 WEAPON = '$lweapon',
+										 BATTLE = '$lbattle',
+										 SIDE = '$lside',
+										 POS = '$lpos',
+										 SKILLONLINE = '$lskillOnline',
+										 ACCOUNT = '$ldata',
+										 PARTY = '$lparty' 
+										 where ACCOUNT = '$ldata' ";
+			echo nl2br("ready \n");
+			echo nl2br($sql);
+			
 			$result = $conn->query($sql);
 			
-			if ($conn->query($sql) === TRUE) { echo nl2br("Resultado: \n - Atualizado com sucesso - \n"); } else { echo nl2br("Resultado: \n - Falhou na Atualizacao - \n") . $conn->error; }
+			if ($conn->query($sql) === TRUE) { echo nl2br("Resultado: \n - UPDATE com sucesso - \n"); } else { echo nl2br("Resultado: \n - Falhou na Atualizacao - \n") . $conn->error; }
 			$lAll = '';
 			$sql = "SELECT * FROM Processos";
 			$result = $conn->query($sql);
@@ -108,7 +110,7 @@
 				if ($result->num_rows > 0) {
 					while($row = $result->fetch_assoc()) {
 											
-						$lAll = $lAll . ("SYSTEMPLAYERS - :NOME=" . $row["NOME"]. 
+						$lAll = $lAll . ("SYSTEMPLAYERS - SELECT :NOME=" . $row["NOME"]. 
 							          ":HP=" .  $row["HP"]. 
 									  ":MP=" . $row["MP"] . 
 									  ":POSX=" . $row["POSX"] .
@@ -145,7 +147,7 @@
 				if ($result->num_rows > 0) {
 					while($row = $result->fetch_assoc()) {
 						
-						$lAll = $lAll . ("SYSTEMPLAYERS - :NOME=" . $row["NOME"]. 
+						$lAll = $lAll . ("SYSTEMPLAYERS - INSERT :NOME=" . $row["NOME"]. 
 							          ":HP=" .  $row["HP"]. 
 									  ":MP=" . $row["MP"] . 
 									  ":POSX=" . $row["POSX"] .
@@ -196,5 +198,33 @@
 		}
 		
 		$conn->close();
+	}
+	
+	##UPLOAD
+	if ($lrequest == "Upload"){
+		
+		$arquivo = $laccount + '.txt';
+		$file = fopen($arquivo, 'w');	
+		if(fwrite($file, $ldata)){
+			echo nl2br("Resultado: \n - Upload com Sucesso- \n");
+		}
+		fclose($file);
+	}
+	
+	##DOWNLOAD
+	if ($lrequest == "Download"){
+		
+		if (file_exists($laccount)) {
+			$arquivo = fopen ($laccount,"r");
+			while (!feof ($arquivo)) {
+				$linha = fgets($arquivo,4096);
+				 echo nl2br ($linha);
+			}
+			fclose ($arquivo);
+		}
+		else
+		{
+			echo nl2br("Arquivo Inexistente");
+		}		
 	}
 ?>

@@ -16,6 +16,7 @@ public class CharacterSelect implements Screen, ApplicationListener, InputProces
 	
 	//Primitives
 	private boolean check = false;
+	private boolean showAccount = true;
 	private String nome = "";
 	private String sex = "M";
 	private String hair = "hair1";
@@ -34,6 +35,7 @@ public class CharacterSelect implements Screen, ApplicationListener, InputProces
 	private int flipCreate = 1;
 	private String[] charData;
 	private int showNumberCharacter = 0;
+	private String AccountID = "";
 	
 	//Camera
 	private OrthographicCamera camera;
@@ -55,6 +57,9 @@ public class CharacterSelect implements Screen, ApplicationListener, InputProces
 	
 	private Texture tex_Voltar;
 	private Sprite spr_Voltar;
+	
+	private Sprite spr_Master;
+	private Texture tex_Master;
 	
 	private Texture tex_BtnCriar;
 	private Texture tex_BtnDeletar;
@@ -122,6 +127,10 @@ public class CharacterSelect implements Screen, ApplicationListener, InputProces
 		this.platform = platformAlt;
 		
 		charData = new String[50];
+		
+		gameControl.LoadData();
+		AccountID = gameControl.GetAccount();
+		
 		
 		//Camera and Inputs
 		camera = new OrthographicCamera();
@@ -212,6 +221,8 @@ public class CharacterSelect implements Screen, ApplicationListener, InputProces
 		spr_LuzEscura.setPosition(0,0);
 		spr_LuzEscura.setSize(30,10);
 		
+		tex_Master = new Texture(Gdx.files.internal("data/assets/testdot.png"));
+		spr_Master = new Sprite(tex_Master);
 		
 		//Teste dot
 		tex_teste = new Texture(Gdx.files.internal("data/assets/testdot.png"));
@@ -382,6 +393,19 @@ public class CharacterSelect implements Screen, ApplicationListener, InputProces
 		//Check option Select
 		if(check == true){		
 		    game.AtualizaElementos(game, config, gameControl, platform);	    		
+		}
+		
+		if(showAccount) {
+			spr_Master = gameControl.InterfaceMain("IDbox");
+			spr_Master.draw(game.batch);
+			
+			font_master.setColor(Color.WHITE);
+			font_master.getData().setScale(0.08f,0.11f);
+			font_master.setUseIntegerPositions(false);
+			font_master.draw(game.batch,"Sistema",22,63f);
+			
+			font_master.draw(game.batch,"Este e o numero de sua conta, ",22,53f);
+			font_master.draw(game.batch,"guarde para acesso posterior: " + AccountID,22,48f);
 		}
 
 		//spr_teste.setPosition(17, 45);
@@ -850,6 +874,15 @@ public class CharacterSelect implements Screen, ApplicationListener, InputProces
 	{
 		Vector3 coordsTouch = camera.unproject(new Vector3(p1,p2,0));
 		String[] charconfig = new String[3];
+		
+		if(showAccount) {
+			if((coordsTouch.x >= 0 && coordsTouch.x <= 99) && (coordsTouch.y >= 0 && coordsTouch.y <= 99)){
+				showAccount = false;
+			}
+		}
+		
+		if(!showAccount) {
+		
 		//Criar novo Char
 		if(selectOption){	
 			//Create New
@@ -1078,6 +1111,7 @@ public class CharacterSelect implements Screen, ApplicationListener, InputProces
 				deleteCharacter = false;
 				selectedCharacter = false;
 			}
+		}
 		}
 		return false;
 	}
