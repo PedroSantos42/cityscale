@@ -152,6 +152,7 @@ public class GameControl {
 		private String chat2 = "";
 		private String chat3 = "";
 		private int chatNumber = 0;
+		private boolean findplayerlist = false;
 		private int posOnlineX;
 		private int posOnlineY;
 		private int posInjectorOnline;
@@ -3450,7 +3451,7 @@ public class GameControl {
 				//}
 					
 				// Construct data			
-				lstOnlinePlayers.clear();
+				//lstOnlinePlayers.clear();
 				
 				posOnlineFX = Float.parseFloat(Character_Data.PX_A);
 				posOnlineFY = Float.parseFloat(Character_Data.PY_A);
@@ -3515,9 +3516,8 @@ public class GameControl {
 		        		TrataPlayersOnline(linhaLida);     		
 		            }	
 			        
-			        if(linhaLida.contains("SYSTEMINSERT")) {
-			        	String testeon = "";
-			        	testeon = linhaLida;
+			        if(linhaLida.contains("SYSTEMMOBS")) {
+			        	TrataMobs(linhaLida);
 			        }
 	    		}	
 		        
@@ -3652,9 +3652,15 @@ public class GameControl {
 				posInjectorOnline = Integer.parseInt(lstOnlinePlayers.get(i).Position_A);
 				spr_master = MovChar(lstOnlinePlayers.get(i).Set_A,lstOnlinePlayers.get(i).Side_A,"","",posOnlineFX,posOnlineFY,posInjectorOnline);
 				lstSpritesOnline.add(spr_master);
+				spr_master = ReturnHairs(lstOnlinePlayers.get(i).Hair_A,lstOnlinePlayers.get(i).Side_A,"",posOnlineFX,posOnlineFY);
+				lstSpritesOnline.add(spr_master);
 			}
-					
+				
 			return lstSpritesOnline;
+		}
+		
+		public void TrataMobs(String dadosMobs) {
+			onlineData = dadosMobs.split(":");	
 		}
 		
 		public void TrataPlayersOnline(String dadosPlayer) {
@@ -3723,7 +3729,29 @@ public class GameControl {
 			plOnline.Position_A = splitonlineData[1];	
 			
 			if(!plOnline.Name_A.equals(Character_Data.Name_A)) {
-				lstOnlinePlayers.add(plOnline);
+				
+				findplayerlist = false;
+				for(int i = 0; i < lstOnlinePlayers.size(); i++) {				
+					if(lstOnlinePlayers.get(i).Account.equals(plOnline.Account)) {
+						findplayerlist = true;						
+						lstOnlinePlayers.get(i).HP_A = plOnline.HP_A; 
+						lstOnlinePlayers.get(i).MP_A = plOnline.MP_A;
+						lstOnlinePlayers.get(i).PX_A = plOnline.PX_A;
+						lstOnlinePlayers.get(i).PY_A = plOnline.PY_A;
+						lstOnlinePlayers.get(i).Map_A = plOnline.Map_A;
+						lstOnlinePlayers.get(i).Level_A = plOnline.Level_A;
+						lstOnlinePlayers.get(i).Set_A = plOnline.Set_A;
+						lstOnlinePlayers.get(i).Hair_A = plOnline.Hair_A;
+						lstOnlinePlayers.get(i).Weapon_A = plOnline.Weapon_A;
+						lstOnlinePlayers.get(i).Battle_A = plOnline.Battle_A;
+						lstOnlinePlayers.get(i).Side_A = plOnline.Side_A;
+						lstOnlinePlayers.get(i).Position_A = plOnline.Position_A;					
+					}
+				}
+				
+				if(!findplayerlist) {
+					lstOnlinePlayers.add(plOnline);
+				}			
 			}
 		}
 		

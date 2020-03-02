@@ -27,6 +27,7 @@
 	
 	#Variaveis de uso Global
 	$lAll = '';
+	$lQueryEx = '';
 	$lnomeplayer = '';
 	
 	#Variaveis de Banco
@@ -48,11 +49,11 @@
 	
 	#Sincronizar
 	if ($lrequest == "Sincronizar"){
-		if($lversion != "a1"){
-				echo nl2br($lversion);
-				echo nl2br("Resultado: Versao Invalida");
-				return;
-		}
+		#if($lversion != "a1"){
+		#		echo nl2br($lversion);
+		#		echo nl2br("Resultado: Versao Invalida");
+		#		return;
+		#}
 	
 		//Recupera Chat
 		$sql = "SELECT * FROM Chats ORDER BY ChatID DESC LIMIT 3";
@@ -65,20 +66,13 @@
 				$lAll = $lAll . ("SYSTEMCHAT - :Nome=" . $row["Nome"] . 
 								":Mensagem=" .  $row["Mensagem"]. ":\n");
 			}
-
 			echo nl2br($lAll);
 		}
 		
 		//Verifica se já está ativo
 		$sql = "SELECT * FROM Processos where ACCOUNT = '$ldata' ";
 		$result = $conn->query($sql);
-	
-		if ($result->num_rows > 0) {
-			// output data of each row
-			//while($row = $result->fetch_assoc()) {
-			//	$lnomeplayer = $row["NOME"];
-			//}
-			
+		if ($result->num_rows > 0) {			
 			$sql = "UPDATE Processos set NOME = '$lnome',
 										 HP = '$lhp',
 										 MP = '$lmp',
@@ -96,89 +90,54 @@
 										 SKILLONLINE = '$lskillOnline',
 										 ACCOUNT = '$ldata',
 										 PARTY = '$lparty' 
-										 where ACCOUNT = '$ldata' ";
-			echo nl2br("ready \n");
-			echo nl2br($sql);
-			
+										 where ACCOUNT = '$ldata' ";			
 			$result = $conn->query($sql);
-			
-			if ($conn->query($sql) === TRUE) { echo nl2br("Resultado: \n - UPDATE com sucesso - \n"); } else { echo nl2br("Resultado: \n - Falhou na Atualizacao - \n") . $conn->error; }
-			$lAll = '';
-			$sql = "SELECT * FROM Processos";
-			$result = $conn->query($sql);
-			
-				if ($result->num_rows > 0) {
-					while($row = $result->fetch_assoc()) {
-											
-						$lAll = $lAll . ("SYSTEMPLAYERS - SELECT :NOME=" . $row["NOME"]. 
-							          ":HP=" .  $row["HP"]. 
-									  ":MP=" . $row["MP"] . 
-									  ":POSX=" . $row["POSX"] .
-									  ":POSY=" . $row["POSY"] .
-									  ":MAP=" . $row["MAP"] .
-									  ":LEVEL=" . $row["LEVEL"] .
-									  ":SETCHAR=" . $row["SETCHAR"] .
-									  ":HAIR=" . $row["HAIR"] .
-									  ":HAT=" . $row["HAT"] .
-									  ":WEAPON=" . $row["WEAPON"] .
-									  ":BATTLE=" . $row["BATTLE"] .
-									  ":SIDE=" . $row["SIDE"] .
-									  ":POS=" . $row["POS"] .
-									  ":SKILLONLINE=" . $row["SKILLONLINE"] .
-									  ":ACCOUNT=" . $row["ACCOUNT"] .
-									  ":PARTY=" . $row["PARTY"] .
-									  ": - \n");
-					}
-					echo nl2br ($lAll);					
-					$lAll = '';
-				}
-				else{				
-					echo nl2br ("Resultado: \n - Nao foi possivel Recuperar jogadores Online - \n");
-				}
-			} else {
+			if ($conn->query($sql) === TRUE) { echo nl2br("\n - Atualizado - \n"); } else { echo nl2br("\n - Falhou Update - \n") . $conn->error; }
+		}
+		//Insere se não existir
+		else
+		{
 			$lAll = '';
 			$sql = 
 			"INSERT INTO Processos (NOME, HP, MP, POSX, POSY, MAP, LEVEL, SETCHAR, HAIR, HAT, WEAPON, BATTLE, SIDE, POS, SKILLONLINE, ACCOUNT, PARTY)  VALUES 
 			('$lnome', '$lhp', '$lmp', '$lposX', '$lposY', '$lmap', '$llevel', '$lsetchar','$lhair', '$lhat', '$lweapon', '$lbattle' ,'$lside', '$lpos', '$lskillOnline','$ldata', '$lparty') ";
 			
 			if ($conn->query($sql) === TRUE) {
-				$result = $conn->query($sql);
-			
-				if ($result->num_rows > 0) {
-					while($row = $result->fetch_assoc()) {
-						
-						$lAll = $lAll . ("SYSTEMPLAYERS - INSERT :NOME=" . $row["NOME"]. 
-							          ":HP=" .  $row["HP"]. 
-									  ":MP=" . $row["MP"] . 
-									  ":POSX=" . $row["POSX"] .
-									  ":POSY=" . $row["POSY"] .
-									  ":MAP=" . $row["MAP"] .
-									  ":LEVEL=" . $row["LEVEL"] .
-									  ":SETCHAR=" . $row["SETCHAR"] .
-									  ":HAIR=" . $row["HAIR"] .
-									  ":HAT=" . $row["HAT"] .
-									  ":WEAPON=" . $row["WEAPON"] .
-									  ":BATTLE=" . $row["BATTLE"] .
-									  ":SIDE=" . $row["SIDE"] .
-									  ":POS=" . $row["POS"] .
-									  ":SKILLONLINE=" . $row["SKILLONLINE"] .
-									  ":ACCOUNT=" . $row["ACCOUNT"] .
-									  ":PARTY=" . $row["PARTY"] .
-									  ": - \n");
-					}
-					echo nl2br ($lAll);
-					$lAll = '';
-				}
-				else{
-					
-					echo nl2br("Resultado: \n - Nao foi possivel Recuperar jogadores Online - \n");
-				}
-				
+				echo "SYSTEMINSERT";
 			} else {
+				echo "Error: " . $sql . "<br>" . $conn->error;
+			}
 				
-				echo nl2br ("Nao foi possivel inserir jogador \n") . $conn->error;
-			}		
 		}
+		
+		/////Retorna Players Online /////
+			$lAll = '';
+			$sql = "SELECT * FROM Processos";
+			$result = $conn->query($sql);			
+			if ($result->num_rows > 0) {
+				while($row = $result->fetch_assoc()) {
+										
+					$lAll = $lAll . ("SYSTEMPLAYERS - :NOME=" . $row["NOME"]. 
+								  ":HP=" .  $row["HP"]. 
+								  ":MP=" . $row["MP"] . 
+								  ":POSX=" . $row["POSX"] .
+								  ":POSY=" . $row["POSY"] .
+								  ":MAP=" . $row["MAP"] .
+								  ":LEVEL=" . $row["LEVEL"] .
+								  ":SETCHAR=" . $row["SETCHAR"] .
+								  ":HAIR=" . $row["HAIR"] .
+								  ":HAT=" . $row["HAT"] .
+								  ":WEAPON=" . $row["WEAPON"] .
+								  ":BATTLE=" . $row["BATTLE"] .
+								  ":SIDE=" . $row["SIDE"] .
+								  ":POS=" . $row["POS"] .
+								  ":SKILLONLINE=" . $row["SKILLONLINE"] .
+								  ":ACCOUNT=" . $row["ACCOUNT"] .
+								  ":PARTY=" . $row["PARTY"] .
+								  ": - \n");				
+				}
+				echo nl2br($lAll);
+			}
 		
 		$conn->close();
 	}
