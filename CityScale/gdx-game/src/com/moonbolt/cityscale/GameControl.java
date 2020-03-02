@@ -3437,14 +3437,7 @@ public class GameControl {
 			
 			if(tipoRequisicao.equals("Sincronizar")){
 				// Construct data
-				//data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("cityscale.mysql.uhserver.com", "UTF-8");
-		        
-				if(loopOnlineCheck <= 10) {
-					loopOnlineCheck++;
-				}
 				
-				if(loopOnlineCheck > 1) {
-				lstChats.clear();
 				lstOnlinePlayers.clear();
 				
 				posOnlineFX = Float.parseFloat(Character_Data.PX_A);
@@ -3507,7 +3500,7 @@ public class GameControl {
 			        if (linhaLida.contains("SYSTEMPLAYERS")) {            	
 		        		TrataPlayersOnline(linhaLida);     		
 		            }		
-			        if(linhaLida.contains("ready")){
+			        if(linhaLida.contains("BCS")){
 			        	retornoOnline = "Funcionou";
 			        }
 			        
@@ -3515,11 +3508,10 @@ public class GameControl {
 		        wr.close();
 		        rd.close();
         
-		        loopOnlineCheck = 0;
 		        
 		        return retornoOnline;
 				}
-			}
+			
 			
 			if(tipoRequisicao.equals("Chat")){
 				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Account, "UTF-8");
@@ -3732,5 +3724,10 @@ public class GameControl {
 			//Conclusão
 			auxOnline = text;
 			lstChats.add(auxOnline);
+			
+			if(lstChats.size() > 3) {
+				lstChats.remove(3);
+			}
+			
 		}
 }

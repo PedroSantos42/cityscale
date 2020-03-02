@@ -473,10 +473,10 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		
 		
 		//Tests
-		spr_teste.setPosition(cameraCoordsX + 18, cameraCoordsY + 30);
-		spr_teste2.setPosition(cameraCoordsX + 66, cameraCoordsY + 15);
-		spr_teste.draw(game.batch);
-		spr_teste2.draw(game.batch);
+		//spr_teste.setPosition(cameraCoordsX + 18, cameraCoordsY + 30);
+		//spr_teste2.setPosition(cameraCoordsX + 66, cameraCoordsY + 15);
+		//spr_teste.draw(game.batch);
+		//spr_teste2.draw(game.batch);
 		//font_master.draw(game.batch,String.valueOf(playerX),cameraCoordsX,cameraCoordsY);
 		//font_master.draw(game.batch,String.valueOf(playerY),cameraCoordsX + 30,cameraCoordsY);		
 		
@@ -503,6 +503,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 	
 	private void ExibeChats() {	
 		
+		try {
 		lstChats = gameControl.CarregaChats();
 		
 		font_master.setColor(Color.WHITE);
@@ -525,6 +526,11 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		font_master.setColor(Color.WHITE);
 		font_master.getData().setScale(0.10f,0.13f);
 		font_master.setUseIntegerPositions(false);
+		}
+		
+		catch(Exception ex) {
+			
+		}
 	}
 	
 	public void ExibeItensMochila() {
