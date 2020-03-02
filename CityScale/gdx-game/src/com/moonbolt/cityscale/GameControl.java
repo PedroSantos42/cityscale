@@ -145,10 +145,13 @@ public class GameControl {
 		private String[] onlineData;
 		private String[] splitonlineData;
 		private String auxOnline;
-		private String retornoThread = "retry";
 		private String retornoOnline = "";
 		private String skillOnline = "";
 		private String sidePlayer = "";
+		private String chat1 = "";
+		private String chat2 = "";
+		private String chat3 = "";
+		private int chatNumber = 0;
 		private int posOnlineX;
 		private int posOnlineY;
 		private int posInjectorOnline;
@@ -3377,11 +3380,11 @@ public class GameControl {
 				String retorno = "";
 				
 				if(nomeOperacao.equals("Upload")) {
-					retorno = GerenciamentoOnline("Upload", subdado);
+					GerenciamentoOnline("Upload", subdado);
 				}
 				
 				if(nomeOperacao.equals("Download")) {
-					retorno = GerenciamentoOnline("Download", subdado);
+					GerenciamentoOnline("Download", subdado);
 				}
 				
 				if(nomeOperacao.equals("Sincronizar")) {
@@ -3390,7 +3393,7 @@ public class GameControl {
 				}
 				
 				if(nomeOperacao.equals("Chat")) {
-					retorno = GerenciamentoOnline("Chat", subdado);
+					GerenciamentoOnline("Chat", subdado);
 				}
 				
 				if(nomeOperacao.equals("Desligar")) {
@@ -3415,8 +3418,7 @@ public class GameControl {
 			public void run() {
 				try{    
 					while(threahCount == 1) {
-						retornoThread = GerenciamentoOnline("Sincronizar", "");    
-						//System.out.println(String.valueOf(RetornoOnline));         	
+						GerenciamentoOnline("Sincronizar", "");            	
 					}
 		}
 		catch(Exception ex) {}
@@ -3427,7 +3429,7 @@ public class GameControl {
 		
 		
 		
-		public String GerenciamentoOnline(String tipoRequisicao, String subdado) throws IOException {
+		public void GerenciamentoOnline(String tipoRequisicao, String subdado) throws IOException {
 			
 			String linhaLida;
 			String resposta;
@@ -3436,15 +3438,25 @@ public class GameControl {
 			try {
 			
 			if(tipoRequisicao.equals("Sincronizar")){
-				// Construct data
 				
+				//Syncronizer controller
+				//loopOnlineCheck++;
+				
+				//if(loopOnlineCheck < 5){
+				//	return;
+				//}
+				//if(loopOnlineCheck > 6) {
+				//	loopOnlineCheck = 0;
+				//}
+					
+				// Construct data			
 				lstOnlinePlayers.clear();
 				
 				posOnlineFX = Float.parseFloat(Character_Data.PX_A);
 				posOnlineFY = Float.parseFloat(Character_Data.PY_A);
 				
 				posOnlineX = Math.round(posOnlineFX);
-				posOnlineY = Math.round(posOnlineFX);
+				posOnlineY = Math.round(posOnlineFY);
 				
 				String account = Character_Data.Account;
 				
@@ -3488,28 +3500,33 @@ public class GameControl {
 		        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
 		        String line;
 		        line = "";
+		        chatNumber = 0;
 		        retornoOnline = "retry";
 		        while ((line = rd.readLine()) != null) {
 		        	linhaLida = line;   
 		        	//Resultado: - Logado -. <br>done
 		        	
 		        	if(linhaLida.contains("SYSTEMCHAT")) {
-		        		TrataChatOnline(linhaLida);
+		        		chatNumber++;
+		        		TrataChatOnline(linhaLida , chatNumber); 
 		        	}
 		        	
 			        if (linhaLida.contains("SYSTEMPLAYERS")) {            	
 		        		TrataPlayersOnline(linhaLida);     		
-		            }		
-			        if(linhaLida.contains("BCS")){
-			        	retornoOnline = "Funcionou";
-			        }
+		            }	
 			        
-	    		}	        
+			        if(linhaLida.contains("SYSTEMINSERT")) {
+			        	String testeon = "";
+			        	testeon = linhaLida;
+			        }
+	    		}	
+		        
 		        wr.close();
 		        rd.close();
         
+		        TrataChatOnline("Sync", 0);
 		        
-		        return retornoOnline;
+		        return;
 				}
 			
 			
@@ -3618,11 +3635,11 @@ public class GameControl {
 		        rd.close();
 			}
 					
-			return "";
+			return ;
 			}
 			
 			catch(Exception ex) {
-				return "retry";
+				return ;
 			}
 		}
 		
@@ -3710,7 +3727,8 @@ public class GameControl {
 			}
 		}
 		
-		public void TrataChatOnline(String dadosChat) {
+		public void TrataChatOnline(String dadosChat, int number) {
+			if(dadosChat != "Sync") {
 			onlineData = dadosChat.split(":");
 			auxOnline = onlineData[1];
 			//Nome do personagem
@@ -3723,11 +3741,17 @@ public class GameControl {
 			text = text + ": " + splitonlineData[1];	
 			//Conclusão
 			auxOnline = text;
-			lstChats.add(auxOnline);
 			
-			if(lstChats.size() > 3) {
-				lstChats.remove(3);
+			if(number == 1) { chat1 = auxOnline; }
+			if(number == 2) { chat2 = auxOnline; }
+			if(number == 3) { chat3 = auxOnline; }
+			
 			}
-			
+			else {
+					lstChats.clear();
+					lstChats.add(chat1);
+					lstChats.add(chat2);
+					lstChats.add(chat3);
+			}			
 		}
 }

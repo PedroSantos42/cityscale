@@ -511,7 +511,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		font_master.setUseIntegerPositions(false);
 		font_master.draw(game.batch,"________Chat________",cameraCoordsX - 30,cameraCoordsY - 30);
 		
-		for(int i = 0; i < lstChats.size(); i++) {
+		for(int i = 0; i < 3; i++) {
 			if(i == 0) {
 			font_master.draw(game.batch,lstChats.get(i),cameraCoordsX - 30,cameraCoordsY - 40);
 			}
