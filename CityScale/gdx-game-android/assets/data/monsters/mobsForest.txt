@@ -1,292 +1,355 @@
 mobsForest.png
-size: 502, 425
+size: 512, 492
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
-aranarc1_damage_left
-  rotate: false
-  xy: 0, 0
-  size: 70, 64
-  orig: 70, 64
-  offset: 0, 0
-  index: -1
-aranarc1_damage_right
-  rotate: false
-  xy: 70, 0
-  size: 70, 64
-  orig: 70, 64
-  offset: 0, 0
-  index: -1
-aranarc1_left
-  rotate: false
-  xy: 140, 0
-  size: 70, 64
-  orig: 70, 64
-  offset: 0, 0
-  index: -1
-aranarc1_right
-  rotate: false
-  xy: 210, 0
-  size: 70, 64
-  orig: 70, 64
-  offset: 0, 0
-  index: -1
-aranarc2_left
-  rotate: false
-  xy: 280, 0
-  size: 70, 64
-  orig: 70, 64
-  offset: 0, 0
-  index: -1
-aranarc2_right
-  rotate: false
-  xy: 350, 0
-  size: 70, 64
-  orig: 70, 64
-  offset: 0, 0
-  index: -1
-aranarc3_left
-  rotate: false
-  xy: 420, 0
-  size: 70, 64
-  orig: 70, 64
-  offset: 0, 0
-  index: -1
-aranarc3_right
-  rotate: false
-  xy: 0, 64
-  size: 70, 64
-  orig: 70, 64
-  offset: 0, 0
-  index: -1
-aranarc4_left
-  rotate: false
-  xy: 70, 64
-  size: 70, 64
-  orig: 70, 64
-  offset: 0, 0
-  index: -1
-aranarc4_right
-  rotate: false
-  xy: 140, 64
-  size: 70, 64
-  orig: 70, 64
-  offset: 0, 0
-  index: -1
 bee1_damage_left
   rotate: false
-  xy: 210, 64
+  xy: 273, 334
   size: 91, 79
   orig: 91, 79
   offset: 0, 0
   index: -1
 bee1_damage_right
   rotate: false
-  xy: 301, 64
+  xy: 182, 334
   size: 91, 79
   orig: 91, 79
   offset: 0, 0
   index: -1
 bee1_left
   rotate: false
-  xy: 392, 64
+  xy: 91, 334
   size: 91, 79
   orig: 91, 79
   offset: 0, 0
   index: -1
 bee1_right
   rotate: false
-  xy: 0, 143
+  xy: 0, 334
   size: 91, 79
   orig: 91, 79
   offset: 0, 0
   index: -1
 bee2_left
   rotate: false
-  xy: 91, 143
+  xy: 364, 334
   size: 91, 79
   orig: 91, 79
   offset: 0, 0
   index: -1
 bee2_right
   rotate: false
-  xy: 182, 143
+  xy: 91, 413
   size: 91, 79
   orig: 91, 79
   offset: 0, 0
   index: -1
 bee3_left
   rotate: false
-  xy: 273, 143
+  xy: 273, 413
   size: 91, 79
   orig: 91, 79
   offset: 0, 0
   index: -1
 bee3_right
   rotate: false
-  xy: 364, 143
+  xy: 364, 413
   size: 91, 79
   orig: 91, 79
   offset: 0, 0
   index: -1
 bee4_left
   rotate: false
-  xy: 0, 222
+  xy: 182, 413
   size: 91, 79
   orig: 91, 79
   offset: 0, 0
   index: -1
 bee4_right
   rotate: false
-  xy: 91, 222
+  xy: 0, 413
   size: 91, 79
   orig: 91, 79
   offset: 0, 0
   index: -1
-poro
+oikplant1_damage_left
   rotate: false
-  xy: 182, 222
-  size: 64, 72
-  orig: 64, 72
+  xy: 396, 198
+  size: 70, 64
+  orig: 70, 64
+  offset: 0, 0
+  index: -1
+oikplant1_damage_right
+  rotate: false
+  xy: 70, 270
+  size: 70, 64
+  orig: 70, 64
+  offset: 0, 0
+  index: -1
+oikplant1_left
+  rotate: false
+  xy: 326, 198
+  size: 70, 64
+  orig: 70, 64
+  offset: 0, 0
+  index: -1
+oikplant1_right
+  rotate: false
+  xy: 256, 198
+  size: 70, 64
+  orig: 70, 64
+  offset: 0, 0
+  index: -1
+oikplant2_left
+  rotate: false
+  xy: 0, 270
+  size: 70, 64
+  orig: 70, 64
+  offset: 0, 0
+  index: -1
+oikplant2_right
+  rotate: false
+  xy: 280, 270
+  size: 70, 64
+  orig: 70, 64
+  offset: 0, 0
+  index: -1
+oikplant3_left
+  rotate: false
+  xy: 420, 270
+  size: 70, 64
+  orig: 70, 64
+  offset: 0, 0
+  index: -1
+oikplant3_right
+  rotate: false
+  xy: 350, 270
+  size: 70, 64
+  orig: 70, 64
+  offset: 0, 0
+  index: -1
+oikplant4_left
+  rotate: false
+  xy: 210, 270
+  size: 70, 64
+  orig: 70, 64
+  offset: 0, 0
+  index: -1
+oikplant4_right
+  rotate: false
+  xy: 140, 270
+  size: 70, 64
+  orig: 70, 64
   offset: 0, 0
   index: -1
 poro1_damage_left
   rotate: false
-  xy: 246, 222
+  xy: 448, 126
   size: 64, 72
   orig: 64, 72
   offset: 0, 0
   index: -1
 poro1_damage_right
   rotate: false
-  xy: 310, 222
+  xy: 0, 198
   size: 64, 72
   orig: 64, 72
   offset: 0, 0
   index: -1
 poro1_left
   rotate: false
-  xy: 374, 222
+  xy: 128, 198
   size: 64, 72
   orig: 64, 72
   offset: 0, 0
   index: -1
 poro1_right
   rotate: false
-  xy: 438, 222
+  xy: 192, 198
   size: 64, 72
   orig: 64, 72
   offset: 0, 0
   index: -1
 poro2_left
   rotate: false
-  xy: 0, 301
+  xy: 320, 54
   size: 64, 72
   orig: 64, 72
   offset: 0, 0
   index: -1
 poro2_right
   rotate: false
-  xy: 64, 301
+  xy: 384, 126
   size: 64, 72
   orig: 64, 72
   offset: 0, 0
   index: -1
 poro3_left
   rotate: false
-  xy: 128, 301
+  xy: 64, 54
   size: 64, 72
   orig: 64, 72
   offset: 0, 0
   index: -1
 poro3_right
   rotate: false
-  xy: 192, 301
+  xy: 192, 54
   size: 64, 72
   orig: 64, 72
   offset: 0, 0
   index: -1
 poro4_left
   rotate: false
-  xy: 256, 301
+  xy: 128, 54
   size: 64, 72
   orig: 64, 72
   offset: 0, 0
   index: -1
 poro4_right
   rotate: false
-  xy: 320, 301
+  xy: 0, 54
   size: 64, 72
   orig: 64, 72
   offset: 0, 0
   index: -1
 slime1_damage_left
   rotate: false
-  xy: 384, 301
+  xy: 456, 0
   size: 56, 54
   orig: 56, 54
   offset: 0, 0
   index: -1
 slime1_damage_right
   rotate: false
-  xy: 440, 301
+  xy: 400, 0
   size: 56, 54
   orig: 56, 54
   offset: 0, 0
   index: -1
 slime1_left
   rotate: false
-  xy: 0, 373
+  xy: 300, 0
   size: 50, 52
   orig: 50, 52
   offset: 0, 0
   index: -1
 slime1_right
   rotate: false
-  xy: 50, 373
+  xy: 0, 0
   size: 50, 52
   orig: 50, 52
   offset: 0, 0
   index: -1
 slime2_left
   rotate: false
-  xy: 100, 373
+  xy: 200, 0
   size: 50, 52
   orig: 50, 52
   offset: 0, 0
   index: -1
 slime2_right
   rotate: false
-  xy: 150, 373
+  xy: 50, 0
   size: 50, 52
   orig: 50, 52
   offset: 0, 0
   index: -1
 slime3_left
   rotate: false
-  xy: 200, 373
+  xy: 350, 0
   size: 50, 52
   orig: 50, 52
   offset: 0, 0
   index: -1
 slime3_right
   rotate: false
-  xy: 250, 373
+  xy: 150, 0
   size: 50, 52
   orig: 50, 52
   offset: 0, 0
   index: -1
 slime4_left
   rotate: false
-  xy: 300, 373
+  xy: 250, 0
   size: 50, 52
   orig: 50, 52
   offset: 0, 0
   index: -1
 slime4_right
   rotate: false
-  xy: 350, 373
+  xy: 100, 0
   size: 50, 52
   orig: 50, 52
+  offset: 0, 0
+  index: -1
+willow1_damage_left
+  rotate: false
+  xy: 192, 126
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+willow1_damage_right
+  rotate: false
+  xy: 320, 126
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+willow1_left
+  rotate: false
+  xy: 256, 126
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+willow1_right
+  rotate: false
+  xy: 128, 126
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+willow2_left
+  rotate: false
+  xy: 64, 126
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+willow2_right
+  rotate: false
+  xy: 384, 54
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+willow3_left
+  rotate: false
+  xy: 0, 126
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+willow3_right
+  rotate: false
+  xy: 448, 54
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+willow4_left_
+  rotate: false
+  xy: 256, 54
+  size: 64, 72
+  orig: 64, 72
+  offset: 0, 0
+  index: -1
+willow4_right_
+  rotate: false
+  xy: 64, 198
+  size: 64, 72
+  orig: 64, 72
   offset: 0, 0
   index: -1

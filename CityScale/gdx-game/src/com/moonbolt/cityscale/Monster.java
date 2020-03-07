@@ -70,6 +70,7 @@ public class Monster {
 	public String ATKZONEYPLUS;
 	public String ATKZONEYMINUS;
 	public String LOCKDEATH;
+	public String MAP;
 	
 	public Monster() {
 		randnumber = new Random();
@@ -108,7 +109,7 @@ public class Monster {
 				mobReturn.AUTOSKILL1 = "5"; //AUTOSKILL1
 				mobReturn.AUTOSKILL2 = "0"; //AUTOSKILL2
 				mobReturn.AUTOATKBASE = "250";
-				mobReturn.ID = "A1"; //ID
+				mobReturn.ID = "SlimeA"; //ID
 				mobReturn.AGRESSIVE = "no";
 				mobReturn.RESPAWN = "100";
 				mobReturn.RESPAWNMAX = "100";
@@ -125,6 +126,7 @@ public class Monster {
 	            mobReturn.ATKZONEYPLUS = "30";
 	            mobReturn.ATKZONEYMINUS = "30";
 	            mobReturn.LOCKDEATH = "no";
+	            mobReturn.MAP = "Streets305";
 			}
 		}
 		

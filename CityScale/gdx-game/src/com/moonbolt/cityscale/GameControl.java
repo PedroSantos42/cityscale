@@ -150,7 +150,7 @@ public class GameControl {
 		private String sidePlayer = "";
 		private String chat1 = "";
 		private String chat2 = "";
-		private String chat3 = "";
+		private String chat3 = "";		
 		private int chatNumber = 0;
 		private boolean findplayerlist = false;
 		private int posOnlineX;
@@ -158,8 +158,14 @@ public class GameControl {
 		private int posInjectorOnline;
 		private int loopOnlineCheck = 0;
 		private int threahCount = 0;
+		private int countparty = 0;
 		private float posOnlineFX;
 		private float posOnlineFY;
+		private Player plOnline;
+		private Monster mobOnline;
+		private boolean onlineCheck = false;
+		private boolean PartyON = false;
+		
 		
 		//Constructor//
 		public GameControl(){
@@ -187,6 +193,10 @@ public class GameControl {
 			lstBuffs = new ArrayList<Buffs>();
 			lstChats = new ArrayList<String>();
 			lstSpritesOnline = new ArrayList<Sprite>();
+			
+			//Online Instances//
+			Player plOnline = new Player();
+			Monster mobOnline = new Monster();
 			
 			////////Atlas Section//////
 			//Character
@@ -1392,6 +1402,10 @@ public class GameControl {
 		
 		// Interfaces and Screens //
 		
+		public void AssociaGrupo() {
+			
+		}
+		
 		public ArrayList<String> CarregaChats() {
 			return lstChats;
 		}
@@ -1573,6 +1587,27 @@ public class GameControl {
 				spr_master = atlas_gameplay_interface.createSprite("tagplayer");
 				spr_master.setSize(45, 35);
 				spr_master.setPosition(fX - 100, fY + 95);
+				return spr_master; 
+			}
+			
+			if(item.equals("PartyTag1")) {
+				spr_master = atlas_gameplay_interface.createSprite("tagparty");
+				spr_master.setSize(45, 35);
+				spr_master.setPosition(fX - 100, fY + 75);
+				return spr_master; 
+			}
+			
+			if(item.equals("PartyTag2")) {
+				spr_master = atlas_gameplay_interface.createSprite("tagparty");
+				spr_master.setSize(45, 35);
+				spr_master.setPosition(fX - 100, fY + 45);
+				return spr_master; 
+			}
+			
+			if(item.equals("PartyTag3")) {
+				spr_master = atlas_gameplay_interface.createSprite("tagparty");
+				spr_master.setSize(45, 35);
+				spr_master.setPosition(fX - 100, fY + 25);
 				return spr_master; 
 			}
 			
@@ -2065,7 +2100,7 @@ public class GameControl {
 							danoMob.dano = String.valueOf("1");
 							danoMob.time = 60;
 							danoMob.Color = "Yellow";
-							danoMob.Descritivo = "Ataque";
+							danoMob.Descritivo = "Ataque"; 
 							lstDamage.add(danoMob);
                                 
 							if(mobHP <= 0 && lstMonsters.get(countA).LOCKDEATH.equals("no")) { 
@@ -2080,6 +2115,7 @@ public class GameControl {
 								lstMonsters.get(countA).BATTLE = "no";
 							}
 							lstMonsters.get(countA).HP = String.valueOf(mobHP);
+							if(onlineCheck) { OperacaoOnline("Atk", lstMonsters.get(countA).ID + ":" + lstMonsters.get(countA).HP); }
 							playerManualAtkDelay = 50;
 							return;
 				        }
@@ -2216,6 +2252,9 @@ public class GameControl {
 										monsterEvade = Integer.parseInt(lstMonsters.get(countA).EVADE);							
 										mobHP = mobHP - (playerAtk + dmgWeapon);
 									}
+									
+									if(onlineCheck) { OperacaoOnline("Atk", lstMonsters.get(countA).ID + ":" + lstMonsters.get(countA).HP); }
+									
 								}
 							}						
 						}
@@ -3389,6 +3428,7 @@ public class GameControl {
 				}
 				
 				if(nomeOperacao.equals("Sincronizar")) {
+					onlineCheck = true;
 					threahCount = 1;
 					ThreadsSincronia();				
 				}
@@ -3397,7 +3437,16 @@ public class GameControl {
 					GerenciamentoOnline("Chat", subdado);
 				}
 				
+				if(nomeOperacao.equals("Atk")) {
+					GerenciamentoOnline("Atk", subdado);
+				}
+				
+				if(nomeOperacao.equals("Party")) {
+					GerenciamentoOnline("Party", subdado);
+				}
+				
 				if(nomeOperacao.equals("Desligar")) {
+					onlineCheck = false;
 					threahCount = 0;
 				}
 			}
@@ -3435,6 +3484,8 @@ public class GameControl {
 			String linhaLida;
 			String resposta;
 			String skill;
+			String[] atkData = new String [3];
+					
 			
 			try {
 			
@@ -3519,6 +3570,9 @@ public class GameControl {
 			        if(linhaLida.contains("SYSTEMMOBS")) {
 			        	TrataMobs(linhaLida);
 			        }
+			        if(linhaLida.contains("BTDBCV")) {
+			        	line = "Teste";
+			        }
 	    		}	
 		        
 		        wr.close();
@@ -3557,6 +3611,77 @@ public class GameControl {
 		        	linhaLida = line;   
 		        	//Resultado: - Logado -. <br>done
 			        if (linhaLida.contains("Works")) {            	
+		        		retornoOnline = "Works";       		
+		            }		            
+	    		}	        
+		        wr.close();
+		        rd.close();
+			}
+			
+			if(tipoRequisicao.equals("Party")){
+				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Account, "UTF-8");
+		        data += "&" + URLEncoder.encode("lrequest", "UTF-8") + "=" + URLEncoder.encode("Chat", "UTF-8");
+		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("citybase.mysql.uhserver.com", "UTF-8");
+		        data += "&" + URLEncoder.encode("lusername", "UTF-8") + "=" + URLEncoder.encode("citymaster", "UTF-8");
+		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("City@2020", "UTF-8");
+		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("citybase", "UTF-8");		 
+		        data += "&" + URLEncoder.encode("lparty", "UTF-8") + "=" + URLEncoder.encode(subdado, "UTF-8");
+		        data += "&" + URLEncoder.encode("lnome", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Name_A, "UTF-8");
+		        
+		        // Send data
+		        URL url = new URL("http://moonbolt.online/Conector/Online.php");
+		        URLConnection conn = url.openConnection();
+		        conn.setDoOutput(true);
+		        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+		        wr.write(data);
+		        wr.flush();
+		        
+		        // Get the response
+		        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		        String line;
+		        line = subdado;
+		        retornoOnline = "retry";
+		        while ((line = rd.readLine()) != null) {
+		        	linhaLida = line;   
+		        	//Resultado: - Logado -. <br>done
+			        if (linhaLida.contains("Works")) {            	
+			        	PartyON = true;       		
+		            }		            
+	    		}	        
+		        wr.close();
+		        rd.close();
+			}
+			
+			if(tipoRequisicao.equals("Atk")){
+				
+				atkData = subdado.split(":");
+				
+				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Account, "UTF-8");
+		        data += "&" + URLEncoder.encode("lrequest", "UTF-8") + "=" + URLEncoder.encode("Atk", "UTF-8");
+		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("citybase.mysql.uhserver.com", "UTF-8");
+		        data += "&" + URLEncoder.encode("lusername", "UTF-8") + "=" + URLEncoder.encode("citymaster", "UTF-8");
+		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("City@2020", "UTF-8");
+		        data += "&" + URLEncoder.encode("ldbname", "UTF-8") + "=" + URLEncoder.encode("citybase", "UTF-8");		 
+		        data += "&" + URLEncoder.encode("lmobID", "UTF-8") + "=" + URLEncoder.encode(atkData[0], "UTF-8");
+		        data += "&" + URLEncoder.encode("ldmg", "UTF-8") + "=" + URLEncoder.encode(atkData[1], "UTF-8");
+		        
+		        // Send data
+		        URL url = new URL("http://moonbolt.online/Conector/Online.php");
+		        URLConnection conn = url.openConnection();
+		        conn.setDoOutput(true);
+		        OutputStreamWriter wr = new OutputStreamWriter(conn.getOutputStream());
+		        wr.write(data);
+		        wr.flush();
+		        
+		        // Get the response
+		        BufferedReader rd = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		        String line;
+		        line = subdado;
+		        retornoOnline = "retry";
+		        while ((line = rd.readLine()) != null) {
+		        	linhaLida = line;   
+		        	//Resultado: - Logado -. <br>done
+			        if (linhaLida.contains("AtualizadoMOB")) {            	
 		        		retornoOnline = "Works";       		
 		            }		            
 	    		}	        
@@ -3659,14 +3784,72 @@ public class GameControl {
 			return lstSpritesOnline;
 		}
 		
+		public ArrayList<Sprite> RecuperaPlayerPartyOnline(float posX, float posY){
+			lstSpritesOnline.clear();
+			countparty = 0;
+			for(int i = 0; i < lstOnlinePlayers.size(); i++) {				
+				
+				if(lstOnlinePlayers.get(i).Party_A.equals(Character_Data.Party_A)) {
+					countparty++;
+					
+					if(countparty > 3) { return lstSpritesOnline;}
+					
+					if(countparty == 1) {
+					spr_master = InterfaceStreets305("tagparty1","");
+					lstSpritesOnline.add(spr_master);
+					spr_master = ReturnHairs(lstOnlinePlayers.get(i).Hair_A,"Front","",posX - 20,posY);
+					lstSpritesOnline.add(spr_master);
+					}
+					
+					if(countparty == 2) {
+					spr_master = InterfaceStreets305("tagparty2","");
+					spr_master = ReturnHairs(lstOnlinePlayers.get(i).Hair_A,"Front","",posX - 20,posY - 20);
+					lstSpritesOnline.add(spr_master);
+					}
+					
+					if(countparty == 3) {
+				    spr_master = InterfaceStreets305("tagparty3","");	
+					spr_master = ReturnHairs(lstOnlinePlayers.get(i).Hair_A,"Front","",posX - 20,posY - 40);
+					lstSpritesOnline.add(spr_master);
+					}
+				}
+			}
+				
+			return lstSpritesOnline;
+		}
+		
 		public void TrataMobs(String dadosMobs) {
-			onlineData = dadosMobs.split(":");	
+			onlineData = dadosMobs.split(":");
+			
+			mobOnline = new Monster();
+			
+			//Mob ID
+			auxOnline = onlineData[2];
+			splitonlineData = auxOnline.split("=");	
+			mobOnline.ID = splitonlineData[1];
+			
+			//Mob HP
+			auxOnline = onlineData[3];
+			splitonlineData = auxOnline.split("=");	
+			mobOnline.HP = splitonlineData[1];
+			
+			//Mob MAP
+			auxOnline = onlineData[4];
+			splitonlineData = auxOnline.split("=");	
+			mobOnline.MAP = splitonlineData[1];
+			
+				
+			for(int i = 0; i < lstMonsters.size(); i++) {				
+				if(lstMonsters.get(i).ID.equals(mobOnline.ID) && lstMonsters.get(i).MAP.equals(mobOnline.MAP)) {
+					lstMonsters.get(i).HP = mobOnline.HP; 
+				}
+			}
 		}
 		
 		public void TrataPlayersOnline(String dadosPlayer) {
 			onlineData = dadosPlayer.split(":");			
 			
-			Player plOnline = new Player();
+			plOnline = new Player();
 			
 			auxOnline = onlineData[16];	
 			splitonlineData = auxOnline.split("=");	

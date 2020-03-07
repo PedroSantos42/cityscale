@@ -146,7 +146,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 		Gdx.input.setInputProcessor(this);
 		
 		//background
-		tex_background = new Texture(Gdx.files.internal("data/maps/forestArea.png"));
+		tex_background = new Texture(Gdx.files.internal("data/maps/forestArea.jpg"));
 		spr_background = new Sprite(tex_background);
 		
 		//Controls

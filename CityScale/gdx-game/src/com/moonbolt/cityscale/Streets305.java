@@ -146,7 +146,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		Gdx.input.setInputProcessor(this);
 		
 		//background
-		tex_background = new Texture(Gdx.files.internal("data/maps/streets305.png"));
+		tex_background = new Texture(Gdx.files.internal("data/maps/streets305.jpg"));
 		spr_background = new Sprite(tex_background);
 		
 		//Controls
@@ -332,6 +332,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 				splitNomes = lstNomes.get(intcount).split("/");
 				nomeX = Float.parseFloat(splitNomes[3]);
 				nomeY = Float.parseFloat(splitNomes[4]);
+				font_master.getData().setScale(0.12f,0.15f);
 				font_master.draw(game.batch,splitNomes[0] + " HP:" + splitNomes[1] + "/" + splitNomes[2],nomeX,nomeY);
 			}
 			
@@ -382,8 +383,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 				font_master.setColor(Color.YELLOW);
 				font_master.draw(game.batch,activePlayer.Money_A,cameraCoordsX + 27,cameraCoordsY - 5); // playerAttackCooldown
 			}
-			
-			
+						
 			// Menu Section
 			if(menuState) {		
 				if(menuBlock == 1) {
@@ -450,6 +450,8 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 				}
 			}
 			
+			
+			
 			//Death
 			if(activePlayer.HP_A.equals("0")){ deadState = true; }
 			if(deadState){
@@ -470,13 +472,12 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		if(onlineState) {
 			TrataOnline();
 		}
-		
-		
+
 		//Tests
-		//spr_teste.setPosition(cameraCoordsX + 18, cameraCoordsY + 30);
-		//spr_teste2.setPosition(cameraCoordsX + 66, cameraCoordsY + 15);
-		//spr_teste.draw(game.batch);
-		//spr_teste2.draw(game.batch);
+		spr_teste.setPosition(cameraCoordsX - 56, cameraCoordsY - 2); 
+		spr_teste2.setPosition(cameraCoordsX - 27, cameraCoordsY - 15);
+		spr_teste.draw(game.batch);
+		spr_teste2.draw(game.batch);
 		//font_master.draw(game.batch,String.valueOf(playerX),cameraCoordsX,cameraCoordsY);
 		//font_master.draw(game.batch,String.valueOf(playerY),cameraCoordsX + 30,cameraCoordsY);		
 		
@@ -489,8 +490,15 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 			for(int i = 0; i < lstPlayersOnline.size(); i ++) {
 				spr_master = lstPlayersOnline.get(i);
 				spr_master.draw(game.batch);
-			}
-		
+			}	
+	}
+	
+	private void ExibeParty() {
+		lstPlayersOnline = gameControl.RecuperaPlayerPartyOnline(cameraCoordsX, cameraCoordsY);
+		for(int i = 0; i < lstPlayersOnline.size(); i ++) {
+			spr_master = lstPlayersOnline.get(i);
+			spr_master.draw(game.batch);
+		}
 	}
 	
 	public void ExibirNpcs(){
@@ -588,6 +596,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 	private void ExibeSkills() {
 		
 		gameControl.CalculaCooldown();
+		font_master.getData().setScale(0.12f,0.15f);
 		font_master.draw(game.batch,"Atraso:" + String.valueOf(gameControl.delayinfo()),cameraCoordsX + 85,cameraCoordsY - 26);
 		lstSkills = gameControl.RetornaSkills();
 		
@@ -671,6 +680,19 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 			
 			gameControl.InsereChat(text);
 			chatState = false;
+		}
+		
+		if(partyState) {
+			//
+			if(text.equals("")) { partyState = false; return; }
+			try {
+				gameControl.GerenciamentoOnline("Party",text);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			partyState = false;
 		}
 	}
 
@@ -1181,6 +1203,13 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 				//Voltar
 				if((coordsTouch.x >= cameraCoordsX + 56 && coordsTouch.x <= cameraCoordsX + 67) && (coordsTouch.y >= cameraCoordsY + 62 && coordsTouch.y <= cameraCoordsY + 88)){
 					menuBlock = 1;
+					return false;
+				}
+				
+				//Criar Grupo
+				if((coordsTouch.x >= cameraCoordsX - 56 && coordsTouch.x <= cameraCoordsX - 27) && (coordsTouch.y >= cameraCoordsY - 15 && coordsTouch.y <= cameraCoordsY - 2)){				
+					partyState = true;
+					Gdx.input.getTextInput(this,"Digite o Nome do Grupo","",""); 
 					return false;
 				}
 			}

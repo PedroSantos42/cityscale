@@ -1,5 +1,5 @@
 swords.png
-size: 2030, 140
+size: 490, 630
 format: RGBA8888
 filter: Linear,Linear
 repeat: none
@@ -54,357 +54,371 @@ doubleedge_sword_attack_left
   index: -1
 doubleedge_sword_attack_right
   rotate: false
-  xy: 490, 0
+  xy: 0, 70
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 doubleedge_sword_left
   rotate: false
-  xy: 560, 0
+  xy: 70, 70
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 doubleedge_sword_right
   rotate: false
-  xy: 630, 0
+  xy: 140, 70
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 doubleedge_sword_side_left
   rotate: false
-  xy: 700, 0
+  xy: 210, 70
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 doubleedge_sword_side_right
   rotate: false
-  xy: 770, 0
+  xy: 280, 70
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 flame_sword_attack_left
   rotate: false
-  xy: 840, 0
+  xy: 350, 70
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 flame_sword_attack_right
   rotate: false
-  xy: 910, 0
+  xy: 420, 70
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 flame_sword_left
   rotate: false
-  xy: 980, 0
+  xy: 0, 140
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 flame_sword_right
   rotate: false
-  xy: 1050, 0
+  xy: 70, 140
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 flame_sword_side_left
   rotate: false
-  xy: 1120, 0
+  xy: 140, 140
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 flame_sword_side_right
   rotate: false
-  xy: 1190, 0
+  xy: 210, 140
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+icecrystal_sword_attack_left
+  rotate: false
+  xy: 280, 140
+  size: 70, 70
+  orig: 70, 70
+  offset: 0, 0
+  index: -1
+icecrystal_sword_attack_right
+  rotate: false
+  xy: 350, 140
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 icecrystal_sword_left
   rotate: false
-  xy: 1260, 0
+  xy: 420, 140
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 icecrystal_sword_right
   rotate: false
-  xy: 1330, 0
+  xy: 0, 210
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 icecrystal_sword_side_left
   rotate: false
-  xy: 1400, 0
+  xy: 70, 210
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 icecrystal_sword_side_right
   rotate: false
-  xy: 1470, 0
+  xy: 140, 210
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 light_sword_attack_left
   rotate: false
-  xy: 1540, 0
+  xy: 210, 210
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 light_sword_attack_right
   rotate: false
-  xy: 1610, 0
+  xy: 280, 210
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 light_sword_left
   rotate: false
-  xy: 1680, 0
+  xy: 350, 210
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 light_sword_right
   rotate: false
-  xy: 1750, 0
+  xy: 420, 210
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 light_sword_side_left
   rotate: false
-  xy: 1820, 0
+  xy: 0, 280
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 light_sword_side_right
   rotate: false
-  xy: 1890, 0
+  xy: 70, 280
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 normal_sword_attack_left
   rotate: false
-  xy: 1960, 0
+  xy: 140, 280
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 normal_sword_attack_right
   rotate: false
-  xy: 0, 70
+  xy: 210, 280
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 normal_sword_left
   rotate: false
-  xy: 70, 70
+  xy: 280, 280
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 normal_sword_right
   rotate: false
-  xy: 140, 70
+  xy: 350, 280
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 normal_sword_side_left
   rotate: false
-  xy: 210, 70
+  xy: 420, 280
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 normal_sword_side_right
   rotate: false
-  xy: 280, 70
+  xy: 0, 350
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 serpent_sword_attack_left
   rotate: false
-  xy: 350, 70
+  xy: 70, 350
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 serpent_sword_attack_right
   rotate: false
-  xy: 420, 70
+  xy: 140, 350
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 serpent_sword_left
   rotate: false
-  xy: 490, 70
+  xy: 210, 350
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 serpent_sword_right
   rotate: false
-  xy: 560, 70
+  xy: 280, 350
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 serpent_sword_side_left
   rotate: false
-  xy: 630, 70
+  xy: 350, 350
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 serpent_sword_side_right
   rotate: false
-  xy: 700, 70
+  xy: 420, 350
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 venom_sword_attack_left
   rotate: false
-  xy: 770, 70
+  xy: 0, 420
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 venom_sword_attack_right
   rotate: false
-  xy: 840, 70
+  xy: 70, 420
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 venom_sword_left
   rotate: false
-  xy: 910, 70
+  xy: 140, 420
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 venom_sword_side_left
   rotate: false
-  xy: 980, 70
+  xy: 210, 420
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 venom_sword_side_right
   rotate: false
-  xy: 1050, 70
+  xy: 280, 420
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 venon_sword_right
   rotate: false
-  xy: 1120, 70
+  xy: 350, 420
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 vorpal_sword_attack_left
   rotate: false
-  xy: 1190, 70
+  xy: 420, 420
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 vorpal_sword_attack_right
   rotate: false
-  xy: 1260, 70
+  xy: 0, 490
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 vorpal_sword_left
   rotate: false
-  xy: 1330, 70
+  xy: 70, 490
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 vorpal_sword_right
   rotate: false
-  xy: 1400, 70
+  xy: 140, 490
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 vorpal_sword_side_left
   rotate: false
-  xy: 1470, 70
+  xy: 210, 490
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 vorpal_sword_side_right
   rotate: false
-  xy: 1540, 70
+  xy: 280, 490
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 wood_sword_attack_left
   rotate: false
-  xy: 1610, 70
+  xy: 350, 490
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 wood_sword_attack_right
   rotate: false
-  xy: 1680, 70
+  xy: 420, 490
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 wood_sword_left
   rotate: false
-  xy: 1750, 70
+  xy: 0, 560
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 wood_sword_right
   rotate: false
-  xy: 1820, 70
+  xy: 70, 560
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 wood_sword_side_left
   rotate: false
-  xy: 1890, 70
+  xy: 140, 560
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
   index: -1
 wood_sword_side_right
   rotate: false
-  xy: 1960, 70
+  xy: 210, 560
   size: 70, 70
   orig: 70, 70
   offset: 0, 0
