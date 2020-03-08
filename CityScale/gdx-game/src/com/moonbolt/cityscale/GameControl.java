@@ -158,7 +158,7 @@ public class GameControl {
 		private int posInjectorOnline;
 		private int loopOnlineCheck = 0;
 		private int threahCount = 0;
-		private int countparty = 0;
+		private int cleanPlayersOnline = 0;
 		private float posOnlineFX;
 		private float posOnlineFY;
 		private Player plOnline;
@@ -1592,22 +1592,22 @@ public class GameControl {
 			
 			if(item.equals("PartyTag1")) {
 				spr_master = atlas_gameplay_interface.createSprite("tagparty");
-				spr_master.setSize(45, 35);
-				spr_master.setPosition(fX - 100, fY + 75);
+				spr_master.setSize(38, 28);
+				spr_master.setPosition(fX - 100, fY + 59);
 				return spr_master; 
 			}
 			
 			if(item.equals("PartyTag2")) {
 				spr_master = atlas_gameplay_interface.createSprite("tagparty");
-				spr_master.setSize(45, 35);
-				spr_master.setPosition(fX - 100, fY + 45);
+				spr_master.setSize(38, 28);
+				spr_master.setPosition(fX - 100, fY + 31);
 				return spr_master; 
 			}
 			
 			if(item.equals("PartyTag3")) {
 				spr_master = atlas_gameplay_interface.createSprite("tagparty");
-				spr_master.setSize(45, 35);
-				spr_master.setPosition(fX - 100, fY + 25);
+				spr_master.setSize(38, 28);
+				spr_master.setPosition(fX - 100, fY + 3);
 				return spr_master; 
 			}
 			
@@ -2003,16 +2003,17 @@ public class GameControl {
 		public void RespawnMonstros() {
 			int respawn = 0;
 			int respawnMax = 0;
+			int HPMob = 0;
 			int HPMAX = 0;
 			int pXRandom = 0;
 			int pYRandom = 0;
 			float pYmob = 0;
-			for(countA = 0; countA < lstMonsters.size(); countA++){ 
-				if(lstMonsters.get(countA).LOCKDEATH.equals("yes")){
-					
+			
+			for(countA = 0; countA < lstMonsters.size(); countA++){
+				HPMob = Integer.parseInt(lstMonsters.get(countA).HP);
+				if(lstMonsters.get(countA).LOCKDEATH.equals("yes")){					
 					lstMonsters.get(countA).PX = "-1200";
 					lstMonsters.get(countA).PY = "-1000";
-					
 					respawn = Integer.parseInt(lstMonsters.get(countA).RESPAWN);
 					respawnMax = Integer.parseInt(lstMonsters.get(countA).RESPAWNMAX);					
 					respawn--;
@@ -3491,18 +3492,13 @@ public class GameControl {
 			
 			if(tipoRequisicao.equals("Sincronizar")){
 				
-				//Syncronizer controller
-				//loopOnlineCheck++;
 				
-				//if(loopOnlineCheck < 5){
-				//	return;
-				//}
-				//if(loopOnlineCheck > 6) {
-				//	loopOnlineCheck = 0;
-				//}
-					
-				// Construct data			
-				//lstOnlinePlayers.clear();
+				cleanPlayersOnline++;
+				
+				if(cleanPlayersOnline > 100) {
+					lstOnlinePlayers.clear();
+					cleanPlayersOnline = 0;
+				}
 				
 				posOnlineFX = Float.parseFloat(Character_Data.PX_A);
 				posOnlineFY = Float.parseFloat(Character_Data.PY_A);
@@ -3570,9 +3566,6 @@ public class GameControl {
 			        if(linhaLida.contains("SYSTEMMOBS")) {
 			        	TrataMobs(linhaLida);
 			        }
-			        if(linhaLida.contains("BTDBCV")) {
-			        	line = "Teste";
-			        }
 	    		}	
 		        
 		        wr.close();
@@ -3620,7 +3613,7 @@ public class GameControl {
 			
 			if(tipoRequisicao.equals("Party")){
 				String data = URLEncoder.encode("ldata", "UTF-8") + "=" + URLEncoder.encode(Character_Data.Account, "UTF-8");
-		        data += "&" + URLEncoder.encode("lrequest", "UTF-8") + "=" + URLEncoder.encode("Chat", "UTF-8");
+		        data += "&" + URLEncoder.encode("lrequest", "UTF-8") + "=" + URLEncoder.encode("Party", "UTF-8");
 		        data += "&" + URLEncoder.encode("lservername", "UTF-8") + "=" + URLEncoder.encode("citybase.mysql.uhserver.com", "UTF-8");
 		        data += "&" + URLEncoder.encode("lusername", "UTF-8") + "=" + URLEncoder.encode("citymaster", "UTF-8");
 		        data += "&" + URLEncoder.encode("lpassword", "UTF-8") + "=" + URLEncoder.encode("City@2020", "UTF-8");
@@ -3644,8 +3637,9 @@ public class GameControl {
 		        while ((line = rd.readLine()) != null) {
 		        	linhaLida = line;   
 		        	//Resultado: - Logado -. <br>done
-			        if (linhaLida.contains("Works")) {            	
-			        	PartyON = true;       		
+			        if (linhaLida.contains("AtualizadoParty")) {            	
+			        	PartyON = true;  
+			        	Character_Data.Party_A = subdado;
 		            }		            
 	    		}	        
 		        wr.close();
@@ -3768,55 +3762,11 @@ public class GameControl {
 			}
 		}
 		
-		public ArrayList<Sprite> RecuperaPlayersOnline() {
-			
-			lstSpritesOnline.clear();
-			for(int i = 0; i < lstOnlinePlayers.size(); i++) {				
-				posOnlineFX = Float.parseFloat(lstOnlinePlayers.get(i).PX_A); 
-				posOnlineFY = Float.parseFloat(lstOnlinePlayers.get(i).PY_A);
-				posInjectorOnline = Integer.parseInt(lstOnlinePlayers.get(i).Position_A);
-				spr_master = MovChar(lstOnlinePlayers.get(i).Set_A,lstOnlinePlayers.get(i).Side_A,"","",posOnlineFX,posOnlineFY,posInjectorOnline);
-				lstSpritesOnline.add(spr_master);
-				spr_master = ReturnHairs(lstOnlinePlayers.get(i).Hair_A,lstOnlinePlayers.get(i).Side_A,"",posOnlineFX,posOnlineFY);
-				lstSpritesOnline.add(spr_master);
-			}
-				
-			return lstSpritesOnline;
+		public ArrayList<Player> InfoPlayerOnline() {
+			return lstOnlinePlayers;
 		}
 		
-		public ArrayList<Sprite> RecuperaPlayerPartyOnline(float posX, float posY){
-			lstSpritesOnline.clear();
-			countparty = 0;
-			for(int i = 0; i < lstOnlinePlayers.size(); i++) {				
-				
-				if(lstOnlinePlayers.get(i).Party_A.equals(Character_Data.Party_A)) {
-					countparty++;
-					
-					if(countparty > 3) { return lstSpritesOnline;}
-					
-					if(countparty == 1) {
-					spr_master = InterfaceStreets305("tagparty1","");
-					lstSpritesOnline.add(spr_master);
-					spr_master = ReturnHairs(lstOnlinePlayers.get(i).Hair_A,"Front","",posX - 20,posY);
-					lstSpritesOnline.add(spr_master);
-					}
-					
-					if(countparty == 2) {
-					spr_master = InterfaceStreets305("tagparty2","");
-					spr_master = ReturnHairs(lstOnlinePlayers.get(i).Hair_A,"Front","",posX - 20,posY - 20);
-					lstSpritesOnline.add(spr_master);
-					}
-					
-					if(countparty == 3) {
-				    spr_master = InterfaceStreets305("tagparty3","");	
-					spr_master = ReturnHairs(lstOnlinePlayers.get(i).Hair_A,"Front","",posX - 20,posY - 40);
-					lstSpritesOnline.add(spr_master);
-					}
-				}
-			}
-				
-			return lstSpritesOnline;
-		}
+		
 		
 		public void TrataMobs(String dadosMobs) {
 			onlineData = dadosMobs.split(":");
@@ -3910,6 +3860,10 @@ public class GameControl {
 			auxOnline = onlineData[14];	
 			splitonlineData = auxOnline.split("=");	
 			plOnline.Position_A = splitonlineData[1];	
+			
+			auxOnline = onlineData[17];	
+			splitonlineData = auxOnline.split("=");	
+			plOnline.Party_A = splitonlineData[1];	
 			
 			if(!plOnline.Name_A.equals(Character_Data.Name_A)) {
 				

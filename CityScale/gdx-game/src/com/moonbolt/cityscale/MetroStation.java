@@ -138,7 +138,7 @@ public class MetroStation implements Screen, ApplicationListener, InputProcessor
 		tex_background = new Texture(Gdx.files.internal("data/maps/trainstation_downward.jpg"));
 		spr_background = new Sprite(tex_background);
 		
-		tex_backgroundupward = new Texture(Gdx.files.internal("data/maps/trainstation_upward.jpg")); 
+		tex_backgroundupward = new Texture(Gdx.files.internal("data/maps/trainstation_upward.png")); 
 		spr_backgroundupward = new Sprite(tex_backgroundupward);
 		
 		//interface

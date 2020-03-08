@@ -479,11 +479,11 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 	
 	private void TrataOnline() {
 		
-			lstPlayersOnline = gameControl.RecuperaPlayersOnline();
-			for(int i = 0; i < lstPlayersOnline.size(); i ++) {
-				spr_master = lstPlayersOnline.get(i);
-				spr_master.draw(game.batch);
-			}
+			//lstPlayersOnline = gameControl.RecuperaPlayersOnline();
+			//for(int i = 0; i < lstPlayersOnline.size(); i ++) {
+			//	spr_master = lstPlayersOnline.get(i);
+			//	spr_master.draw(game.batch);
+			//}
 		
 	}
 	
