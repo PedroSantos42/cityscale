@@ -1653,6 +1653,13 @@ public class GameControl {
 				return spr_master;
 			}
 			
+			if(item.equals("flagFlorestaA")) {
+				spr_master = atlas_gameplay_interface.createSprite("flagFlorestaA");
+				spr_master.setSize(30, 15);
+				spr_master.setPosition(fX + 70, fY + 115);
+				return spr_master;
+			}
+			
 			if(item.equals("Analog") && complement.equals("Right")) {
 				spr_master = atlas_gameplay_interface.createSprite("controllertouch");
 				spr_master.setSize(20, 25);
@@ -1832,6 +1839,13 @@ public class GameControl {
 				return spr_master;
 			}
 			
+			if(item.equals("hotkey")) {
+				spr_master = atlas_gameplay_interface.createSprite("hotkey");
+				spr_master.setSize(10,15);
+				spr_master.setPosition(fX + 90, fY - 20);
+				return spr_master;
+			}
+			
 			return spr_master;
 		}
 		
@@ -1890,15 +1904,15 @@ public class GameControl {
 		public void CarregaMonstrosMapa(String mapa) {
 			lstMonsters.clear();
 			
-			if(mapa.equals("Streets305")) {
-				lstMonsters.add(mobContainer.GetMonster("slimeA", "Streets305"));
-			}
+			//if(mapa.equals("Streets305")) {
+			//	lstMonsters.add(mobContainer.GetMonster("slimeA", "Streets305"));
+			//}
 			
 			if(mapa.equals("ForestArea")) {
 				lstMonsters.add(mobContainer.GetMonster("slimeA", "ForestArea"));
 				lstMonsters.add(mobContainer.GetMonster("beeA", "ForestArea"));
-				lstMonsters.add(mobContainer.GetMonster("slimeB", "ForestArea"));
-				lstMonsters.add(mobContainer.GetMonster("poroA", "ForestArea"));
+				lstMonsters.add(mobContainer.GetMonster("willowA", "ForestArea"));
+				lstMonsters.add(mobContainer.GetMonster("oikplantA", "ForestArea"));
 				lstMonsters.add(mobContainer.GetMonster("poroB", "ForestArea"));
 				lstMonsters.add(mobContainer.GetMonster("beeB", "ForestArea"));
 			}

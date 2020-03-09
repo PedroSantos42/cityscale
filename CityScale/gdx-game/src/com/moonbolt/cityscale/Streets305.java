@@ -270,6 +270,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 			spr_Interface = gameControl.InterfaceStreets305("Hotcrossbar", ""); spr_Interface.draw(game.batch);  //Hotbar
 			spr_Interface = gameControl.InterfaceStreets305("Backanalog", ""); spr_Interface.draw(game.batch);  //Analog
 			spr_Interface = gameControl.InterfaceStreets305("flagStreet305", ""); spr_Interface.draw(game.batch);  //Flag
+			spr_Interface = gameControl.InterfaceStreets305("hotkey", ""); spr_Interface.draw(game.batch);  //Hotkey
 			if(walk.equals("Stop")) { spr_Interface = gameControl.InterfaceStreets305("Analog","Stop"); spr_Interface.draw(game.batch);  }
 			if(walk.equals("Walk") && state.equals("Right")) { spr_Interface = gameControl.InterfaceStreets305("Analog","Right"); spr_Interface.draw(game.batch);  }
 			if(walk.equals("Walk") && state.equals("Left")) { spr_Interface = gameControl.InterfaceStreets305("Analog","Left"); spr_Interface.draw(game.batch);  }
@@ -476,8 +477,8 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		}
 
 		//Tests
-		spr_teste.setPosition(cameraCoordsX - 56, cameraCoordsY - 2); 
-		spr_teste2.setPosition(cameraCoordsX - 27, cameraCoordsY - 15);
+		spr_teste.setPosition(cameraCoordsX + 90, cameraCoordsY - 5); 
+		spr_teste2.setPosition(cameraCoordsX + 99, cameraCoordsY - 20);
 		spr_teste.draw(game.batch);
 		spr_teste2.draw(game.batch);
 		//font_master.draw(game.batch,String.valueOf(playerX),cameraCoordsX,cameraCoordsY);
@@ -949,6 +950,12 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 					}
 					return false;
 				}
+				
+				//Hotkey
+				if((coordsTouch.x >= cameraCoordsX + 90 && coordsTouch.x <= cameraCoordsX + 99) && (coordsTouch.y >= cameraCoordsY - 20 && coordsTouch.y <= cameraCoordsY - 5)){
+					ItemSelecionado(0);
+					return false;
+				}
 			}
 		}
 		
@@ -1301,8 +1308,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 					gameControl.WriteDataCharacterActive();
 					game.loadingmanager.screenSwitch("ForestArea");
 					return false;
-				}
-				
+				}			
 			}
 			
 			if(menuBlock == 8) {

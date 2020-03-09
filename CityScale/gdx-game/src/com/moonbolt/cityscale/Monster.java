@@ -152,7 +152,7 @@ public class Monster {
 				mobReturn.RESI = "0"; //RESI
 				mobReturn.BATTLE = "no"; //BATTLE
 				mobReturn.TARGET = "none";
-				mobReturn.EXP = "10"; //EXP
+				mobReturn.EXP = "3"; //EXP
 				mobReturn.LEVEL = "1"; //LEVEL
 				mobReturn.MONEY = "1"; //MONEY
 				mobReturn.SKILL1 = "none"; //SKILL1
@@ -161,7 +161,7 @@ public class Monster {
 				mobReturn.AUTOSKILL1 = "5"; //AUTOSKILL1
 				mobReturn.AUTOSKILL2 = "0"; //AUTOSKILL2
 				mobReturn.AUTOATKBASE = "250";
-				mobReturn.ID = "A1"; //ID
+				mobReturn.ID = "slimeA"; //ID
 				mobReturn.AGRESSIVE = "no";
 				mobReturn.RESPAWN = "100";
 				mobReturn.RESPAWNMAX = "100";
@@ -179,7 +179,7 @@ public class Monster {
 	            mobReturn.ATKZONEYMINUS = "30";
 	            mobReturn.LOCKDEATH = "no";
 			}
-			//PoyoBat
+			//Bee
 			if(name.equals("beeA")){
 				mobReturn.NAME = "bee";//Name
 				mobReturn.HP = "200";//HP
@@ -199,7 +199,7 @@ public class Monster {
 				mobReturn.RESI = "0"; //RESI
 				mobReturn.BATTLE = "no"; //BATTLE
 				mobReturn.TARGET = "none";
-				mobReturn.EXP = "40"; //EXP
+				mobReturn.EXP = "15"; //EXP
 				mobReturn.LEVEL = "3"; //LEVEL
 				mobReturn.MONEY = "2"; //MONEY
 				mobReturn.SKILL1 = "none"; //SKILL1
@@ -208,7 +208,7 @@ public class Monster {
 				mobReturn.AUTOSKILL1 = "5"; //AUTOSKILL1
 				mobReturn.AUTOSKILL2 = "0"; //AUTOSKILL2
 				mobReturn.AUTOATKBASE = "200";
-				mobReturn.ID = "A1"; //ID
+				mobReturn.ID = "beeA"; //ID
 				mobReturn.AGRESSIVE = "no";
 				mobReturn.RESPAWN = "100";
 				mobReturn.RESPAWNMAX = "100";
@@ -226,11 +226,11 @@ public class Monster {
 	            mobReturn.ATKZONEYMINUS = "30";
 	            mobReturn.LOCKDEATH = "no";
 			}
-			if(name.equals("slimeB")){
-				mobReturn.NAME = "slime";//Name
-				mobReturn.HP = "80";//HP
+			if(name.equals("willowA")){
+				mobReturn.NAME = "willow";//Name
+				mobReturn.HP = "520";//HP
 				mobReturn.MP = "10";//MP
-				mobReturn.HPMAX = "80"; //HPMAX
+				mobReturn.HPMAX = "520"; //HPMAX
 				mobReturn.MPMAX = "10"; //MPMAX
 				mobReturn.PX = "56";//PX
 				mobReturn.PY = "-256";//PY
@@ -238,14 +238,14 @@ public class Monster {
 				mobReturn.HEIGHT = "20"; // Height
 				mobReturn.WIDTH = "15"; // Width
 				mobReturn.STATE = "Walk1";//State
-				mobReturn.ATK = "5";//ATK
+				mobReturn.ATK = "15";//ATK
 				mobReturn.DEF = "1";//DEF
 				mobReturn.RESF = "0";//RESF
 				mobReturn.RESA = "0"; //RESA
 				mobReturn.RESI = "0"; //RESI
 				mobReturn.BATTLE = "no"; //BATTLE
 				mobReturn.TARGET = "none";
-				mobReturn.EXP = "10"; //EXP
+				mobReturn.EXP = "100"; //EXP
 				mobReturn.LEVEL = "1"; //LEVEL
 				mobReturn.MONEY = "1"; //MONEY
 				mobReturn.SKILL1 = "none"; //SKILL1
@@ -254,7 +254,7 @@ public class Monster {
 				mobReturn.AUTOSKILL1 = "5"; //AUTOSKILL1
 				mobReturn.AUTOSKILL2 = "0"; //AUTOSKILL2
 				mobReturn.AUTOATKBASE = "250";
-				mobReturn.ID = "A1"; //ID
+				mobReturn.ID = "willowA"; //ID
 				mobReturn.AGRESSIVE = "no";
 				mobReturn.RESPAWN = "100";
 				mobReturn.RESPAWNMAX = "100";
@@ -291,7 +291,7 @@ public class Monster {
 				mobReturn.RESI = "0"; //RESI
 				mobReturn.BATTLE = "no"; //BATTLE
 				mobReturn.TARGET = "none";
-				mobReturn.EXP = "100"; //EXP
+				mobReturn.EXP = "40"; //EXP
 				mobReturn.LEVEL = "5"; //LEVEL
 				mobReturn.MONEY = "3"; //MONEY
 				mobReturn.SKILL1 = "none"; //SKILL1
@@ -300,7 +300,7 @@ public class Monster {
 				mobReturn.AUTOSKILL1 = "5"; //AUTOSKILL1
 				mobReturn.AUTOSKILL2 = "0"; //AUTOSKILL2
 				mobReturn.AUTOATKBASE = "250";
-				mobReturn.ID = "A1"; //ID
+				mobReturn.ID = "poroA"; //ID
 				mobReturn.AGRESSIVE = "no";
 				mobReturn.RESPAWN = "100";
 				mobReturn.RESPAWNMAX = "100";
@@ -337,7 +337,7 @@ public class Monster {
 				mobReturn.RESI = "0"; //RESI
 				mobReturn.BATTLE = "no"; //BATTLE
 				mobReturn.TARGET = "none";
-				mobReturn.EXP = "100"; //EXP
+				mobReturn.EXP = "40"; //EXP
 				mobReturn.LEVEL = "5"; //LEVEL
 				mobReturn.MONEY = "3"; //MONEY
 				mobReturn.SKILL1 = "none"; //SKILL1
@@ -346,7 +346,7 @@ public class Monster {
 				mobReturn.AUTOSKILL1 = "5"; //AUTOSKILL1
 				mobReturn.AUTOSKILL2 = "0"; //AUTOSKILL2
 				mobReturn.AUTOATKBASE = "250";
-				mobReturn.ID = "A1"; //ID
+				mobReturn.ID = "poroB"; //ID
 				mobReturn.AGRESSIVE = "no";
 				mobReturn.RESPAWN = "100";
 				mobReturn.RESPAWNMAX = "100";
@@ -364,14 +364,61 @@ public class Monster {
 	            mobReturn.ATKZONEYMINUS = "30";
 	            mobReturn.LOCKDEATH = "no";
 			}
+			if(name.equals("oikplantA")){
+				mobReturn.NAME = "oikplant";//Name
+				mobReturn.HP = "890";//HP
+				mobReturn.MP = "25";//MP
+				mobReturn.HPMAX = "890"; //HPMAX
+				mobReturn.MPMAX = "25"; //MPMAX
+				mobReturn.PX = "332";//PX
+				mobReturn.PY = "-280";//PY
+				mobReturn.SIDE = "left"; //SIDE
+				mobReturn.HEIGHT = "30"; // Height
+				mobReturn.WIDTH = "23"; // Width
+				mobReturn.STATE = "Walk1";//State
+				mobReturn.ATK = "30";//ATK
+				mobReturn.DEF = "1";//DEF
+				mobReturn.RESF = "0";//RESF
+				mobReturn.RESA = "0"; //RESA
+				mobReturn.RESI = "0"; //RESI
+				mobReturn.BATTLE = "no"; //BATTLE
+				mobReturn.TARGET = "none";
+				mobReturn.EXP = "200"; //EXP
+				mobReturn.LEVEL = "6"; //LEVEL
+				mobReturn.MONEY = "2"; //MONEY
+				mobReturn.SKILL1 = "none"; //SKILL1
+				mobReturn.SKILL2 = "none"; //SKILL2
+				mobReturn.AUTOATK = "200"; //AUTOATK
+				mobReturn.AUTOSKILL1 = "5"; //AUTOSKILL1
+				mobReturn.AUTOSKILL2 = "0"; //AUTOSKILL2
+				mobReturn.AUTOATKBASE = "200";
+				mobReturn.ID = "oikplantA"; //ID
+				mobReturn.AGRESSIVE = "no";
+				mobReturn.RESPAWN = "100";
+				mobReturn.RESPAWNMAX = "100";
+				mobReturn.FRAME = "1";
+				mobReturn.FREQUENCY = "10";
+				mobReturn.SPEED = "0.4f";
+				mobReturn.EVADE = "20";
+				mobReturn.ITEMA = "Refrigerante";
+				mobReturn.ITEMB = "Refrigerante";
+				mobReturn.ITEMC = "Refrigerante";
+				mobReturn.ITEMD = "Refrigerante";
+	            mobReturn.ATKZONEXPLUS = "20";
+	            mobReturn.ATKZONEXMINUS = "20";
+	            mobReturn.ATKZONEYPLUS = "30";
+	            mobReturn.ATKZONEYMINUS = "30";
+	            mobReturn.LOCKDEATH = "no";
+			}
+			//Bee
 			if(name.equals("beeB")){
 				mobReturn.NAME = "bee";//Name
 				mobReturn.HP = "200";//HP
 				mobReturn.MP = "25";//MP
 				mobReturn.HPMAX = "200"; //HPMAX
 				mobReturn.MPMAX = "25"; //MPMAX
-				mobReturn.PX = "332";//PX
-				mobReturn.PY = "-280";//PY
+				mobReturn.PX = "172";//PX
+				mobReturn.PY = "-117";//PY
 				mobReturn.SIDE = "left"; //SIDE
 				mobReturn.HEIGHT = "30"; // Height
 				mobReturn.WIDTH = "23"; // Width
@@ -392,7 +439,7 @@ public class Monster {
 				mobReturn.AUTOSKILL1 = "5"; //AUTOSKILL1
 				mobReturn.AUTOSKILL2 = "0"; //AUTOSKILL2
 				mobReturn.AUTOATKBASE = "200";
-				mobReturn.ID = "A1"; //ID
+				mobReturn.ID = "beeB"; //ID
 				mobReturn.AGRESSIVE = "no";
 				mobReturn.RESPAWN = "100";
 				mobReturn.RESPAWNMAX = "100";
@@ -536,13 +583,13 @@ public class Monster {
 			if(count < 1) {
 				mobSelected.FRAME = "3";
 			}
-			frame++;
-
+			
 			if(frame > 3 && count > 1) {
 				mobSelected.FRAME = "1";
 				frame = 1;
 			}
-
+			
+			frame++;
 			countfq = 1;
 		}
 		

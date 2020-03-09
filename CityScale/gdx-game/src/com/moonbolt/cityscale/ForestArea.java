@@ -43,6 +43,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 	private int questStep = 0;
 	private int objectNum = 0;
 	private int skillSelected = 0;
+	private int countParty = 0;
 	private String playerManualAttack = "no";
 	private String playerAutoAttack = "no";
 	private String state = "Front";
@@ -104,7 +105,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 	private ArrayList<String> lstChats;
 	private ArrayList<Buffs> lstBuffs;
 	private ArrayList<Sprite> lstNpcs;
-	private ArrayList<Sprite> lstPlayersOnline;
+	private ArrayList<Player> lstInfoOnline;
 	private String[] splitNomes;
 	private float nomeX;
 	private float nomeY;
@@ -165,7 +166,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 		lstNpcs = new ArrayList<Sprite>();
 		
 		//Online
-		lstPlayersOnline = new ArrayList<Sprite>();
+		lstInfoOnline = new ArrayList<Player>();
 		
 		//font
 		font_master = new BitmapFont(Gdx.files.internal("data/font/impact.fnt"),Gdx.files.internal("data/font/impact.png"), false);
@@ -239,8 +240,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 			gameControl.AtualizaCameraX(cameraCoordsX);
 			gameControl.AtualizaCameraY(cameraCoordsY);
 			
-			//ExibeNPC
-			//ExibirNpcs();
+			
 			
 			
 			//Set Player
@@ -269,7 +269,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 			spr_Interface = gameControl.InterfaceStreets305("Portrait", activePlayer.Hair_A); spr_Interface.draw(game.batch);  //Portrair
 			spr_Interface = gameControl.InterfaceStreets305("Hotcrossbar", ""); spr_Interface.draw(game.batch);  //Hotbar
 			spr_Interface = gameControl.InterfaceStreets305("Backanalog", ""); spr_Interface.draw(game.batch);  //Analog
-			spr_Interface = gameControl.InterfaceStreets305("flagStreet305", ""); spr_Interface.draw(game.batch);  //Flag
+			spr_Interface = gameControl.InterfaceStreets305("flagFlorestaA", ""); spr_Interface.draw(game.batch);  //Flag
 			if(walk.equals("Stop")) { spr_Interface = gameControl.InterfaceStreets305("Analog","Stop"); spr_Interface.draw(game.batch);  }
 			if(walk.equals("Walk") && state.equals("Right")) { spr_Interface = gameControl.InterfaceStreets305("Analog","Right"); spr_Interface.draw(game.batch);  }
 			if(walk.equals("Walk") && state.equals("Left")) { spr_Interface = gameControl.InterfaceStreets305("Analog","Left"); spr_Interface.draw(game.batch);  }
@@ -306,6 +306,9 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 			//Se for skill AoE  exibir aviso
 			spr_Interface = gameControl.InterfaceStreets305("ActionBtn", ""); spr_Interface.draw(game.batch);  //ATK
 			
+			//ExibeNPC
+			//ExibirNpcs();
+			
 			//Chats
 			ExibeChats();
 			
@@ -330,6 +333,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 				splitNomes = lstNomes.get(intcount).split("/");
 				nomeX = Float.parseFloat(splitNomes[3]);
 				nomeY = Float.parseFloat(splitNomes[4]);
+				font_master.getData().setScale(0.12f,0.15f);
 				font_master.draw(game.batch,splitNomes[0] + " HP:" + splitNomes[1] + "/" + splitNomes[2],nomeX,nomeY);
 			}
 			
@@ -369,6 +373,9 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 				font_master.draw(game.batch,"Obtido:" + gameControl.itemDrop(),cameraCoordsX - 28,cameraCoordsY + 93); // 
 			}
 			
+			//Objects
+		    //ScenarioObjects("textovershop");
+			
 			// Show Shops
 			if(shopState) {
 				spr_master = gameControl.InterfaceStreets305("SodaMachine", "");
@@ -377,8 +384,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 				font_master.setColor(Color.YELLOW);
 				font_master.draw(game.batch,activePlayer.Money_A,cameraCoordsX + 27,cameraCoordsY - 5); // playerAttackCooldown
 			}
-			
-			
+						
 			// Menu Section
 			if(menuState) {		
 				if(menuBlock == 1) {
@@ -445,6 +451,8 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 				}
 			}
 			
+			
+			
 			//Death
 			if(activePlayer.HP_A.equals("0")){ deadState = true; }
 			if(deadState){
@@ -464,26 +472,97 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 		
 		if(onlineState) {
 			TrataOnline();
+			ExibeParty();
 		}
-		
-		
+
 		//Tests
-		//spr_teste.setPosition(cameraCoordsX + 55, cameraCoordsY - 52);
-		//spr_teste2.setPosition(cameraCoordsX + 62, cameraCoordsY - 70);
+		//spr_teste.setPosition(cameraCoordsX - 56, cameraCoordsY - 2); 
+		//spr_teste2.setPosition(cameraCoordsX - 27, cameraCoordsY - 15);
 		//spr_teste.draw(game.batch);
 		//spr_teste2.draw(game.batch);
 		//font_master.draw(game.batch,String.valueOf(playerX),cameraCoordsX,cameraCoordsY);
 		//font_master.draw(game.batch,String.valueOf(playerY),cameraCoordsX + 30,cameraCoordsY);		
+		
 		game.batch.end();
 	}
 	
 	private void TrataOnline() {
 		
-			//lstPlayersOnline = gameControl.RecuperaPlayersOnline();
-			//for(int i = 0; i < lstPlayersOnline.size(); i ++) {
-			//	spr_master = lstPlayersOnline.get(i);
-			//	spr_master.draw(game.batch);
-			//}
+			//lstInfoOnline.clear();
+			lstInfoOnline = gameControl.InfoPlayerOnline();
+			for(int i = 0; i < lstInfoOnline.size(); i ++) {
+				
+				spr_master = gameControl.MovChar(lstInfoOnline.get(i).Set_A,lstInfoOnline.get(i).Side_A,"","",Float.parseFloat(lstInfoOnline.get(i).PX_A),
+																								  Float.parseFloat(lstInfoOnline.get(i).PY_A),
+																								  Integer.parseInt(lstInfoOnline.get(i).Position_A));
+				spr_master.draw(game.batch);
+				
+				spr_master = gameControl.ReturnHairs(lstInfoOnline.get(i).Hair_A,lstInfoOnline.get(i).Side_A,"",Float.parseFloat(lstInfoOnline.get(i).PX_A),
+																												Float.parseFloat(lstInfoOnline.get(i).PY_A));
+				spr_master.draw(game.batch);
+				
+				font_master.draw(game.batch,lstInfoOnline.get(i).Name_A,Float.parseFloat(lstInfoOnline.get(i).PX_A) + 3,Float.parseFloat(lstInfoOnline.get(i).PY_A) + 10);
+			}			
+	}
+	
+	private void ExibeParty() {
+		lstInfoOnline = gameControl.InfoPlayerOnline();
+		
+		countParty = 0;
+		for(int i = 0; i < lstInfoOnline.size(); i++) {				
+			String partylst =  lstInfoOnline.get(i).Party_A;
+			String characterParty = activePlayer.Party_A;
+			if(lstInfoOnline.get(i).Party_A.equals(activePlayer.Party_A)) {
+				countParty++;
+				
+				font_master.getData().setScale(0.09f,0.11f);
+				if(countParty > 3) { return;}
+				
+				if(countParty == 1) {
+					spr_master = gameControl.InterfaceStreets305("PartyTag1","");
+					spr_master.draw(game.batch);
+					
+					spr_master = gameControl.ReturnHairs(lstInfoOnline.get(i).Hair_A,"Front","",cameraCoordsX - 101,cameraCoordsY + 26);																								
+					spr_master.draw(game.batch);
+					
+					font_master.draw(game.batch,lstInfoOnline.get(i).Name_A,cameraCoordsX - 90,cameraCoordsY +85);
+					font_master.draw(game.batch,lstInfoOnline.get(i).HP_A,cameraCoordsX - 80,cameraCoordsY +79);
+					font_master.draw(game.batch,lstInfoOnline.get(i).MP_A,cameraCoordsX - 80,cameraCoordsY +73);
+					font_master.draw(game.batch,lstInfoOnline.get(i).MP_A,cameraCoordsX - 69,cameraCoordsY +80);
+					font_master.draw(game.batch,lstInfoOnline.get(i).Map_A,cameraCoordsX - 80,cameraCoordsY +66);	
+				}
+				
+				if(countParty == 2) {
+					spr_master = gameControl.InterfaceStreets305("PartyTag2","");
+					spr_master.draw(game.batch);
+
+					spr_master = gameControl.ReturnHairs(lstInfoOnline.get(i).Hair_A,"Front","",cameraCoordsX - 101,cameraCoordsY - 1);
+					spr_master.draw(game.batch);
+					
+					font_master.draw(game.batch,lstInfoOnline.get(i).Name_A,cameraCoordsX - 90,cameraCoordsY +57);
+					font_master.draw(game.batch,lstInfoOnline.get(i).HP_A,cameraCoordsX - 80,cameraCoordsY +52);
+					font_master.draw(game.batch,lstInfoOnline.get(i).MP_A,cameraCoordsX - 80,cameraCoordsY +46);
+					font_master.draw(game.batch,lstInfoOnline.get(i).MP_A,cameraCoordsX - 69,cameraCoordsY +52);
+					font_master.draw(game.batch,lstInfoOnline.get(i).Map_A,cameraCoordsX - 80,cameraCoordsY +38);
+				}
+				
+				if(countParty == 3) {
+					spr_master = gameControl.InterfaceStreets305("PartyTag3","");
+					spr_master.draw(game.batch);
+
+					spr_master = gameControl.ReturnHairs(lstInfoOnline.get(i).Hair_A,"Front","",cameraCoordsX - 101,cameraCoordsY - 30);
+					spr_master.draw(game.batch);
+					
+					font_master.draw(game.batch,lstInfoOnline.get(i).Name_A,cameraCoordsX - 90,cameraCoordsY +29);
+					font_master.draw(game.batch,lstInfoOnline.get(i).HP_A,cameraCoordsX - 80,cameraCoordsY +24);
+					font_master.draw(game.batch,lstInfoOnline.get(i).MP_A,cameraCoordsX - 80,cameraCoordsY +18);
+					font_master.draw(game.batch,lstInfoOnline.get(i).MP_A,cameraCoordsX - 69,cameraCoordsY +24);			
+					font_master.draw(game.batch,lstInfoOnline.get(i).Map_A,cameraCoordsX - 80,cameraCoordsY +10);
+				}
+				
+				font_master.getData().setScale(0.12f,0.14f);
+			}
+		}
 		
 	}
 	
@@ -497,6 +576,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 	
 	private void ExibeChats() {	
 		
+		try {
 		lstChats = gameControl.CarregaChats();
 		
 		font_master.setColor(Color.WHITE);
@@ -504,7 +584,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 		font_master.setUseIntegerPositions(false);
 		font_master.draw(game.batch,"________Chat________",cameraCoordsX - 30,cameraCoordsY - 30);
 		
-		for(int i = 0; i < lstChats.size(); i++) {
+		for(int i = 0; i < 3; i++) {
 			if(i == 0) {
 			font_master.draw(game.batch,lstChats.get(i),cameraCoordsX - 30,cameraCoordsY - 40);
 			}
@@ -519,6 +599,11 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 		font_master.setColor(Color.WHITE);
 		font_master.getData().setScale(0.10f,0.13f);
 		font_master.setUseIntegerPositions(false);
+		}
+		
+		catch(Exception ex) {
+			
+		}
 	}
 	
 	public void ExibeItensMochila() {
@@ -576,6 +661,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 	private void ExibeSkills() {
 		
 		gameControl.CalculaCooldown();
+		font_master.getData().setScale(0.12f,0.15f);
 		font_master.draw(game.batch,"Atraso:" + String.valueOf(gameControl.delayinfo()),cameraCoordsX + 85,cameraCoordsY - 26);
 		lstSkills = gameControl.RetornaSkills();
 		
@@ -605,7 +691,6 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 		}
 	}
 	
-	
 	// World Settings - BEGIN //
 	private void VerificaAction() {
 		
@@ -620,29 +705,6 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 		}
 	}
 	
-
-	private void ScenarioObjects(String item) {		
-		objectNum++;
-		
-		if(objectNum > 60) { objectNum = 0;  }
-		
-		if(objectNum >= 0 && objectNum <= 20) {
-			spr_Interface = gameControl.InterfaceStreets305("textovershop1", ""); 
-			spr_Interface.draw(game.batch);  //msg
-		}
-		
-		if(objectNum >= 20 && objectNum <= 40) {
-			spr_Interface = gameControl.InterfaceStreets305("textovershop2", ""); 
-			spr_Interface.draw(game.batch);  //msg
-		}
-		
-		if(objectNum >= 40 && objectNum <= 60) {
-			spr_Interface = gameControl.InterfaceStreets305("textovershop3", ""); 
-			spr_Interface.draw(game.batch);  //msg
-		}
-	}
-	
-	
 	private void ExibeQuests() {
 		//Exibe Texto Quest//
 		if(questState) {
@@ -652,31 +714,10 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 			spr_Interface = gameControl.InterfaceStreets305("questBar", ""); spr_Interface.draw(game.batch);
 			font_master.draw(game.batch,String.valueOf(activePlayer.Job_A),cameraCoordsX - 44,cameraCoordsY + 50);
 			font_master.draw(game.batch,String.valueOf(activePlayer.Job_A),cameraCoordsX - 44,cameraCoordsY + 50);
-		}
+		}	
+		//Balao de Quest
+		spr_Interface = gameControl.InterfaceStreets305("avisoMissao", ""); spr_Interface.draw(game.batch);
 		
-		
-		//Balï¿½o Quest
-		baloonQuestNum++;
-		if(baloonQuestNum >= 120) { baloonQuestNum = 0; }
-		
-		if(baloonQuestNum >= 0 && baloonQuestNum <= 20) {
-		spr_Interface = gameControl.InterfaceStreets305("QuestBaloon1", ""); spr_Interface.draw(game.batch);
-		}
-		if(baloonQuestNum >= 20 && baloonQuestNum <= 40) {
-			spr_Interface = gameControl.InterfaceStreets305("QuestBaloon2", ""); spr_Interface.draw(game.batch);
-		}
-		if(baloonQuestNum >= 40 && baloonQuestNum <= 60) {
-			spr_Interface = gameControl.InterfaceStreets305("QuestBaloon3", ""); spr_Interface.draw(game.batch);
-		}
-		if(baloonQuestNum >= 60 && baloonQuestNum <= 80) {
-			spr_Interface = gameControl.InterfaceStreets305("QuestBaloon4", ""); spr_Interface.draw(game.batch);
-		}
-		if(baloonQuestNum >= 80 && baloonQuestNum <= 100) {
-			spr_Interface = gameControl.InterfaceStreets305("QuestBaloon5", ""); spr_Interface.draw(game.batch);
-		}
-		if(baloonQuestNum >= 100 && baloonQuestNum <= 120){
-			spr_Interface = gameControl.InterfaceStreets305("QuestBaloon6", ""); spr_Interface.draw(game.batch);
-		}
 	}
 	
 	
@@ -704,6 +745,19 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 			
 			gameControl.InsereChat(text);
 			chatState = false;
+		}
+		
+		if(partyState) {
+			//
+			if(text.equals("")) { partyState = false; return; }
+			try {
+				gameControl.GerenciamentoOnline("Party",text);
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			partyState = false;
 		}
 	}
 
@@ -1216,6 +1270,13 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 					menuBlock = 1;
 					return false;
 				}
+				
+				//Criar Grupo
+				if((coordsTouch.x >= cameraCoordsX - 56 && coordsTouch.x <= cameraCoordsX - 27) && (coordsTouch.y >= cameraCoordsY - 15 && coordsTouch.y <= cameraCoordsY - 2)){				
+					partyState = true;
+					Gdx.input.getTextInput(this,"Digite o Nome do Grupo","",""); 
+					return false;
+				}
 			}
 			
 			if(menuBlock == 7) { // Battle
@@ -1224,6 +1285,24 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 					menuBlock = 1;
 					return false;
 				}
+				
+				//Botão para Cidade
+				if((coordsTouch.x >= cameraCoordsX - 59 && coordsTouch.x <= cameraCoordsX - 20) && (coordsTouch.y >= cameraCoordsY + 32 && coordsTouch.y <= cameraCoordsY + 53)){
+					activePlayer.PX_A = "11";
+					activePlayer.PY_A = "12";
+					gameControl.WriteDataCharacterActive();
+					game.loadingmanager.screenSwitch("MetroStation");
+					return false;
+				}
+				//Botão para Foresta
+				if((coordsTouch.x >= cameraCoordsX - 59 && coordsTouch.x <= cameraCoordsX - 20) && (coordsTouch.y >= cameraCoordsY + 6 && coordsTouch.y <= cameraCoordsY + 28)){
+					activePlayer.PX_A = "84";
+					activePlayer.PY_A = "73";
+					gameControl.WriteDataCharacterActive();
+					game.loadingmanager.screenSwitch("ForestArea");
+					return false;
+				}
+				
 			}
 			
 			if(menuBlock == 8) {
@@ -1238,6 +1317,18 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 					game.loadingmanager.screenSwitch("CharacterSelect");
 					return false;
 				}
+				//Fazer Upload
+				if((coordsTouch.x >= cameraCoordsX + 18 && coordsTouch.x <= cameraCoordsX + 66) && (coordsTouch.y >= cameraCoordsY + 15 && coordsTouch.y <= cameraCoordsY + 30)){
+					try {
+						gameControl.GerenciamentoOnline("Upload", activePlayer.Account);
+						configMsg = "Upload feito com sucesso";
+					} catch (IOException e) {
+						configMsg = "Falha ao tentar fazer upload";
+						e.printStackTrace();
+					}
+					return false;
+				}
+				
 				//Som Ligado
 				if((coordsTouch.x >= cameraCoordsX - 38 && coordsTouch.x <= cameraCoordsX - 13) && (coordsTouch.y >= cameraCoordsY + 36 && coordsTouch.y <= cameraCoordsY + 44)){
 					//TODO
