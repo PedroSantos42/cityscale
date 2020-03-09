@@ -2302,7 +2302,7 @@ public class GameControl {
 						
 						playerHP = Integer.parseInt(Character_Data.HP_A);
 						playerHP = playerHP - mobAtk;
-						//Character_Data.HP_A = String.valueOf(playerHP);
+						Character_Data.HP_A = String.valueOf(playerHP);
 						
 					    Damage danoMob = new Damage();
 						danoMob.areaX = Math.round(pX);

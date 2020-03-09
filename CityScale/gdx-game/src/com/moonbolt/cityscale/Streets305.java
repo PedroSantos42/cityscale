@@ -477,10 +477,10 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 		}
 
 		//Tests
-		spr_teste.setPosition(cameraCoordsX + 90, cameraCoordsY - 5); 
-		spr_teste2.setPosition(cameraCoordsX + 99, cameraCoordsY - 20);
-		spr_teste.draw(game.batch);
-		spr_teste2.draw(game.batch);
+		//spr_teste.setPosition(cameraCoordsX + 90, cameraCoordsY - 5); 
+		//spr_teste2.setPosition(cameraCoordsX + 99, cameraCoordsY - 20);
+		//spr_teste.draw(game.batch);
+		//spr_teste2.draw(game.batch);
 		//font_master.draw(game.batch,String.valueOf(playerX),cameraCoordsX,cameraCoordsY);
 		//font_master.draw(game.batch,String.valueOf(playerY),cameraCoordsX + 30,cameraCoordsY);		
 		
@@ -493,6 +493,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 			lstInfoOnline = gameControl.InfoPlayerOnline();
 			for(int i = 0; i < lstInfoOnline.size(); i ++) {
 				
+				if(lstInfoOnline.get(i).Map_A.equals("Streets305")) {
 				spr_master = gameControl.MovChar(lstInfoOnline.get(i).Set_A,lstInfoOnline.get(i).Side_A,"","",Float.parseFloat(lstInfoOnline.get(i).PX_A),
 																								  Float.parseFloat(lstInfoOnline.get(i).PY_A),
 																								  Integer.parseInt(lstInfoOnline.get(i).Position_A));
@@ -503,6 +504,7 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 				spr_master.draw(game.batch);
 				
 				font_master.draw(game.batch,lstInfoOnline.get(i).Name_A,Float.parseFloat(lstInfoOnline.get(i).PX_A) + 3,Float.parseFloat(lstInfoOnline.get(i).PY_A) + 10);
+				}
 			}			
 	}
 	

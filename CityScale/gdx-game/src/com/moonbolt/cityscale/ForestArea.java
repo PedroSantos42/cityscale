@@ -147,7 +147,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 		Gdx.input.setInputProcessor(this);
 		
 		//background
-		tex_background = new Texture(Gdx.files.internal("data/maps/forestArea.jpg"));
+		tex_background = new Texture(Gdx.files.internal("data/maps/streets305.jpg"));
 		spr_background = new Sprite(tex_background);
 		
 		//Controls
@@ -270,6 +270,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 			spr_Interface = gameControl.InterfaceStreets305("Hotcrossbar", ""); spr_Interface.draw(game.batch);  //Hotbar
 			spr_Interface = gameControl.InterfaceStreets305("Backanalog", ""); spr_Interface.draw(game.batch);  //Analog
 			spr_Interface = gameControl.InterfaceStreets305("flagFlorestaA", ""); spr_Interface.draw(game.batch);  //Flag
+			spr_Interface = gameControl.InterfaceStreets305("hotkey", ""); spr_Interface.draw(game.batch);  //Hotkey
 			if(walk.equals("Stop")) { spr_Interface = gameControl.InterfaceStreets305("Analog","Stop"); spr_Interface.draw(game.batch);  }
 			if(walk.equals("Walk") && state.equals("Right")) { spr_Interface = gameControl.InterfaceStreets305("Analog","Right"); spr_Interface.draw(game.batch);  }
 			if(walk.equals("Walk") && state.equals("Left")) { spr_Interface = gameControl.InterfaceStreets305("Analog","Left"); spr_Interface.draw(game.batch);  }
@@ -476,10 +477,10 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 		}
 
 		//Tests
-		//spr_teste.setPosition(cameraCoordsX - 56, cameraCoordsY - 2); 
-		//spr_teste2.setPosition(cameraCoordsX - 27, cameraCoordsY - 15);
-		//spr_teste.draw(game.batch);
-		//spr_teste2.draw(game.batch);
+		spr_teste.setPosition(cameraCoordsX + 90, cameraCoordsY - 5); 
+		spr_teste2.setPosition(cameraCoordsX + 99, cameraCoordsY - 20);
+		spr_teste.draw(game.batch);
+		spr_teste2.draw(game.batch);
 		//font_master.draw(game.batch,String.valueOf(playerX),cameraCoordsX,cameraCoordsY);
 		//font_master.draw(game.batch,String.valueOf(playerY),cameraCoordsX + 30,cameraCoordsY);		
 		
@@ -492,6 +493,8 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 			lstInfoOnline = gameControl.InfoPlayerOnline();
 			for(int i = 0; i < lstInfoOnline.size(); i ++) {
 				
+				if(lstInfoOnline.get(i).Map_A.equals("ForestArea")) {
+				
 				spr_master = gameControl.MovChar(lstInfoOnline.get(i).Set_A,lstInfoOnline.get(i).Side_A,"","",Float.parseFloat(lstInfoOnline.get(i).PX_A),
 																								  Float.parseFloat(lstInfoOnline.get(i).PY_A),
 																								  Integer.parseInt(lstInfoOnline.get(i).Position_A));
@@ -502,6 +505,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 				spr_master.draw(game.batch);
 				
 				font_master.draw(game.batch,lstInfoOnline.get(i).Name_A,Float.parseFloat(lstInfoOnline.get(i).PX_A) + 3,Float.parseFloat(lstInfoOnline.get(i).PY_A) + 10);
+				}
 			}			
 	}
 	
@@ -694,15 +698,15 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 	// World Settings - BEGIN //
 	private void VerificaAction() {
 		
-		if( (playerX >= 75 && playerX <= 102) && ( playerY >= -84 && playerY <= -70) ) {
-			shopState = true;
-			shopName = "SodaMachine";
-		}
+		//if( (playerX >= 75 && playerX <= 102) && ( playerY >= -84 && playerY <= -70) ) {
+		//	shopState = true;
+		//	shopName = "SodaMachine";
+		//}
 		
-		if( (playerX >= 44 && playerX <= 74) && (playerY >= -108 && playerY <= -80) ) {
-			questState = true;
-			questName = "Um pedido gentil";
-		}
+		//if( (playerX >= 44 && playerX <= 74) && (playerY >= -108 && playerY <= -80) ) {
+		//	questState = true;
+		//	questName = "Um pedido gentil";
+		//}
 	}
 	
 	private void ExibeQuests() {
@@ -947,6 +951,12 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 				    else {
 						selectAreaSkillState = true;
 					}
+					return false;
+				}
+				
+				//Hotkey
+				if((coordsTouch.x >= cameraCoordsX + 90 && coordsTouch.x <= cameraCoordsX + 99) && (coordsTouch.y >= cameraCoordsY - 20 && coordsTouch.y <= cameraCoordsY - 5)){
+					ItemSelecionado(0);
 					return false;
 				}
 			}
@@ -1301,8 +1311,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 					gameControl.WriteDataCharacterActive();
 					game.loadingmanager.screenSwitch("ForestArea");
 					return false;
-				}
-				
+				}			
 			}
 			
 			if(menuBlock == 8) {
