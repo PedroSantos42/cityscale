@@ -339,14 +339,14 @@ willow3_right
   orig: 64, 72
   offset: 0, 0
   index: -1
-willow4_left_
+willow4_left
   rotate: false
   xy: 256, 54
   size: 64, 72
   orig: 64, 72
   offset: 0, 0
   index: -1
-willow4_right_
+willow4_right
   rotate: false
   xy: 64, 198
   size: 64, 72

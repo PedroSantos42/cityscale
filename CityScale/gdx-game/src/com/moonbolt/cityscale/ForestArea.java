@@ -147,7 +147,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 		Gdx.input.setInputProcessor(this);
 		
 		//background
-		tex_background = new Texture(Gdx.files.internal("data/maps/streets305.jpg"));
+		tex_background = new Texture(Gdx.files.internal("data/maps/forestArea.jpg"));
 		spr_background = new Sprite(tex_background);
 		
 		//Controls
@@ -302,6 +302,52 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 			//Skills de classes
 			if(activePlayer.Job_A.equals("Novice")) {
 				spr_Interface = gameControl.InterfaceStreets305("tripleAttackbtn", ""); spr_Interface.draw(game.batch);  //ATK
+			}
+			if(activePlayer.Job_A.equals("Swordman")) {
+				spr_Interface = gameControl.InterfaceStreets305("flyswordbtn", ""); spr_Interface.draw(game.batch);  //ATK
+				spr_Interface = gameControl.InterfaceStreets305("ravenbladebtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("healthboostbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("protectbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("ironshieldbtn", ""); spr_Interface.draw(game.batch); 
+			}
+			
+			if(activePlayer.Job_A.equals("Magician")) {
+				spr_Interface = gameControl.InterfaceStreets305("icecrystalbtn", ""); spr_Interface.draw(game.batch);  //ATK
+				spr_Interface = gameControl.InterfaceStreets305("fireballbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("thundercloudbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("rockboundbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("soulclashbtn", ""); spr_Interface.draw(game.batch); 
+			}
+			if(activePlayer.Job_A.equals("Thief")) {
+				spr_Interface = gameControl.InterfaceStreets305("invisibilitybtn", ""); spr_Interface.draw(game.batch);  //ATK
+				spr_Interface = gameControl.InterfaceStreets305("doublehitbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("dashkickbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("poisonhitbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("stealbtn", ""); spr_Interface.draw(game.batch); 
+			}
+			
+			if(activePlayer.Job_A.equals("Gunner")) {
+				spr_Interface = gameControl.InterfaceStreets305("bulletrainbtn", ""); spr_Interface.draw(game.batch);  //ATK
+				spr_Interface = gameControl.InterfaceStreets305("lockshotbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("precisionbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("fastshotbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("minebtn", ""); spr_Interface.draw(game.batch); 
+			}
+			
+			if(activePlayer.Job_A.equals("Medic")) {
+				spr_Interface = gameControl.InterfaceStreets305("healbtn", ""); spr_Interface.draw(game.batch);  //ATK
+				spr_Interface = gameControl.InterfaceStreets305("atkboostbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("defboostbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("regenbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("holyprismbtn", ""); spr_Interface.draw(game.batch); 
+			}
+			
+			if(activePlayer.Job_A.equals("Beater")) {
+				spr_Interface = gameControl.InterfaceStreets305("rageboundbtn", ""); spr_Interface.draw(game.batch);  //ATK
+				spr_Interface = gameControl.InterfaceStreets305("hammercrashbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("impoundbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("overpowerbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("berserkbtn", ""); spr_Interface.draw(game.batch); 
 			}
 			
 			//Se for skill AoE  exibir aviso
@@ -1296,7 +1342,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 					return false;
 				}
 				
-				//Botão para Cidade
+				//Botï¿½o para Cidade
 				if((coordsTouch.x >= cameraCoordsX - 59 && coordsTouch.x <= cameraCoordsX - 20) && (coordsTouch.y >= cameraCoordsY + 32 && coordsTouch.y <= cameraCoordsY + 53)){
 					activePlayer.PX_A = "11";
 					activePlayer.PY_A = "12";
@@ -1304,7 +1350,7 @@ public class ForestArea implements Screen, ApplicationListener, InputProcessor, 
 					game.loadingmanager.screenSwitch("MetroStation");
 					return false;
 				}
-				//Botão para Foresta
+				//Botï¿½o para Foresta
 				if((coordsTouch.x >= cameraCoordsX - 59 && coordsTouch.x <= cameraCoordsX - 20) && (coordsTouch.y >= cameraCoordsY + 6 && coordsTouch.y <= cameraCoordsY + 28)){
 					activePlayer.PX_A = "84";
 					activePlayer.PY_A = "73";

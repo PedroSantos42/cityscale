@@ -125,21 +125,28 @@ public class GameControl {
 		private ArrayList<String> lstChats;
 		
 		private TextureAtlas atlas_hairs;
-		private TextureAtlas atlas_basic_male_set;
-		private TextureAtlas atlas_basic_female_set;
 		private TextureAtlas atlas_gameplay_interface;
 		private TextureAtlas atlas_btnskills;
 		private TextureAtlas atlas_shop;
 		private TextureAtlas atlas_objectsMetro;
 		private TextureAtlas atlas_Mob;
-		private TextureAtlas atlas_Forest;
 		private TextureAtlas atlas_Usable;
 		private TextureAtlas atlas_Loots;
 		private TextureAtlas atlas_Npcs;
-		private TextureAtlas atlas_nKnifes;
-		private TextureAtlas atlas_sets;
 		private Sprite spr_master;
 		private Texture tex_teste;
+		
+		//Map atlas
+		private TextureAtlas atlas_Forest;
+		
+		//Weapons atlas
+		private TextureAtlas atlas_nKnifes;
+		private TextureAtlas atlas_swords;
+		//Set atlas
+		private TextureAtlas atlas_basic_male_set;
+		private TextureAtlas atlas_basic_female_set;
+		private TextureAtlas atlas_sets;
+		
 		
 		//Online Variables
 		private String[] onlineData;
@@ -222,6 +229,7 @@ public class GameControl {
 			
 			//Armas
 			atlas_nKnifes = new TextureAtlas(Gdx.files.internal("data/itens/weapons/nknifes.txt"));
+			atlas_swords = new TextureAtlas(Gdx.files.internal("data/itens/weapons/swords.txt"));
 			
 			//Equips
 			atlas_sets = new TextureAtlas(Gdx.files.internal("data/itens/Sets/sets.txt"));
@@ -1146,6 +1154,23 @@ public class GameControl {
 						if(pos == 5 && text.equals("yes_Left")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_left2"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master; }
 						if(pos == 6 && text.equals("yes_Left")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_left1"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master; }
 					}
+					if(Character_Data.Job_A.equals("Swordman")) {
+						if(attackFrame && text.equals("yes_Right")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_meleeAttack_right"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(25, 36); return spr_master; }
+						if(attackFrame && text.equals("yes_Left")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_meleeAttack_left"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(25, 36); return spr_master; }
+						if(pos == 1 && text.equals("yes_Right")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_right1"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(25, 36); return spr_master; }
+						if(pos == 2 && text.equals("yes_Right")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_right2"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master; }
+						if(pos == 3 && text.equals("yes_Right")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_right3"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master; }	
+						if(pos == 4 && text.equals("yes_Right")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_right3"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(25, 36); return spr_master; }
+						if(pos == 5 && text.equals("yes_Right")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_right2"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master; }
+						if(pos == 6 && text.equals("yes_Right")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_right1"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master; }	
+						
+						if(pos == 1 && text.equals("yes_Left")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_left1"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(25, 36); return spr_master; }
+						if(pos == 2 && text.equals("yes_Left")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_left2"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master; }
+						if(pos == 3 && text.equals("yes_Left")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_left3"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master; }
+						if(pos == 4 && text.equals("yes_Left")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_left3"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(25, 36); return spr_master; }
+						if(pos == 5 && text.equals("yes_Left")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_left2"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master; }
+						if(pos == 6 && text.equals("yes_Left")) { spr_master = atlas_basic_male_set.createSprite("basic_set_male_swordman_left1"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(25, 36); return spr_master; }
+					}
 				}
 				
 				//Menu
@@ -1182,6 +1207,24 @@ public class GameControl {
 				if(inBattle && walk.equals("Stop") && !type.equals("Menu")) {
 					text = Character_Data.Battle_A;
 					if(Character_Data.Job_A.equals("Novice")) {
+						if(attackFrame && text.equals("yes_Right")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_meleeAttack_right"); spr_master.setPosition(posX - 4f, posY + 12.5f);  spr_master.setSize(24, 33); return spr_master; }
+						if(attackFrame && text.equals("yes_Left")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_meleeAttack_left"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(24, 33); return spr_master; }
+						if(pos == 1 && text.equals("yes_Right")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_right1"); spr_master.setPosition(posX - 4f, posY + 12.5f);  spr_master.setSize(24, 33); return spr_master; }
+						if(pos == 2 && text.equals("yes_Right")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_right2"); spr_master.setPosition(posX - 4f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master; }
+						if(pos == 3 && text.equals("yes_Right")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_right3"); spr_master.setPosition(posX - 4f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master; }	
+						if(pos == 4 && text.equals("yes_Right")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_right3"); spr_master.setPosition(posX - 4f, posY + 12.5f);  spr_master.setSize(24, 33); return spr_master; }
+						if(pos == 5 && text.equals("yes_Right")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_right2"); spr_master.setPosition(posX - 4f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master; }
+						if(pos == 6 && text.equals("yes_Right")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_right1"); spr_master.setPosition(posX - 4f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master; }	
+						
+						if(pos == 1 && text.equals("yes_Left")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_left1"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(24, 33); return spr_master; }
+						if(pos == 2 && text.equals("yes_Left")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_left2"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master; }
+						if(pos == 3 && text.equals("yes_Left")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_left3"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master; }
+						if(pos == 4 && text.equals("yes_Left")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_left3"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(24, 33); return spr_master; }
+						if(pos == 5 && text.equals("yes_Left")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_left2"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master; }
+						if(pos == 6 && text.equals("yes_Left")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_left1"); spr_master.setPosition(posX - 0.6f, posY + 12.5f); spr_master.setSize(24, 33); return spr_master; }
+					}
+					
+					if(Character_Data.Job_A.equals("Swordman")) {
 						if(attackFrame && text.equals("yes_Right")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_meleeAttack_right"); spr_master.setPosition(posX - 4f, posY + 12.5f);  spr_master.setSize(24, 33); return spr_master; }
 						if(attackFrame && text.equals("yes_Left")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_meleeAttack_left"); spr_master.setPosition(posX - 0.6f, posY + 12.5f);  spr_master.setSize(24, 33); return spr_master; }
 						if(pos == 1 && text.equals("yes_Right")) { spr_master = atlas_basic_female_set.createSprite("basic_set_female_swordman_right1"); spr_master.setPosition(posX - 4f, posY + 12.5f);  spr_master.setSize(24, 33); return spr_master; }
@@ -1365,6 +1408,10 @@ public class GameControl {
 								}							
 							}
 						}
+					}
+					
+					if(Character_Data.Job_A.equals("Novice")) { 
+						
 					}
 				}
 					
@@ -1843,6 +1890,222 @@ public class GameControl {
 				spr_master = atlas_gameplay_interface.createSprite("hotkey");
 				spr_master.setSize(10,15);
 				spr_master.setPosition(fX + 90, fY - 20);
+				return spr_master;
+			}
+			
+			//Swordmans tabs
+			if(item.equals("flyswordbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnflysword");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 55, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("ravenbladebtn")) {
+				spr_master = atlas_btnskills.createSprite("btnravenblade");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 64, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("healthboostbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnhealthboost");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 73, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("protectbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnprotect");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 81.5f, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("ironshieldbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnironshield");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 90, fY - 68);
+				return spr_master;
+			}
+			
+			//Magician tabs
+			if(item.equals("icecrystalbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnicecrystal");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 55, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("fireballbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnfireball");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 64, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("thundercloudbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnthundercloud");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 73, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("rockboundbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnrockbound");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 81.5f, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("soulclashbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnsoulclash");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 90, fY - 68);
+				return spr_master;
+			}
+			
+			//Thief tabs
+			if(item.equals("invisibilitybtn")) {
+				spr_master = atlas_btnskills.createSprite("btninvisibility");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 55, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("doublehitbtn")) {
+				spr_master = atlas_btnskills.createSprite("btndoublehit");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 64, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("dashkickbtn")) {
+				spr_master = atlas_btnskills.createSprite("btndashkick");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 73, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("poisonhitbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnpoisonhit");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 81.5f, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("stealbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnsteal");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 90, fY - 68);
+				return spr_master;
+			}
+			
+			//Gunner tabs
+			if(item.equals("bulletrainbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnbulletrain");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 55, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("lockshotbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnlockshot");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 64, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("precisionbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnprecision");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 73, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("fastshotbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnfastshot");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 81.5f, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("minebtn")) {
+				spr_master = atlas_btnskills.createSprite("btnmine");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 90, fY - 68);
+				return spr_master;
+			}
+			
+			//Priest tabs
+			if(item.equals("healbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnheal");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 55, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("atkboostbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnatkboost");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 64, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("defboostbtn")) {
+				spr_master = atlas_btnskills.createSprite("btndefboost");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 73, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("regenbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnregen");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 81.5f, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("holyprismbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnholyprism");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 90, fY - 68);
+				return spr_master;
+			}
+			
+			//Beater tabs
+			if(item.equals("rageboundbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnragebound");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 55, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("hammercrashbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnhammercrash");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 64, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("impoundbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnimpound");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 73, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("overpowerbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnoverpower");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 81.5f, fY - 68);
+				return spr_master;
+			}
+			
+			if(item.equals("berserkbtn")) {
+				spr_master = atlas_btnskills.createSprite("btnberserk");
+				spr_master.setSize(8,15);
+				spr_master.setPosition(fX + 90, fY - 68);
 				return spr_master;
 			}
 			
@@ -2332,6 +2595,9 @@ public class GameControl {
 			int pontosStatus = Integer.parseInt(Character_Data.StatusPoint_A);
 			expPlayer = expPlayer + exp;
 			
+			
+			if(levelPlayer == 5) { return; }
+			
 			if(expPlayer >= 100 && levelPlayer == 1) { levelPlayer++; pontosStatus = pontosStatus + 3; expPlayer = 0;}
 			if(expPlayer >= 350 && levelPlayer == 2) { levelPlayer++; pontosStatus = pontosStatus + 3; expPlayer = 0;}
 			if(expPlayer >= 520 && levelPlayer == 3) { levelPlayer++; pontosStatus = pontosStatus + 3; expPlayer = 0;}
@@ -2440,7 +2706,7 @@ public class GameControl {
 				}		
 			}
 			
-			if(Character_Data.Job_A.equals("Mage")) {			
+			if(Character_Data.Job_A.equals("Magician")) {			
 				//Fireball
 				if(numSkill == 1) {
 					skillUsed = Skill.RetornaDadosSKill("fireball", Character_Data.Name_A);
@@ -2566,11 +2832,11 @@ public class GameControl {
 			if(numSkill == 5 && Character_Data.Job_A.equals("Swordman")) { skillUsed.IsRangedSkill("protect"); }
 			
 			//Mage
-			if(numSkill == 1 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("fireball"); }
-			if(numSkill == 2 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("icecrystal"); }
-			if(numSkill == 3 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("thundercloud"); }
-			if(numSkill == 4 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("rockbound"); }
-			if(numSkill == 5 && Character_Data.Job_A.equals("Mage")) { skillUsed.IsRangedSkill("soulclash"); }
+			if(numSkill == 1 && Character_Data.Job_A.equals("Magician")) { skillUsed.IsRangedSkill("fireball"); }
+			if(numSkill == 2 && Character_Data.Job_A.equals("Magician")) { skillUsed.IsRangedSkill("icecrystal"); }
+			if(numSkill == 3 && Character_Data.Job_A.equals("Magician")) { skillUsed.IsRangedSkill("thundercloud"); }
+			if(numSkill == 4 && Character_Data.Job_A.equals("Magician")) { skillUsed.IsRangedSkill("rockbound"); }
+			if(numSkill == 5 && Character_Data.Job_A.equals("Magician")) { skillUsed.IsRangedSkill("soulclash"); }
 			
 			//Thief
 			if(numSkill == 1 && Character_Data.Job_A.equals("Thief")) { skillUsed.IsRangedSkill("invisibility"); }

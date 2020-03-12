@@ -235,8 +235,8 @@ public class Monster {
 				mobReturn.PX = "56";//PX
 				mobReturn.PY = "-256";//PY
 				mobReturn.SIDE = "left"; //SIDE
-				mobReturn.HEIGHT = "20"; // Height
-				mobReturn.WIDTH = "15"; // Width
+				mobReturn.HEIGHT = "40"; // Height
+				mobReturn.WIDTH = "25"; // Width
 				mobReturn.STATE = "Walk1";//State
 				mobReturn.ATK = "15";//ATK
 				mobReturn.DEF = "1";//DEF

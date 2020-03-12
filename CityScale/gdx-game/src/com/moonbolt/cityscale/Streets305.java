@@ -303,6 +303,52 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 			if(activePlayer.Job_A.equals("Novice")) {
 				spr_Interface = gameControl.InterfaceStreets305("tripleAttackbtn", ""); spr_Interface.draw(game.batch);  //ATK
 			}
+			if(activePlayer.Job_A.equals("Swordman")) {
+				spr_Interface = gameControl.InterfaceStreets305("flyswordbtn", ""); spr_Interface.draw(game.batch);  //ATK
+				spr_Interface = gameControl.InterfaceStreets305("ravenbladebtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("healthboostbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("protectbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("ironshieldbtn", ""); spr_Interface.draw(game.batch); 
+			}
+			
+			if(activePlayer.Job_A.equals("Magician")) {
+				spr_Interface = gameControl.InterfaceStreets305("icecrystalbtn", ""); spr_Interface.draw(game.batch);  //ATK
+				spr_Interface = gameControl.InterfaceStreets305("fireballbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("thundercloudbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("rockboundbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("soulclashbtn", ""); spr_Interface.draw(game.batch); 
+			}
+			if(activePlayer.Job_A.equals("Thief")) {
+				spr_Interface = gameControl.InterfaceStreets305("invisibilitybtn", ""); spr_Interface.draw(game.batch);  //ATK
+				spr_Interface = gameControl.InterfaceStreets305("doublehitbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("dashkickbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("poisonhitbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("stealbtn", ""); spr_Interface.draw(game.batch); 
+			}
+			
+			if(activePlayer.Job_A.equals("Gunner")) {
+				spr_Interface = gameControl.InterfaceStreets305("bulletrainbtn", ""); spr_Interface.draw(game.batch);  //ATK
+				spr_Interface = gameControl.InterfaceStreets305("lockshotbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("precisionbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("fastshotbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("minebtn", ""); spr_Interface.draw(game.batch); 
+			}
+			
+			if(activePlayer.Job_A.equals("Medic")) {
+				spr_Interface = gameControl.InterfaceStreets305("healbtn", ""); spr_Interface.draw(game.batch);  //ATK
+				spr_Interface = gameControl.InterfaceStreets305("atkboostbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("defboostbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("regenbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("holyprismbtn", ""); spr_Interface.draw(game.batch); 
+			}
+			
+			if(activePlayer.Job_A.equals("Beater")) {
+				spr_Interface = gameControl.InterfaceStreets305("rageboundbtn", ""); spr_Interface.draw(game.batch);  //ATK
+				spr_Interface = gameControl.InterfaceStreets305("hammercrashbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("impoundbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("overpowerbtn", ""); spr_Interface.draw(game.batch); 
+				spr_Interface = gameControl.InterfaceStreets305("berserkbtn", ""); spr_Interface.draw(game.batch); 
+			}
 			
 			//Se for skill AoE  exibir aviso
 			spr_Interface = gameControl.InterfaceStreets305("ActionBtn", ""); spr_Interface.draw(game.batch);  //ATK
@@ -702,10 +748,16 @@ public class Streets305 implements Screen, ApplicationListener, InputProcessor, 
 			shopName = "SodaMachine";
 		}
 		
-		if( (playerX >= 44 && playerX <= 74) && (playerY >= -108 && playerY <= -80) ) {
-			questState = true;
-			questName = "Um pedido gentil";
+		
+		if( (playerX >= 44 && playerX <= 74) && (playerY >= -108 && playerY <= -80) ) {		
+			activePlayer.Job_A = "Swordman";
+			
 		}
+		
+		//if( (playerX >= 44 && playerX <= 74) && (playerY >= -108 && playerY <= -80) ) {
+		//	questState = true;
+		//	questName = "Um pedido gentil";
+		//}
 	}
 	
 	private void ExibeQuests() {
